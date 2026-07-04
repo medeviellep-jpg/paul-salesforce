@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<title>Paul Medevielle — Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+:root {
+  --bg-0: #0a0a0f; --bg-1: #0e0e16; --bg-2: #151520; --bg-3: #1e1e2e;
+  --accent: #7c3aed; --accent-soft: #a78bfa; --accent-bright: #c4b5fd;
+  --accent-glow: rgba(124,58,237,0.12); --accent-glow-strong: rgba(124,58,237,0.3);
+  --green: #34d399; --amber: #fbbf24; --red: #f87171; --cyan: #22d3ee;
+  --text-0: #fafafa; --text-1: #e4e4e7; --text-2: #a1a1aa; --text-3: #71717a;
+  --border: rgba(255,255,255,0.06); --border-accent: rgba(124,58,237,0.25);
+  --glass: rgba(10,10,18,0.9); --glass-border: rgba(255,255,255,0.05);
+  --radius: 16px; --radius-sm: 10px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { background: #0a0a0f; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0f; color: var(--text-1); min-height: 100vh; overflow: hidden; }
+.aurora { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.aurora-blob { position: absolute; border-radius: 50%; filter: blur(180px); opacity: 0.04; animation: aurora-drift 20s ease-in-out infinite alternate; }
+.aurora-blob:nth-child(1) { width: 600px; height: 600px; background: #4c1d95; top: -10%; left: 20%; animation-duration: 25s; }
+.aurora-blob:nth-child(2) { width: 500px; height: 500px; background: #3b0764; top: 40%; right: -5%; animation-duration: 18s; animation-delay: -5s; }
+.aurora-blob:nth-child(3) { width: 400px; height: 400px; background: #164e63; bottom: -5%; left: 40%; animation-duration: 22s; animation-delay: -10s; }
+@keyframes aurora-drift { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-40px) scale(1.1); } 100% { transform: translate(-10px,10px) scale(1.05); } }
+#particles { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+.app { position: relative; z-index: 2; display: grid; grid-template-columns: 220px 1fr 350px; min-height: 100vh; transition: grid-template-columns 0.4s cubic-bezier(0.16,1,0.3,1); }
+.app.chat-closed { grid-template-columns: 220px 1fr 0px; }
+.app.chat-closed .chat { overflow: hidden; opacity: 0; pointer-events: none; border: none; }
+.chat-toggle { position: fixed; right: 362px; top: 14px; z-index: 50; width: 30px; height: 30px; border-radius: 50%; background: var(--bg-3); border: 1px solid var(--glass-border); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; color: var(--text-2); font-size: 0.7rem; }
+.chat-toggle:hover { border-color: var(--accent); color: var(--accent-soft); background: var(--accent-glow); }
+.app.chat-closed .chat-toggle { right: 14px; }
+.sidebar { background: var(--glass); backdrop-filter: blur(24px) saturate(1.5); border-right: 1px solid var(--glass-border); padding: 20px 12px; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; }
+.sp { display: flex; align-items: center; gap: 10px; padding: 0 4px 16px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+.sp img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent); box-shadow: 0 0 10px rgba(124,58,237,0.3); }
+.sp-name { font-size: 0.76rem; font-weight: 600; color: var(--text-0); }
+.sp-title { font-size: 0.62rem; color: var(--text-3); margin-top: 1px; }
+.nav { list-style: none; flex: 1; padding-top: 4px; }
+.nav li { padding: 7px 10px; border-radius: 6px; font-size: 0.72rem; color: var(--text-3); cursor: pointer; margin-bottom: 1px; display: flex; align-items: center; gap: 7px; transition: all 0.2s; border: 1px solid transparent; }
+.nav li span { font-size: 0.6rem; opacity: 0.6; }
+.nav li:hover { background: rgba(124,58,237,0.06); color: var(--text-1); }
+.nav li.active { background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(139,92,246,0.06)); color: var(--accent-soft); font-weight: 500; border-color: rgba(124,58,237,0.15); }
+.sidebar-footer { font-size: 0.58rem; color: var(--text-3); padding: 10px 4px 0; border-top: 1px solid var(--border); opacity: 0.7; }
+.main { padding: 32px 36px; overflow-y: auto; max-height: 100vh; scrollbar-width: thin; scrollbar-color: var(--bg-3) transparent; }
+.header { display: flex; align-items: center; gap: 18px; margin-bottom: 30px; }
+.avatar-ring { position: relative; width: 60px; height: 60px; border-radius: 50%; background: conic-gradient(from 0deg, #7c3aed, #9333ea, #06b6d4, #34d399, #7c3aed); animation: ring-spin 4s linear infinite; padding: 3px; flex-shrink: 0; }
+@keyframes ring-spin { to { rotate: 360deg; } }
+.avatar-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--bg-0); }
+.header h1 { font-size: 1.25rem; font-weight: 700; color: var(--text-0); }
+.hi-sub { font-size: 0.8rem; color: var(--accent-soft); margin-top: 1px; }
+.hi-meta { font-size: 0.7rem; color: var(--text-3); margin-top: 3px; display: flex; gap: 12px; }
+.play-btn { margin-left: auto; width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #7c3aed, #9333ea); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); box-shadow: 0 0 20px rgba(124,58,237,0.4), 0 0 60px rgba(124,58,237,0.1); }
+.play-btn:hover { transform: scale(1.12); box-shadow: 0 0 30px rgba(124,58,237,0.6); }
+.play-btn svg { fill: white; width: 16px; height: 16px; }
+.play-btn.playing { background: linear-gradient(135deg, #f87171, #ef4444); animation: pulse-play 1.5s ease infinite; }
+@keyframes pulse-play { 0%,100% { box-shadow: 0 0 20px rgba(248,113,113,0.4); } 50% { box-shadow: 0 0 40px rgba(248,113,113,0.7); } }
+.section { margin-bottom: 28px; opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.16,1,0.3,1); }
+.section.visible { opacity: 1; transform: translateY(0); }
+.section-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1.8px; color: var(--text-3); margin-bottom: 12px; font-weight: 600; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.stat { background: var(--glass); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 18px 16px; position: relative; overflow: hidden; transition: all 0.3s; cursor: pointer; }
+.stat::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, transparent, rgba(124,58,237,0.1), transparent); animation: shimmer 3s linear infinite; opacity: 0; transition: opacity 0.3s; }
+.stat:hover::before { opacity: 1; }
+.stat:hover { border-color: var(--border-accent); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,58,237,0.1); }
+@keyframes shimmer { to { rotate: 360deg; } }
+.stat-value { font-size: 1.7rem; font-weight: 800; color: var(--text-0); line-height: 1; position: relative; z-index: 1; }
+.stat-label { font-size: 0.64rem; color: var(--text-3); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; position: relative; z-index: 1; }
+.alerts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.alert-card { background: var(--glass); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 16px 18px; position: relative; overflow: hidden; transition: all 0.3s; }
+.alert-card.danger { border-color: rgba(248,113,113,0.25); }
+.alert-card.danger::after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at top left, rgba(248,113,113,0.06), transparent 60%); }
+.alert-card.warning { border-color: rgba(251,191,36,0.25); }
+.alert-card.warning::after { content:''; position:absolute; inset:0; background: radial-gradient(ellipse at top left, rgba(251,191,36,0.06), transparent 60%); }
+.alert-icon { font-size: 1rem; margin-bottom: 6px; position: relative; z-index: 1; }
+.alert-title { font-size: 0.78rem; font-weight: 600; color: var(--text-0); margin-bottom: 4px; position: relative; z-index: 1; }
+.alert-body { font-size: 0.73rem; color: var(--text-2); line-height: 1.55; position: relative; z-index: 1; }
+.alert-body strong { color: var(--text-1); }
+.themes { display: flex; flex-wrap: wrap; gap: 8px; }
+.theme-pill { background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(139,92,246,0.08)); color: var(--accent-bright); padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 500; border: 1px solid rgba(124,58,237,0.2); transition: all 0.3s; cursor: default; }
+.theme-pill:hover { background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(139,92,246,0.15)); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(124,58,237,0.2); }
+.brief { background: var(--glass); backdrop-filter: blur(16px); border: 1px solid var(--border-accent); border-radius: var(--radius-sm); padding: 20px; position: relative; overflow: hidden; }
+.brief::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), var(--accent-soft), transparent); }
+.brief-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.brief-title { font-size: 0.88rem; font-weight: 700; color: var(--text-0); }
+.brief-when { font-size: 0.7rem; color: var(--accent-soft); margin-top: 2px; }
+.brief-badge { background: linear-gradient(135deg, #7c3aed, #9333ea); color: white; padding: 4px 12px; border-radius: 100px; font-size: 0.6rem; font-weight: 600; text-transform: uppercase; box-shadow: 0 2px 12px rgba(124,58,237,0.3); }
+.brief-points { list-style: none; }
+.brief-points li { padding: 6px 0 6px 14px; border-left: 2px solid var(--accent); font-size: 0.76rem; color: var(--text-1); line-height: 1.5; margin-bottom: 4px; }
+.team-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.tm { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: var(--glass); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 8px; transition: all 0.3s; }
+.tm:hover { border-color: var(--border-accent); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(124,58,237,0.1); }
+.tm img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; transition: all 0.3s; }
+.tm:hover img { box-shadow: 0 0 12px rgba(124,58,237,0.4); }
+.tm-name { font-size: 0.72rem; font-weight: 600; color: var(--text-0); }
+.tm-sub { font-size: 0.63rem; color: var(--text-3); margin-top: 1px; }
+.collab-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.collab-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: var(--glass); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); transition: all 0.3s; }
+.collab-card:hover { border-color: var(--border-accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.1); }
+.collab-card img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.collab-card:hover img { box-shadow: 0 0 12px rgba(124,58,237,0.4); }
+.cc-name { font-size: 0.78rem; font-weight: 600; color: var(--text-0); }
+.cc-title { font-size: 0.66rem; color: var(--text-3); margin-top: 1px; }
+.cc-topics { font-size: 0.7rem; color: var(--text-2); margin-top: 5px; line-height: 1.5; padding-left: 10px; border-left: 2px solid var(--accent-glow-strong); }
+.tl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tl-col h4 { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-3); margin-bottom: 8px; }
+.tl-item { display: flex; gap: 8px; padding: 6px 8px; font-size: 0.73rem; transition: all 0.2s; cursor: pointer; border-radius: 6px; position: relative; }
+.tl-item:hover { background: var(--accent-glow); transform: translateX(4px); }
+.tl-date { color: var(--accent-soft); font-weight: 600; min-width: 38px; }
+.tl-title { color: var(--text-1); flex: 1; }
+.tl-badge { font-size: 0.6rem; color: var(--text-3); white-space: nowrap; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.summary-card { background: var(--glass); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 18px; position: relative; overflow: hidden; }
+.summary-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+.summary-card h3 { font-size: 0.7rem; color: var(--accent-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
+.summary-card p { font-size: 0.78rem; color: var(--text-2); line-height: 1.7; }
+.insight { background: linear-gradient(135deg, rgba(124,58,237,0.06) 0%, rgba(52,211,153,0.04) 100%); border: 1px solid var(--border-accent); border-radius: var(--radius); padding: 18px 22px; margin-top: 12px; position: relative; overflow: hidden; }
+.insight::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, var(--green), var(--accent-soft), transparent); }
+.insight-label { font-size: 0.64rem; color: var(--accent-soft); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
+.insight p { font-size: 0.8rem; color: var(--text-1); line-height: 1.7; }
+.meeting-modal { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center; }
+.meeting-modal.open { display: flex; }
+.meeting-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); }
+.meeting-modal-content { position: relative; background: var(--bg-2); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 28px 32px; max-width: 480px; width: 90%; box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 40px rgba(124,58,237,0.1); animation: modalIn 0.3s cubic-bezier(0.16,1,0.3,1); }
+.meeting-modal-content::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg, transparent, var(--accent-soft), transparent); }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.92) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+.mm-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.mm-date { font-size: 0.66rem; color: var(--accent-soft); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.mm-close { font-size: 1rem; color: var(--text-3); cursor: pointer; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--glass-border); background: var(--bg-3); display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.mm-close:hover { border-color: var(--accent); color: var(--text-0); }
+.mm-title { font-size: 0.95rem; font-weight: 700; color: var(--text-0); margin-bottom: 8px; }
+.mm-attendees { font-size: 0.68rem; color: var(--text-3); margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.mm-context { font-size: 0.8rem; color: var(--text-2); line-height: 1.7; }
+.chat { background: var(--glass); backdrop-filter: blur(24px) saturate(1.5); border-left: 1px solid var(--glass-border); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; transition: opacity 0.3s; }
+.chat-head { padding: 16px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+.chat-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s ease infinite; }
+@keyframes pulse { 0%,100% { opacity:1; box-shadow: 0 0 8px var(--green); } 50% { opacity:0.5; box-shadow: 0 0 16px var(--green); } }
+.chat-head-text { font-size: 0.8rem; font-weight: 600; color: var(--text-0); }
+.chat-head-sub { font-size: 0.62rem; color: var(--text-3); }
+.chat-msgs { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.msg { max-width: 90%; padding: 12px 14px; border-radius: 14px 14px 14px 4px; font-size: 0.75rem; line-height: 1.6; color: var(--text-1); background: var(--bg-2); border: 1px solid var(--glass-border); animation: msgIn 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes msgIn { from { opacity:0; transform: translateY(8px) scale(0.96); } to { opacity:1; transform: translateY(0) scale(1); } }
+.msg.user { align-self: flex-end; border: none; border-radius: 14px 14px 4px 14px; max-width: 80%; font-weight: 500; background: linear-gradient(135deg, #7c3aed, #9333ea); color: white; box-shadow: 0 4px 16px rgba(124,58,237,0.3); }
+.msg .src { display: inline-block; margin-top: 6px; padding: 2px 7px; background: var(--accent-glow); border-radius: 4px; font-size: 0.58rem; color: var(--accent-soft); }
+.typing { display: flex; gap: 4px; padding: 10px 14px; background: var(--bg-2); border: 1px solid var(--glass-border); border-radius: 14px; width: fit-content; }
+.typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-soft); animation: dot 1.2s infinite; }
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dot { 0%,60%,100% { opacity:0.3; transform:translateY(0); } 30% { opacity:1; transform:translateY(-3px); } }
+.chat-btns { padding: 12px 14px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 5px; }
+.chat-btns-label { font-size: 0.6rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 3px; }
+.cbtn { background: var(--bg-2); border: 1px solid var(--glass-border); padding: 9px 12px; border-radius: 8px; font-size: 0.73rem; color: var(--text-1); cursor: pointer; text-align: left; font-family: inherit; transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+.cbtn:hover { border-color: var(--accent); color: var(--accent-bright); background: rgba(124,58,237,0.08); transform: translateX(4px); box-shadow: 0 2px 12px rgba(124,58,237,0.15); }
+.cbtn.used { opacity: 0.35; pointer-events: none; transform: none; }
+.cursor-glow { position: fixed; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.08), transparent 70%); pointer-events: none; z-index: 1; transform: translate(-50%,-50%); transition: opacity 0.3s; }
+.page-footer { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); text-align: center; font-size: 0.6rem; color: var(--text-3); }
+.page-footer strong { color: var(--accent-soft); }
+@media (max-width: 1100px) { .app { grid-template-columns: 220px 1fr 0; } .chat { display: none; } .chat-toggle { display: none; } }
+@media (max-width: 768px) { .app { grid-template-columns: 1fr; } .sidebar { display: none; } .main { padding: 16px; } .stats { grid-template-columns: 1fr 1fr; } .team-grid, .collab-list, .tl-grid, .summary-grid, .alerts { grid-template-columns: 1fr; } }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-glow-strong); }
+</style>
+</head>
+<body>
+<div class="aurora"><div class="aurora-blob"></div><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+<canvas id="particles"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="meeting-modal" id="meetingModal">
+  <div class="meeting-modal-backdrop" onclick="closeModal()"></div>
+  <div class="meeting-modal-content">
+    <div class="mm-header"><span class="mm-date" id="mmDate"></span><span class="mm-close" onclick="closeModal()">&#10005;</span></div>
+    <h3 class="mm-title" id="mmTitle"></h3>
+    <div class="mm-attendees" id="mmAttendees"></div>
+    <p class="mm-context" id="mmContext"></p>
+  </div>
+</div>
+<div class="app" id="app">
+  <button class="chat-toggle" id="chatToggle" title="Toggle Claude">&#9666;</button>
+  <aside class="sidebar">
+    <div class="sp">
+      <img src="https://avatars.slack-edge.com/2026-06-23/11423376196710_018b7638dd5996990a4a_original.png" alt="PM">
+      <div><div class="sp-name">Paul Medevielle</div><div class="sp-title">RVP, Agentforce EMEA - France</div></div>
+    </div>
+    <ul class="nav">
+      <li class="active" data-nav="stats"><span>&#9670;</span> Vue d'ensemble</li>
+      <li data-nav="themes"><span>&#9671;</span> Th&egrave;mes</li>
+      <li data-nav="collab"><span>&#9672;</span> Collaborateurs</li>
+      <li data-nav="team"><span>&#9674;</span> &Eacute;quipe</li>
+      <li data-nav="agenda"><span>&#9657;</span> Agenda</li>
+      <li data-nav="alerts"><span>&#9673;</span> Alertes</li>
+    </ul>
+    <div class="sidebar-footer">30 juin 2026<br>Org62 &middot; Slack &middot; GCal &middot; Gmail</div>
+  </aside>
+  <main class="main">
+    <div class="header">
+      <div class="avatar-ring"><img src="https://avatars.slack-edge.com/2026-06-23/11423376196710_018b7638dd5996990a4a_original.png" alt="PM"></div>
+      <div>
+        <h1>Paul Medevielle</h1>
+        <div class="hi-sub">RVP, Agentforce EMEA - France &mdash; Specialist AE Mgmt L1</div>
+        <div class="hi-meta"><span>salesforce.com</span><span>&rarr; Sophie Gray</span><span>Europe/Brussels</span></div>
+      </div>
+      <button class="play-btn" id="playBtn" title="Brief vocal"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+    </div>
+    <div class="section" data-reveal id="sec-stats">
+      <div class="stats">
+        <div class="stat"><div class="stat-value">5</div><div class="stat-label">Comptes actifs</div></div>
+        <div class="stat"><div class="stat-value">17</div><div class="stat-label">Meetings (2 sem.)</div></div>
+        <div class="stat"><div class="stat-value">20</div><div class="stat-label">&Agrave; venir</div></div>
+        <div class="stat"><div class="stat-value">10</div><div class="stat-label">Emails importants</div></div>
+      </div>
+    </div>
+    <div class="section" data-reveal id="sec-brief">
+      <div class="section-label">Prochain RDV cl&eacute;</div>
+      <div class="brief">
+        <div class="brief-top">
+          <div><div class="brief-title">QBR France Incl. Lunch</div><div class="brief-when">Aujourd'hui 9h30 – 14h00</div></div>
+          <div class="brief-badge">Prioritaire</div>
+        </div>
+        <ul class="brief-points">
+          <li>Revue business H1 FY27</li><li>Alignement leadership France</li><li>Priorités H2</li>
+        </ul>
+      </div>
+    </div>
+    <div class="section" data-reveal id="sec-alerts">
+      <div class="section-label">Alertes</div>
+      <div class="alerts">
+        <div class="alert-item alert-warning"><span class="alert-icon">⚠️</span><span>POC Opella : retours mitigés, atelier correctif à planifier sem. 07/07</span></div>
+<div class="alert-item alert-info"><span class="alert-icon">📋</span><span>Derek Carless a décliné le Sync AELA de cet après-midi</span></div>
+<div class="alert-item alert-success"><span class="alert-icon">✅</span><span>Morgan Stanley : Award désormais vested</span></div>
+      </div>
+    </div>
+    <div class="section" data-reveal id="sec-themes">
+      <div class="section-label">Th&egrave;mes dominants</div>
+      <div class="themes">
+        <span class="theme-pill">Agentforce Coworker</span><span class="theme-pill">POC & Pilotes</span><span class="theme-pill">ENGIE</span><span class="theme-pill">Campfire Events</span><span class="theme-pill">Migration E4S→A4S</span><span class="theme-pill">Deals Q2 (SAUR, Butagaz, Mousquetaires)</span><span class="theme-pill">VusionGroup CIO</span>
+      </div>
+    </div>
+    <div class="section" data-reveal id="sec-synthese">
+      <div class="section-label">Synth&egrave;se</div>
+      <div class="summary-grid">
+        <div class="summary-card"><h3>Bilan &mdash; 2 derni&egrave;res semaines</h3><p>Quinzaine dense entre événements clients (SIC Louvre Hotels, Learning Expedition Valtus, Afterwork Comforth) et exécution commerciale. Focus sur l'activation de Coworker avec plusieurs clients en phase de POC. Retours mitigés sur le POC Opella à corriger. Forte traction sur le Webinar Agentforce du 8 juillet.</p></div>
+        <div class="summary-card"><h3>Perspectives &mdash; 2 prochaines semaines</h3><p>QBR France aujourd'hui avec le leadership complet. Semaine d'équipe demain (Team AF together). Table ronde IT for Business et Campfire Agentforce le 2 juillet. Priorité sur le plan Mousquetaires et la préparation du meeting CIO VusionGroup le 7 juillet.</p></div>
+      </div>
+      <div class="insight"><div class="insight-label">&#9670; Observation</div><p>Pattern détecté : 3 de vos 5 AEs travaillent activement sur l'activation Coworker (Guillaume, Antony, Chloé) — une vague d'adoption en cours qui pourrait justifier un playbook dédié.</p></div>
+    </div>
+    <div class="section" data-reveal id="sec-collab">
+      <div class="section-label">Collaborateurs cl&eacute;s</div>
+      <div class="collab-list">
+        <div class="collab-card">
+<img src="https://avatars.slack-edge.com/2026-03-10/10695140850144_37a3c798ec9d18db1714_original.jpg" alt="Antony Couto" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Antony Couto</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">Promotion Webinar Agentforce Coworker, questions sur Flex multi-org, traction commerciale sur Co-Worker</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2024-10-29/7972890431728_2d4aef460a7d5ea8dff9_original.jpg" alt="Chloé Rance" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Chloé Rance</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">Deals SAUR (atelier UC), Butagaz (early renew AI, POC), Homeserve, CMA June, ENGIE</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2026-03-23/10764813970356_c4fa4ce34836049305a2_original.png" alt="Guillaume de La Cotardière" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Guillaume de La Cotardière</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">VusionGroup (démo CIO 7 juillet), activation Coworker clients, migration E4S vers A4S</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2025-11-18/9941448654725_3f076011c8f1e9163a94_original.jpg" alt="Xavier Lengellé" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Xavier Lengellé</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">Plan d'action Mousquetaires, Campfire Agentforce</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2024-10-15/7883006798291_0b6a21e41bfba743d7ef_original.jpg" alt="Yoann Détré" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Yoann Détré</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">POC Opella (retours mitigés, atelier correctif prévu), Campfire 2 juillet, SCI Air Liquide, Meilleurtaux</div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="section" data-reveal id="sec-team">
+      <div class="section-label">&Eacute;quipe (manager : Sophie Gray)</div>
+      <div class="team-grid">
+        <div class="collab-card">
+<img src="https://avatars.slack-edge.com/2026-03-10/10695140850144_37a3c798ec9d18db1714_original.jpg" alt="Antony Couto" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Antony Couto</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">Promotion Webinar Agentforce Coworker, questions sur Flex multi-org, traction commerciale sur Co-Worker</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2024-10-29/7972890431728_2d4aef460a7d5ea8dff9_original.jpg" alt="Chloé Rance" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Chloé Rance</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">Deals SAUR (atelier UC), Butagaz (early renew AI, POC), Homeserve, CMA June, ENGIE</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2026-03-23/10764813970356_c4fa4ce34836049305a2_original.png" alt="Guillaume de La Cotardière" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Guillaume de La Cotardière</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">VusionGroup (démo CIO 7 juillet), activation Coworker clients, migration E4S vers A4S</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2025-11-18/9941448654725_3f076011c8f1e9163a94_original.jpg" alt="Xavier Lengellé" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Xavier Lengellé</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">Plan d'action Mousquetaires, Campfire Agentforce</div>
+</div>
+</div>
+<div class="collab-card">
+<img src="https://avatars.slack-edge.com/2024-10-15/7883006798291_0b6a21e41bfba743d7ef_original.jpg" alt="Yoann Détré" class="collab-avatar">
+<div class="collab-info">
+<div class="collab-name">Yoann Détré</div>
+<div class="collab-role">Cloud Account Executive</div>
+<div class="collab-topics">POC Opella (retours mitigés, atelier correctif prévu), Campfire 2 juillet, SCI Air Liquide, Meilleurtaux</div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="section" data-reveal id="sec-agenda">
+      <div class="section-label">Agenda</div>
+      <div class="tl-grid">
+        <div class="tl-col"><h4>2 derni&egrave;res semaines</h4><div class="event-item"><span class="event-time">16/06</span><span class="event-title">SIC Louvre Hotels Group</span></div>
+<div class="event-item"><span class="event-time">16/06</span><span class="event-title">1/1 Guillaume + 1/1 Chloé</span></div>
+<div class="event-item"><span class="event-time">16/06</span><span class="event-title">Bi-Weekly ENGIE</span></div>
+<div class="event-item"><span class="event-time">16/06</span><span class="event-title">Inetum & Agentforce</span></div>
+<div class="event-item"><span class="event-time">16/06</span><span class="event-title">AF Operations EMEA Enablement</span></div>
+<div class="event-item"><span class="event-time">16/06</span><span class="event-title">Deal CMA June (Chloé)</span></div>
+<div class="event-item"><span class="event-time">16/06</span><span class="event-title">Learning Expedition DSI Valtus</span></div></div>
+        <div class="tl-col"><h4>2 prochaines semaines</h4><div class="event-item"><span class="event-time">30/06</span><span class="event-title">QBR France (9h30-14h)</span></div>
+<div class="event-item"><span class="event-time">30/06</span><span class="event-title">Bi-Weekly Paul & Melis AF</span></div>
+<div class="event-item"><span class="event-time">30/06</span><span class="event-title">IA at Scale in Insurance</span></div>
+<div class="event-item"><span class="event-time">30/06</span><span class="event-title">Plan d'action Mousquetaires</span></div>
+<div class="event-item"><span class="event-time">01/07</span><span class="event-title">Team AF together @2nd Floor</span></div>
+<div class="event-item"><span class="event-time">01/07</span><span class="event-title">Table ronde IT for Business</span></div>
+<div class="event-item"><span class="event-time">01/07</span><span class="event-title">Edenred Steering Committee</span></div></div>
+      </div>
+    </div>
+    <div class="page-footer">G&eacute;n&eacute;r&eacute; par <strong>Claude Code</strong> le 30 juin 2026 &mdash; Sources : Org62 &middot; Slack &middot; Google Calendar &middot; Gmail</div>
+  </main>
+  <aside class="chat" id="chatPanel">
+    <div class="chat-head"><div class="chat-dot"></div><div><div class="chat-head-text">Claude</div><div class="chat-head-sub">Slack &middot; Org62 &middot; GCal</div></div></div>
+    <div class="chat-msgs" id="chatMsgs"><div class="msg">Ton dashboard est pr&ecirc;t. Clique une question &mdash; je r&eacute;ponds avec tes vraies donn&eacute;es. <span class="src">live</span></div></div>
+    <div class="chat-btns" id="chatBtns">
+      <div class="chat-btns-label">Questions</div>
+      
+    </div>
+  </aside>
+</div>
+<script>
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+const pts = Array.from({length: 50}, () => ({ x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3, r: Math.random()*1.5+0.5, o: Math.random()*0.4+0.1 }));
+function drawP() {
+  ctx.clearRect(0,0,W,H);
+  pts.forEach(p => { p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x=W; if(p.x>W)p.x=0; if(p.y<0)p.y=H; if(p.y>H)p.y=0; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle=`rgba(124,58,237,${p.o})`; ctx.fill(); });
+  for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++) { const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy); if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(124,58,237,${0.06*(1-d/120)})`;ctx.lineWidth=0.5;ctx.stroke();}}
+  requestAnimationFrame(drawP);
+}
+drawP();
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', e => { glow.style.left=e.clientX+'px'; glow.style.top=e.clientY+'px'; });
+setTimeout(() => document.querySelectorAll('[data-reveal]').forEach((el,i) => setTimeout(() => el.classList.add('visible'), i*120)), 200);
+document.querySelectorAll('.stat-value').forEach(el => { const t=parseInt(el.textContent); if(isNaN(t))return; const dur=1200,start=performance.now(); const go=now=>{const p=Math.min((now-start)/dur,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(go);}; el.textContent='0'; setTimeout(()=>requestAnimationFrame(go),400); });
+const app = document.getElementById('app');
+const chatToggle = document.getElementById('chatToggle');
+chatToggle.addEventListener('click', () => { app.classList.toggle('chat-closed'); chatToggle.innerHTML = app.classList.contains('chat-closed') ? '&#9656;' : '&#9666;'; });
+const BRIEF_TEXT = "Bonjour Paul. Aujourd'hui c'est le QBR France, journée chargée avec 12 meetings dont le plan Mousquetaires et un sync avec Anne Bioulac. Demain, journée d'équipe AF au 2ème étage. Points d'attention : le POC Opella nécessite un atelier correctif, et 3 AEs poussent Coworker activement.";
+const playBtn = document.getElementById('playBtn');
+let speaking = false;
+playBtn.addEventListener('click', () => {
+  if(speaking){speechSynthesis.cancel();playBtn.classList.remove('playing');playBtn.innerHTML='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';speaking=false;return;}
+  const u=new SpeechSynthesisUtterance(BRIEF_TEXT); u.lang='fr-FR'; u.rate=1.05;
+  const v=speechSynthesis.getVoices(); const fr=v.find(x=>x.lang.startsWith('fr')&&x.name.includes('Thomas'))||v.find(x=>x.lang.startsWith('fr')); if(fr)u.voice=fr;
+  u.onend=()=>{playBtn.classList.remove('playing');playBtn.innerHTML='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';speaking=false;};
+  speechSynthesis.speak(u); playBtn.classList.add('playing'); playBtn.innerHTML='<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>'; speaking=true;
+});
+const NAV_MAP = { stats:'sec-stats', themes:'sec-themes', collab:'sec-collab', team:'sec-team', agenda:'sec-agenda', alerts:'sec-alerts' };
+document.querySelectorAll('[data-nav]').forEach(li => {
+  li.addEventListener('click', () => {
+    document.querySelectorAll('.nav li').forEach(x => x.classList.remove('active'));
+    li.classList.add('active');
+    const target = document.getElementById(NAV_MAP[li.dataset.nav]);
+    if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+  });
+});
+function showMeeting(el) {
+  const modal = document.getElementById('meetingModal');
+  document.getElementById('mmDate').textContent = el.querySelector('.tl-date').textContent;
+  document.getElementById('mmTitle').textContent = el.querySelector('.tl-title').textContent;
+  document.getElementById('mmAttendees').textContent = el.dataset.attendees;
+  document.getElementById('mmContext').textContent = el.dataset.ctx;
+  modal.classList.add('open');
+}
+function closeModal() { document.getElementById('meetingModal').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+const R = {  };
+const msgs = document.getElementById('chatMsgs');
+document.querySelectorAll('.cbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const d=R[btn.dataset.q]; if(!d)return; btn.classList.add('used');
+    const u=document.createElement('div'); u.className='msg user'; u.textContent=d.q; msgs.appendChild(u);
+    const t=document.createElement('div'); t.className='typing'; t.innerHTML='<span></span><span></span><span></span>'; msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight;
+    setTimeout(()=>{t.remove(); const m=document.createElement('div'); m.className='msg'; m.innerHTML=d.a+'<span class="src">'+d.src+'</span>'; msgs.appendChild(m); msgs.scrollTop=msgs.scrollHeight;}, 1400+Math.random()*800);
+  });
+});
+</script>
+</body>
+</html>

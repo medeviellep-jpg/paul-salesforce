@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.google.com)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('mcpServers',{}\\), indent=2\\)\\)\")",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('/Users/pmedevielle/.claude/settings.json'\\)\\); print\\(json.dumps\\(d, indent=2\\)\\)\")",
+      "mcp__Org62-Sobject-Read__find",
+      "mcp__Org62-Sobject-Read__soqlQuery",
+      "mcp__slack__slack_search_public",
+      "mcp__slack__slack_search_public_and_private",
+      "mcp__slack__slack_search_users",
+      "mcp__slack__slack_read_thread",
+      "mcp__slack__slack_read_channel",
+      "mcp__slack__slack_read_canvas",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__Org62-Sobject-Read__getObjectSchema",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); fields=data['details'][0]['fields']; [print\\(f['name'], '|', f['label'], '|', f.get\\('type',''\\)\\) for f in fields]\")",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); obj=data['details'][0]; print\\('Object:', obj.get\\('name'\\), obj.get\\('label'\\)\\); print\\('Admin guidance:', obj.get\\('adminGuidance',''\\)[:500]\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(k,v\\) for k,v in {**d.get\\('dependencies',{}\\), **d.get\\('devDependencies',{}\\)}.items\\(\\)]\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('deps:', list\\(d.get\\('dependencies',{}\\).keys\\(\\)\\)[:10]\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('scripts:', d.get\\('scripts',{}\\)\\); print\\('deps:', list\\(d.get\\('dependencies',{}\\).keys\\(\\)\\)\\)\")",
+      "mcp__slack__slack_send_message",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('mcpServers', {}\\), indent=2\\)\\)\")",
+      "Bash(cat ~/.claude/settings.local.json 2>/dev/null | python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('mcpServers', {}\\), indent=2\\)\\)\" 2>/dev/null)",
+      "WebSearch",
+      "Bash(MCP_ADAPTOR_ENABLE_DEVICE_FLOW=true /Users/pmedevielle/.mcp-adaptor/bin/mcp-adaptor auth --output json)",
+      "Bash(MCP_ADAPTOR_SECRET_STORAGE=file /Users/pmedevielle/.mcp-adaptor/bin/mcp-adaptor auth)",
+      "mcp__plugin_google-workspace_vmcp-google-workspace__search_gmail_messages",
+      "mcp__plugin_google-workspace_vmcp-google-workspace__get_gmail_messages_content_batch",
+      "mcp__plugin_google-workspace_vmcp-google-workspace__list_drive_items",
+      "mcp__plugin_google-workspace_vmcp-google-workspace__get_events",
+      "Bash(python3 -c ' *)",
+      "mcp__slack__slack_read_user_profile",
+      "mcp__plugin_google-workspace_vmcp-google-workspace__get_doc_as_markdown",
+      "mcp__slack__slack_read_file",
+      "mcp__plugin_google-workspace_vmcp-google-workspace__get_drive_file_content"
+    ]
+  }
+}
