@@ -2,7 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import { Mic, MicOff, ChevronRight, ChevronDown, Sparkles, Target, Users, DollarSign, HelpCircle, Megaphone, Zap, Building2, Phone, Globe, BarChart3, ExternalLink, LayoutDashboard, ArrowRight, AudioLines, Presentation, Play } from 'lucide-react'
+import { Mic, MicOff, ChevronRight, ChevronDown, Sparkles, Target, Users, DollarSign, HelpCircle, Megaphone, Zap, Building2, Phone, Globe, BarChart3, ExternalLink, LayoutDashboard, ArrowRight, AudioLines, Presentation, Play, Link2, FileText, MessageSquare, Video } from 'lucide-react'
+import { AskAgentforceChat } from '@/app/components/AskAgentforceChat'
+
+type Resource = {
+  title: string
+  url?: string
+  category: string
+}
 
 type Product = {
   id: string
@@ -16,10 +23,8 @@ type Product = {
   pricing: string[]
   faq: { question: string; reponse: string }[]
   visuels: { src: string; alt: string }[]
-  demoUrl?: string
-  firstCallDeckUrl?: string
-  demoEmbedUrl?: string
-  convictionsFrance?: string
+  convictionsFrance?: React.ReactNode
+  ressources?: Resource[]
 }
 
 const products: Product[] = [
@@ -69,60 +74,24 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/05/Plan.png?w=900", alt: "Plan & Act — déclenchement de flows et agents autonomes" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/05/Coworker-2-Available-everywhere.png?w=980", alt: "Disponible partout — Salesforce, Slack, Teams, Mobile" }
     ],
-    demoUrl: "https://www.salesforce.com/fr/agentforce/coworker/",
-    firstCallDeckUrl: "https://docs.google.com/presentation/d/1yTs6djUG9LgBLrfmMy1g0zAM8V4ArK6vwsGAPMvHTIQ/edit",
-    demoEmbedUrl: "https://play.vidyard.com/nu8jov7JxqrYsjKfBJDShu"
-  },
-  {
-    id: 'help-agent',
-    name: 'Help Agent',
-    icon: <Phone className="w-6 h-6" />,
-    color: 'from-teal-600 to-cyan-700',
-    elevatorPitch: "Help Agent est l'agent de support client Salesforce propulsé par Agentforce Voice, déployé sur la ligne 1-800-NO-SOFTWARE. C'est notre histoire Customer Zero la plus puissante : un agent IA vocal qui gère des scénarios de support réels à grande échelle, capable de résoudre les problèmes des clients et de répondre aux questions sans intervention humaine.",
-    differenciation: [
-      "Agent IA vocal (pas texte uniquement) — première ligne de support téléphonique entièrement automatisée par Agentforce",
-      "Customer Zero : Salesforce utilise sa propre technologie en production à grande échelle sur sa ligne support",
-      "Déployé en 30 jours seulement — démontrant la rapidité de mise en production d'Agentforce",
-      "Capacités de troubleshooting et Q&A combinées dans un même agent vocal",
-      "Démonstrable en live — numéro dédié disponible pour les présentations clients : +1 855-302-7007"
-    ],
-    casUsages: [
-      { title: "Support client téléphonique 24/7", description: "Help Agent répond aux appels clients, comprend leurs problèmes en langage naturel et fournit des résolutions sans temps d'attente" },
-      { title: "Troubleshooting guidé", description: "L'agent guide le client pas à pas à travers les procédures de diagnostic et résolution, comme un agent humain expert" },
-      { title: "Questions-Réponses produit", description: "Réponses instantanées aux questions sur les produits, fonctionnalités, configuration et bonnes pratiques Salesforce" },
-      { title: "Escalade intelligente", description: "Si le cas dépasse les capacités de l'agent IA, escalade fluide vers un agent humain avec le contexte complet de la conversation" }
-    ],
-    storyClient: {
-      client: "Salesforce (Customer Zero — ligne 1-800-NO-SOFTWARE)",
-      resultats: [
-        "Déployé sur la ligne de support client Salesforce en production",
-        "Capacités de troubleshooting + Q&A construites et lancées en seulement 30 jours",
-        "Gère des scénarios de support réels à grande échelle",
-        "Démonstrable en live aux clients via le numéro +1 855-302-7007",
-        "Collaboration DET, T&P, Legal et Customer Success pour un lancement rapide"
-      ],
-      citation: "Nos nouvelles capacités Help Agent, propulsées par Agentforce Voice, sont live sur notre ligne de support. C'est une histoire Customer Zero puissante d'Agentforce Voice gérant des scénarios de support réels à grande échelle."
-    },
-    pricing: [
-      "Inclus dans la plateforme Agentforce — fait partie des capacités Agentforce Voice",
-      "Modèle de consommation Agentforce standard (conversations)",
-      "Disponible pour les clients Service Cloud avec Agentforce"
-    ],
-    faq: [
-      { question: "Help Agent est-il utilisable par nos clients ?", reponse: "Oui — la technologie sous-jacente (Agentforce Voice) est disponible pour tous les clients. L'implémentation sur la ligne Salesforce sert de référence et de démonstration Customer Zero." },
-      { question: "Peut-on faire une démo live ?", reponse: "Oui ! Un numéro dédié bypass le menu et connecte directement à l'agent : +1 855-302-7007. Des slides et démos pré-enregistrées sont aussi disponibles." },
-      { question: "En combien de temps peut-on déployer un agent vocal similaire ?", reponse: "L'équipe Salesforce a construit et lancé les capacités en 30 jours. Le time-to-value dépend de la complexité du cas d'usage client." },
-      { question: "Quelles langues sont supportées ?", reponse: "Actuellement disponible en anglais. Le support multilingue pour Agentforce Voice est sur la roadmap." }
-    ],
-    visuels: [
-      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-launch-fast-720x720-1.webp?w=1024", alt: "Setup no-code — lancement rapide de Help Agent" },
-      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-engage-across-channels-720x720-1.webp?w=1024", alt: "Engagement multicanal — search + chat unifiés" },
-      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-automate-w-actions-720x720-1.webp?w=1024", alt: "Actions automatisées — workflows et escalade" },
-      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-personalized-proactive-support-conversational-support-720x720-1.webp?w=1024", alt: "Support conversationnel — self-service intelligent" }
-    ],
-    demoUrl: "https://www.salesforce.com/service/customer-self-service/",
-    firstCallDeckUrl: "https://docs.google.com/presentation/d/15IKl4Hz8vHg_y1V6o3fH2a4TP7A4C22H3JU1aYXrsKc/edit",
-    demoEmbedUrl: "https://play.vidyard.com/t2QNE5As2xwPQeRTr1rKrz"
+    convictionsFrance: (<>CoWorker est un play tactique puissant au-delà du CRM conversationnel :<br/><br/>1️⃣ <strong>Accélérateur de cycle de vente</strong> — Activer CoWorker pour rassurer sur notre techno et éviter un pilote/POC à rallonge avant de signer un AELA. Exemple : T&S (CMRCL), on réduit le cycle de vente en activant CoWorker une semaine plutôt que x mois de pilote at risk.<br/><br/>2️⃣ <strong>Accélérateur d'Adoption et de Change</strong> — Positionner CoWorker en Super Agent Orchestrateur de sous-agents spécialisés. On commence rapidement, super simple à utiliser, chaque nouveau use case enrichit CoWorker sans complexifier l'usage. Exemple : Atos / Bureau Veritas → "pas besoin de training, activons-le de suite."<br/><br/>3️⃣ <strong>Accélérateur de Consommation (Flex) et de valeur (A4X)</strong> — Tous les clients avec des grosses allocations doivent montrer qu'ils n'ont pas acheté pour rien. Exemple : Atos, CIO → "activons-le de suite pour mes sellers, on va enfin montrer qu'on avance sans attendre la fin du projet sur les 5 agents spés."</>),
+    ressources: [
+      { title: "First Call Deck / Pitch Deck (GSlides)", url: "https://docs.google.com/presentation/d/1yTs6djUG9LgBLrfmMy1g0zAM8V4ArK6vwsGAPMvHTIQ/edit", category: "First Call Deck" },
+      { title: "Internal FAQs (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B2RMADLP3", category: "FAQ & Knowledge" },
+      { title: "Getting Started Guide — Org62 (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0ASL5J6TS6", category: "FAQ & Knowledge" },
+      { title: "AE Sales Playbook (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B7KTPBJE4", category: "Sales Playbook & Activation" },
+      { title: "Consumption Scale Play (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B49R4SQJF", category: "Sales Playbook & Activation" },
+      { title: "BASHO Email template (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B1T01SU0J", category: "Sales Playbook & Activation" },
+      { title: "Data 360 Canvas — section CoWorker", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F04MGLBV9SB", category: "Sales Playbook & Activation" },
+      { title: "Pricing Calculator (GSheets)", url: "https://docs.google.com/spreadsheets/d/1jxNh5z2h510ZmyusJDfH5q5pqku3-0el/edit?gid=1100556165#gid=1100556165", category: "Sales Playbook & Activation" },
+      { title: "Customer Setup Instructions (Org62)", url: "https://org62.my.salesforce.com/sfc/p/#000000000062/a/ed000001TnSz/IpPKSYEMrkxZqiHROUprdnNxLGyKYBR.JLVbPracSfw", category: "Sales Playbook & Activation" },
+      { title: "Demo Video 2 min (Vidyard)", url: "https://salesforce.vidyard.com/watch/zWp6pXw6kW2eVhHfeUmANC", category: "Démonstrations & Vidéos" },
+      { title: "Demo Video — one Coworker, every surface (Vidyard)", url: "https://salesforce.vidyard.com/watch/nu8jov7JxqrYsjKfBJDShu", category: "Démonstrations & Vidéos" },
+      { title: "Setup Video (YouTube)", url: "https://www.youtube.com/watch?v=SWnTa8w0La4", category: "Démonstrations & Vidéos" },
+      { title: "Website", url: "https://www.salesforce.com/agentforce/coworker/", category: "Ressources Externes" },
+      { title: "Blog — What is Coworker?", url: "https://salesforce.com/blog/agentforce-coworker-salesforce-ai-teammate", category: "Ressources Externes" },
+      { title: "#help-sell-agentforce-coworker", category: "Canal Slack" }
+    ]
   },
   {
     id: 'momentum',
@@ -173,8 +142,90 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/06/Deep-Research-1.webp?w=1024", alt: "Deep Research — dashboard sales et signaux IA" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/06/sales-overview-marquee-1.webp?w=800", alt: "Sales Cloud — auto-population CRM et pipeline" }
     ],
-    firstCallDeckUrl: "https://docs.google.com/presentation/d/1xPoQWWdMNMtndvFi_IiKnlzcsUX76GR76CI8Z8KmZ7M/edit",
-    demoEmbedUrl: "https://www.loom.com/embed/6bc404468c33497ebac4d83c4594fed8"
+    convictionsFrance: (<>Momentum c'est un peu le 🎵 TikTok du CRM — on capture les moments importants pour les partager en interne et mettre à jour le CRM en temps réel.<br/><br/>C'est notre nouvel outil de <strong>Conversation Intelligence</strong> qui capture automatiquement les calls, emails et SMS, structure la donnée et la réinjecte dans Salesforce, sans aucune action manuelle du rep. C'est la fondation data qui rend tous les types de Sales Agents vraiment efficaces.<br/><br/><strong>Pourquoi le mettre en avant ?</strong><br/>• Inclus dans Agentforce for Sales et Agentforce One Sales Edition — pas de conversation budget supplémentaire<br/>• Répond directement au blocage #1 : "notre data n'est pas prête pour l'IA" → Momentum règle ça out of the box<br/>• Play de consolidation vs. Gong / Clari / Salesloft — le budget existe déjà, on aide nos clients à mieux l'investir<br/><br/>✅ <strong>Comment le vendre — c'est simple</strong><br/>Quoter Agentforce for Sales et ajouter le QST Momentum → Momentum est inclus gratuitement. C'est tout.<br/><br/>🎤 <strong>Top features à démontrer</strong><br/>• <strong>Autopilot</strong> : écriture automatique des données structurées dans le CRM en temps réel<br/>• <strong>Smart Clips</strong> : extraits vidéo de 20 secondes postés directement dans Slack (hashtag TikTok)<br/>• <strong>Agentforce-ready</strong> : alimente les agents SDR, préparation de réunion, coaching, pipeline management et forecasting<br/><br/>📊 <strong>Preuves terrain</strong><br/>• Zscaler : 3 à 10h d'admin économisées par rep et par semaine<br/>• Ramp : ~30 000 champs CRM mis à jour automatiquement chaque semaine<br/><br/>🗓️ <strong>Roadmap</strong><br/>GA à Dreamforce — Momentum + A4S deviennent un seul produit intégré (call capture, deal inspection, coaching, forecasting, etc). On vend dès maintenant.<br/><br/>💰 <strong>Incentive seller</strong> : SPIFF jusqu'à 15 000$ sur les deals qualifiants</>),
+    ressources: [
+      { title: "Momentum Sales Play Deck (GSlides)", url: "https://docs.google.com/presentation/d/1xPoQWWdMNMtndvFi_IiKnlzcsUX76GR76CI8Z8KmZ7M/edit?slide=id.g3cb30e3fe93_0_1266#slide=id.g3cb30e3fe93_0_1266", category: "First Call Deck" },
+      { title: "A4S + Momentum First Call Deck (GSlides)", url: "https://docs.google.com/presentation/d/1autdhwtvN-9PellsatIOFE6CuDFk8dLETOI75dEI5OE/edit?slide=id.g389ca30296e_0_1117#slide=id.g389ca30296e_0_1117", category: "First Call Deck" },
+      { title: "Momentum Platform Overview Deck", url: "https://salesforce.enterprise.slack.com/files/U0208CRV160/F0B7NE5PJ3E/momentum_platform_overview_", category: "First Call Deck" },
+      { title: "Momentum Knowledge Hub — SSOT (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B3XLV7TMF", category: "FAQ & Knowledge" },
+      { title: "Internal Seller FAQ (Google Doc)", url: "https://docs.google.com/document/d/1mt8nhQVeIW7bN2dHJWleOSFYCXGjM2-h03zyqmwZPp4/edit?tab=t.0#heading=h.kkzaud7xcm9h", category: "FAQ & Knowledge" },
+      { title: "Promo Deck — A4S + Momentum (GSlides)", url: "https://docs.google.com/presentation/d/1TyOSKrStY4KzDpRqUwYYx4ZIx02hREviZhr-DmShl9I/edit?slide=id.g3df1ded45f9_56_599#slide=id.g3df1ded45f9_56_599", category: "Promo & Pricing" },
+      { title: "Momentum + A1E Upgrade Sales Play (GSlides)", url: "https://docs.google.com/presentation/d/1Fzw_zec0RQSdb7SgH3-7TH7Fhc1BsaihtRt36T1UwdI/edit?slide=id.g3ecad66ddef_151_1588#slide=id.g3ecad66ddef_151_1588", category: "Promo & Pricing" },
+      { title: "Slackbot Prompt — A4S now with Momentum (Canvas)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0AUFJBHBFW", category: "Promo & Pricing" },
+      { title: "Slackbot Prompt — A1E Upgrade + Momentum (Canvas)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B7F3D7N22", category: "Promo & Pricing" },
+      { title: "Momentum Demo (Vidyard)", url: "https://salesforce.vidyard.com/watch/WkSogdAvH27mJUkhYyC8tr", category: "Démonstrations & Vidéos" },
+      { title: "Momentum Demo (Loom)", url: "https://www.loom.com/share/162fd3f28cb7483586ba2aff48c43ef2", category: "Démonstrations & Vidéos" },
+      { title: "Customer-Facing Demo (Consensus)", category: "Démonstrations & Vidéos" },
+      { title: "Shared Demo Orgs Guide (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B9PRGJGVC", category: "Démonstrations & Vidéos" },
+      { title: "Product Decoded Momentum — Replay (IBM Video, 2 juillet 2026)", url: "https://video.ibm.com/recorded/134893094", category: "Product Decoded" },
+      { title: "Product Decoded Momentum — Episode Deck (GSlides)", url: "https://docs.google.com/presentation/d/1580UmL_CoSd0It7RRQt0gOO6xkklEdbuRM36qqUeIpE/edit", category: "Product Decoded" },
+      { title: "Customer Stories — Contentful, Demandbase, Owner (GSlides)", url: "https://docs.google.com/presentation/d/1xPoQWWdMNMtndvFi_IiKnlzcsUX76GR76CI8Z8KmZ7M/edit?slide=id.g3d8d6aa6686_31_375#slide=id.g3d8d6aa6686_31_375", category: "Customer Stories" },
+      { title: "Customer Stories — 1Password, détail (GSlides)", url: "https://docs.google.com/presentation/d/1Z6xBAhMQXsEBhmXjfaDM1cU-6-eJzYssRxf5Au3a6iw/edit?slide=id.g3e2aef576cb_1_548#slide=id.g3e2aef576cb_1_548", category: "Customer Stories" },
+      { title: "#momentum-gtm-faq", category: "Canal Slack" },
+      { title: "Channel support Momentum SE", category: "Canal Slack" }
+    ]
+  },
+  {
+    id: 'help-agent',
+    name: 'Help Agent',
+    icon: <Phone className="w-6 h-6" />,
+    color: 'from-teal-600 to-cyan-700',
+    elevatorPitch: "Help Agent est l'agent de support client Salesforce propulsé par Agentforce Voice, déployé sur la ligne 1-800-NO-SOFTWARE. C'est notre histoire Customer Zero la plus puissante : un agent IA vocal qui gère des scénarios de support réels à grande échelle, capable de résoudre les problèmes des clients et de répondre aux questions sans intervention humaine.",
+    differenciation: [
+      "Agent IA vocal (pas texte uniquement) — première ligne de support téléphonique entièrement automatisée par Agentforce",
+      "Customer Zero : Salesforce utilise sa propre technologie en production à grande échelle sur sa ligne support",
+      "Déployé en 30 jours seulement — démontrant la rapidité de mise en production d'Agentforce",
+      "Capacités de troubleshooting et Q&A combinées dans un même agent vocal",
+      "Démonstrable en live — numéro dédié disponible pour les présentations clients : +1 855-302-7007"
+    ],
+    casUsages: [
+      { title: "Support client téléphonique 24/7", description: "Help Agent répond aux appels clients, comprend leurs problèmes en langage naturel et fournit des résolutions sans temps d'attente" },
+      { title: "Troubleshooting guidé", description: "L'agent guide le client pas à pas à travers les procédures de diagnostic et résolution, comme un agent humain expert" },
+      { title: "Questions-Réponses produit", description: "Réponses instantanées aux questions sur les produits, fonctionnalités, configuration et bonnes pratiques Salesforce" },
+      { title: "Escalade intelligente", description: "Si le cas dépasse les capacités de l'agent IA, escalade fluide vers un agent humain avec le contexte complet de la conversation" }
+    ],
+    storyClient: {
+      client: "Salesforce (Customer Zero — ligne 1-800-NO-SOFTWARE)",
+      resultats: [
+        "Déployé sur la ligne de support client Salesforce en production",
+        "Capacités de troubleshooting + Q&A construites et lancées en seulement 30 jours",
+        "Gère des scénarios de support réels à grande échelle",
+        "Démonstrable en live aux clients via le numéro +1 855-302-7007",
+        "Collaboration DET, T&P, Legal et Customer Success pour un lancement rapide"
+      ],
+      citation: "Nos nouvelles capacités Help Agent, propulsées par Agentforce Voice, sont live sur notre ligne de support. C'est une histoire Customer Zero puissante d'Agentforce Voice gérant des scénarios de support réels à grande échelle."
+    },
+    pricing: [
+      "Inclus dans la plateforme Agentforce — fait partie des capacités Agentforce Voice",
+      "Modèle de consommation Agentforce standard (conversations)",
+      "Disponible pour les clients Service Cloud avec Agentforce"
+    ],
+    faq: [
+      { question: "Help Agent est-il utilisable par nos clients ?", reponse: "Oui — la technologie sous-jacente (Agentforce Voice) est disponible pour tous les clients. L'implémentation sur la ligne Salesforce sert de référence et de démonstration Customer Zero." },
+      { question: "Peut-on faire une démo live ?", reponse: "Oui ! Un numéro dédié bypass le menu et connecte directement à l'agent : +1 855-302-7007. Des slides et démos pré-enregistrées sont aussi disponibles." },
+      { question: "En combien de temps peut-on déployer un agent vocal similaire ?", reponse: "L'équipe Salesforce a construit et lancé les capacités en 30 jours. Le time-to-value dépend de la complexité du cas d'usage client." },
+      { question: "Quelles langues sont supportées ?", reponse: "Actuellement disponible en anglais. Le support multilingue pour Agentforce Voice est sur la roadmap." }
+    ],
+    visuels: [
+      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-launch-fast-720x720-1.webp?w=1024", alt: "Setup no-code — lancement rapide de Help Agent" },
+      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-engage-across-channels-720x720-1.webp?w=1024", alt: "Engagement multicanal — search + chat unifiés" },
+      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-automate-w-actions-720x720-1.webp?w=1024", alt: "Actions automatisées — workflows et escalade" },
+      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-personalized-proactive-support-conversational-support-720x720-1.webp?w=1024", alt: "Support conversationnel — self-service intelligent" }
+    ],
+    ressources: [
+      { title: "Help Agent First Call Deck (GSlides)", category: "First Call Deck" },
+      { title: "Help Agent Sales Play (GSlides)", category: "First Call Deck" },
+      { title: "FY27 Community Call Deck — Help Agent + Resolution Pricing + New Portals UI (GSlides)", category: "First Call Deck" },
+      { title: "Help Agent Sales FAQ / Sales Guide SSOT (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B9D5KJPGR", category: "FAQ & Knowledge" },
+      { title: "Help Agent Pricing & Packaging Deck (GSlides)", category: "Pricing & Packaging" },
+      { title: "Slides Pricing & Nouveaux Portails — Resolution SKUs, Login & Members (GSlides)", category: "Pricing & Packaging" },
+      { title: "Web Demo — Self-Service (Salesforce.com)", category: "Démonstrations & Vidéos" },
+      { title: "Product Decoded Help Agent — Replay (IBM Video, 17 juin 2026)", category: "Product Decoded" },
+      { title: "Product Decoded Help Agent — Episode Deck (GSlides)", category: "Product Decoded" },
+      { title: "4-min Highlights Video", category: "Product Decoded" },
+      { title: "Newsroom Announcement", category: "Ressources Externes" },
+      { title: "#help-sell-ai", category: "Canal Slack" }
+    ]
   },
   {
     id: 'afo',
@@ -228,60 +279,19 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/02/Blade-2.webp?w=975", alt: "Orchestration — agents spécialisés back-office en action" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/02/Blade-3.webp?w=938", alt: "Dashboard — suivi des processus, taux de complétion, escalades" }
     ],
-    demoEmbedUrl: "https://play.vidyard.com/DyxcSKeZuFJuegbrHT4sMQ",
-    demoUrl: "https://www.salesforce.com/agentforce/operations/",
-    firstCallDeckUrl: "https://docs.google.com/presentation/d/1UXYCvYZYsiCjodY97fSodlJMKhM57Z7hYXE-dwbyrO4/edit"
-  },
-  {
-    id: 'qualified',
-    name: 'Qualified',
-    icon: <Globe className="w-6 h-6" />,
-    color: 'from-orange-500 to-red-600',
-    elevatorPitch: "Qualified est la plateforme Agentic Marketing de Salesforce pour la génération de pipeline inbound. Son agent IA SDR 'Piper' travaille le site web et l'inbox email 24/7, convertissant les visiteurs en meetings qualifiés. Acquis en avril 2026, #1 AI SDR selon Forrester & G2, avec 600+ marques B2B et des résultats prouvés : 4x plus de conversations, 3x plus de meetings, 2x plus de pipeline.",
-    differenciation: [
-      "Piper = AI SDR Agent autonome qui travaille 24/7 sur le site web ET l'email — pas un simple chatbot",
-      "#1 AI SDR classé par Forrester et G2, 1800+ avis 5 étoiles",
-      "Résultats prouvés : 4x conversations, 3x meetings, 2x pipeline — metrics vérifiables chez 600+ clients",
-      "Live en ~45 jours — adoption 100% (pas de formation agent nécessaire)",
-      "Cycle de vente médian de 90 jours — ROI rapide et démontrable",
-      "vs 1mind (concurrent tier 1) : intégration native Salesforce, plus de données d'entraînement (600+ marques B2B), track record prouvé"
-    ],
-    casUsages: [
-      { title: "Conversion inbound site web", description: "Piper engage chaque visiteur qualifié sur le site, identifie l'intent, qualifie selon vos critères et booke un meeting directement dans l'agenda du commercial" },
-      { title: "Suivi inbound email", description: "L'agent IA traite les réponses email entrantes, continue la conversation de manière contextuelle et convertit en rendez-vous qualifiés" },
-      { title: "Suivi post-événement", description: "Après un salon ou webinar, Piper engage automatiquement tous les leads capturés avec un follow-up personnalisé et contextuel" }
-    ],
-    storyClient: {
-      client: "Asana, Epson, Gainsight, Box, Crunchbase, Grubhub",
-      resultats: [
-        "4x plus de conversations qualifiées sur le site web",
-        "3x plus de meetings bookés par l'agent IA",
-        "2x plus de pipeline généré vs. formulaires classiques",
-        "100% d'adoption — aucune formation nécessaire",
-        "Live en ~45 jours en moyenne"
-      ],
-      citation: "Qualified a transformé notre site web d'une brochure en ligne en notre meilleur commercial. Piper ne dort jamais et convertit plus que nos meilleurs SDR humains."
-    },
-    pricing: [
-      "Premier : $149 250/an — jusqu'à 250K sessions",
-      "Enterprise : $436 000/an — jusqu'à 2M sessions",
-      "Ultimate : $1 360 000/an — jusqu'à 5M sessions",
-      "ASP moyen FY26Q4 : $117K — les deals montent au-delà de $300K",
-      "Cycle de vente médian : 90 jours"
-    ],
-    faq: [
-      { question: "Quel est l'ICP de Qualified ?", reponse: "Client B2B Sales Cloud, 50K+ sessions mensuelles sur le site web, utilisant une des top 4 MAPs (Marketing Automation Platforms). Les entreprises mid-market à enterprise avec un volume inbound significatif." },
-      { question: "Piper remplace-t-il les SDR humains ?", reponse: "Piper augmente et complète les SDR — il travaille 24/7 sur le volume que les humains ne peuvent pas traiter (nuits, weekends, volume pic). Les SDR humains se concentrent sur les comptes stratégiques et les conversations complexes." },
-      { question: "Comment se passe l'intégration avec Salesforce ?", reponse: "Intégration native depuis l'acquisition — les leads, meetings et activités sont synchronisés directement dans Sales Cloud. Piper accède au contexte CRM complet pour personnaliser ses interactions." },
-      { question: "Combien de temps pour être opérationnel ?", reponse: "~45 jours en moyenne pour le déploiement complet, avec 100% d'adoption dès le lancement puisque c'est un agent autonome — pas de formation des utilisateurs nécessaire." }
-    ],
-    visuels: [
-      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/06/Sales-Development-1.webp?w=1024", alt: "Piper SDR — inbox automatisée et traitement des leads" },
-      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/06/Appointment-Scheduling-1.webp?w=1024", alt: "Chat IA — prise de rendez-vous qualifiés en direct" },
-      { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/06/Product-Recommendation-1.webp?w=1024", alt: "Agent IA sur site web — engagement visiteur et qualification" }
-    ],
-    firstCallDeckUrl: "https://docs.google.com/presentation/d/1rQmpC4QK9eZjjBD1qywgPEUSYN1H4Us94OUJF6oodpA/edit",
-    demoEmbedUrl: "https://www.qualified.com/"
+    ressources: [
+      { title: "FCD Supply Chain (GSlides)", url: "https://docs.google.com/presentation/d/1UXYCvYZYsiCjodY97fSodlJMKhM57Z7hYXE-dwbyrO4/edit?usp=sharing", category: "First Call Deck" },
+      { title: "FCD Financial Services / FINS (GSlides)", url: "https://docs.google.com/presentation/d/1BjubIJkIHLZb2btLdEhGrZErXXqkOgfw14oHJ0-fazg/edit?usp=sharing", category: "First Call Deck" },
+      { title: "Internal FAQ (Google Doc)", url: "https://docs.google.com/document/d/13m9A6y-cUqsbk4SnXPanXI71J5KHxWUOM5DgBkUW5nU/edit?usp=sharing", category: "FAQ & Knowledge" },
+      { title: "EMEA FAQ (Agentforce Pulse Canvas)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B1UDAJFNV", category: "FAQ & Knowledge" },
+      { title: "Pricing & Packaging (GSlides)", url: "https://docs.google.com/presentation/d/1NFIxGq3YzFBElUXfLxyDV0NJyvP9fijayjl3pLgIrFY/edit?usp=sharing", category: "Pricing & Packaging" },
+      { title: "SKU Quoting Guide (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0AARDWPXEH", category: "Pricing & Packaging" },
+      { title: "Demo Video (Vidyard)", url: "https://salesforce.vidyard.com/watch/TAHyStu6wePV2ZZ98WQCoz", category: "Démonstrations & Vidéos" },
+      { title: "Main Keynote — Agentforce World Tour New York (YouTube)", url: "https://www.youtube.com/live/tB53TdyLqQk?si=YfAXloFUKpnid2CM", category: "Démonstrations & Vidéos" },
+      { title: "Page produit officielle", url: "https://www.salesforce.com/agentforce/operations/", category: "Ressources Externes" },
+      { title: "Announcement newsroom", url: "https://www.salesforce.com/news/stories/agentforce-operations-announcement/", category: "Ressources Externes" },
+      { title: "#help-sell-agentforce-operations", category: "Canal Slack" }
+    ]
   },
   {
     id: 'voice',
@@ -333,9 +343,25 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/05/Voice-Settings-4.webp?w=1024", alt: "Voice Settings — configuration et personnalisation de l'agent vocal" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/05/Voice-Preview-3.webp?w=986", alt: "Live Call Transcript — conversation client en temps réel" }
     ],
-    demoUrl: "https://www.salesforce.com/agentforce/voice/",
-    firstCallDeckUrl: "https://docs.google.com/presentation/d/15IKl4Hz8vHg_y1V6o3fH2a4TP7A4C22H3JU1aYXrsKc/edit",
-    demoEmbedUrl: "https://play.vidyard.com/bT64KgHd6ngmKr6A8V2Bwn"
+    ressources: [
+      { title: "NEW FCD FY27 — Agentforce Voice (GSlides)", url: "https://docs.google.com/presentation/d/15IKl4Hz8vHg_y1V6o3fH2a4TP7A4C22H3JU1aYXrsKc/edit?slide=id.g3eaa5629e7a_178_6322#slide=id.g3eaa5629e7a_178_6322", category: "First Call Deck" },
+      { title: "Sales Play Deck — Dynamic Voice Routing (GSlides)", url: "https://docs.google.com/presentation/d/1bEQa1BK1u0A1Ip8ToCz7-puelpcZiWyMxAXVaqrUmwc/edit?slide=id.g39bc1274144_3_0#slide=id.g39bc1274144_3_0", category: "First Call Deck" },
+      { title: "Agentforce Voice Seller Guide — SSOT (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0A2TCEME11", category: "FAQ & Knowledge" },
+      { title: "FAQ Voice for Digital Channels / Web+Mobile (Google Doc)", url: "https://docs.google.com/document/d/1HUvk5SQ7CV6qFGRgluQsjvv8nNDA2HGqgVY9L2j8thQ/edit?tab=t.0", category: "FAQ & Knowledge" },
+      { title: "FAQ Dynamic Voice Routing — EMEA (Google Doc)", url: "https://docs.google.com/document/d/1AnLi85JQcxE2nFf52-_m2p8pySB_Ci9FG4UF7OQwh_c/edit?tab=t.0", category: "FAQ & Knowledge" },
+      { title: "FAQ Language Support (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0AP0RVKTHR", category: "FAQ & Knowledge" },
+      { title: "Canvas FR — Agentforce Voice/ContactCenter TeamFR (Manuel Rouzé)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0A2FUATB4N", category: "FAQ & Knowledge" },
+      { title: "CCaaS Partners supportés (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T01G0063H29/F0AP2GM1R8W", category: "Pricing" },
+      { title: "CCaaS providers list — Dynamic Routing (GSheets)", url: "https://docs.google.com/spreadsheets/d/1ywGE4_64NIMtUxFckmOMqHufeK3EOX4Fv6dUrGOH8Vs/edit?gid=0#gid=0", category: "Pricing" },
+      { title: "Demo GA Web/Mobile (Vidyard)", url: "https://salesforce.vidyard.com/watch/bT64KgHd6ngmKr6A8V2Bwn", category: "Démonstrations & Vidéos" },
+      { title: "Pitch Audio — Josh Rosenstrauch walkthrough (Google Drive)", url: "https://drive.google.com/file/d/1n6sUGiZTeCO9hO4dueznlmoJFlaWatiB/view?usp=sharing", category: "Démonstrations & Vidéos" },
+      { title: "Demo Guide — Web/Mobile NTO scenario (Google Doc)", url: "https://docs.google.com/document/d/1rh2r8bg8nuZ9scTCQdfvPTbj0G2i8s_Kv4u9h72ZZlQ/edit?tab=t.0#heading=h.61xywn1f1xwt", category: "Démonstrations & Vidéos" },
+      { title: "Live Demo Number — +1 855-302-7007", url: "tel:+18553027007", category: "Démonstrations & Vidéos" },
+      { title: "Product Decoded AF Voice — Replay (IBM Video, juin 2026)", url: "https://secure.video.ibm.com/channel/24382606/video/134855292", category: "Product Decoded" },
+      { title: "Product Decoded AF Voice — Episode Deck (GSlides)", url: "https://docs.google.com/presentation/d/1yKaLogg4u4o-x6xuusNm9BKlg2k-OPc7MZ218gEpIM4/edit?usp=sharing", category: "Product Decoded" },
+      { title: "Road to TDX — AF Voice Deck + Recording (GSlides)", url: "https://docs.google.com/presentation/d/1fk-yaMIhb-4Wzg6Tk5dkJ72EeqbOL1Of4-3N9zF8Tww/edit?slide=id.g3d7df79e832_0_1191#slide=id.g3d7df79e832_0_1191", category: "Product Decoded" },
+      { title: "#help-sell-ai", category: "Canal Slack" }
+    ]
   }
 ]
 
@@ -422,13 +448,24 @@ function Section({ title, icon, children, defaultOpen = false }: { title: string
   )
 }
 
-function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; onSelectProduct: (id: string) => void }) {
+function ExecutiveSummary({ onEnter, onSelectProduct, onAskAgentforce }: { onEnter: () => void; onSelectProduct: (id: string) => void; onAskAgentforce: () => void }) {
   return (
     <div className="min-h-screen bg-[#0D1117] flex flex-col">
       <header className="glass px-6 py-6">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce</h1>
-          <p className="text-white/50 text-sm mt-1">Meeting Managers — Juillet 2026</p>
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce</h1>
+            <p className="text-white/50 text-sm mt-1">Meeting Managers — Juillet 2026</p>
+          </div>
+          <button
+            onClick={onAskAgentforce}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1B96FF] hover:bg-[#1B96FF]/80 text-white text-sm font-medium transition-all shadow-lg shadow-blue-500/20"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
+              <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+            </svg>
+            Ask Agentforce
+          </button>
         </div>
       </header>
 
@@ -438,7 +475,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           <p className="text-white/60 text-lg max-w-3xl">L'ère de l'entreprise agentique est là. Agentforce transforme chaque équipe avec des agents IA autonomes qui travaillent aux côtés de vos collaborateurs — 24/7, à grande échelle.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
             <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
               <Sparkles className="w-5 h-5 text-purple-400" />
@@ -471,16 +508,6 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
             </div>
           </div>
           <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
-            <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center mb-4">
-              <Globe className="w-5 h-5 text-blue-400" />
-            </div>
-            <h3 className="text-white font-semibold text-lg mb-2">🚀 Pipeline & Revenue</h3>
-            <p className="text-white/60 text-sm leading-relaxed mb-3">Qualified génère 2x plus de pipeline inbound avec Piper, l'agent SDR IA qui travaille le site web et l'email 24/7.</p>
-            <div className="flex flex-wrap gap-2">
-              <button onClick={() => onSelectProduct('qualified')} className="text-xs px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium">Qualified</button>
-            </div>
-          </div>
-          <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
             <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
               <Building2 className="w-5 h-5 text-green-400" />
             </div>
@@ -506,7 +533,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
               <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">2</span>
               <div>
                 <p className="text-white font-medium">⏱️ Time-to-Value immédiat</p>
-                <p className="text-white/50 text-sm mt-1">CoWorker s'active en 2 clics. Qualified est live en 45 jours. Help Agent a été déployé en 30 jours. Pas de projet à 18 mois.</p>
+                <p className="text-white/50 text-sm mt-1">CoWorker s&apos;active en 2 clics. Help Agent déployé en 30 jours. AFO opérationnel en heures. Pas de projet à 18 mois.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -520,7 +547,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
               <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">4</span>
               <div>
                 <p className="text-white font-medium">💰 Remplace les outils tiers coûteux</p>
-                <p className="text-white/50 text-sm mt-1">Momentum remplace Gong ($100-150/user/mois). Qualified remplace les SDR sous-performants. AFO remplace les BPM à 18 mois de setup.</p>
+                <p className="text-white/50 text-sm mt-1">Momentum remplace Gong ($100-150/user/mois). Voice remplace les IVR rigides. AFO remplace les BPM à 18 mois de setup.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -533,7 +560,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
           {products.map(p => (
             <button key={p.id} onClick={() => onSelectProduct(p.id)} className="card-dark rounded-xl p-4 text-center hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-200 cursor-pointer border border-transparent hover:border-white/20">
               <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${p.color} flex items-center justify-center mx-auto mb-3`}>
@@ -555,6 +582,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 export default function ProductsPage() {
   const [view, setView] = useState<'summary' | 'products'>('summary')
   const [activeProduct, setActiveProduct] = useState<string>('coworker')
+  const [chatOpen, setChatOpen] = useState(false)
   const product = products.find(p => p.id === activeProduct)!
 
   const handleVoiceCommand = (text: string) => {
@@ -564,7 +592,6 @@ export default function ProductsPage() {
       'help': 'help-agent', 'help agent': 'help-agent',
       'momentum': 'momentum',
       'operations': 'afo', 'opérations': 'afo', 'afo': 'afo',
-      'qualified': 'qualified', 'qualifié': 'qualified', 'piper': 'qualified',
       'voice': 'voice', 'voix': 'voice', 'vocal': 'voice'
     }
     for (const [keyword, id] of Object.entries(productMap)) {
@@ -576,7 +603,12 @@ export default function ProductsPage() {
   }
 
   if (view === 'summary') {
-    return <ExecutiveSummary onEnter={() => setView('products')} onSelectProduct={(id) => { setActiveProduct(id); setView('products') }} />
+    return (
+      <>
+        <ExecutiveSummary onEnter={() => setView('products')} onSelectProduct={(id) => { setActiveProduct(id); setView('products') }} onAskAgentforce={() => setChatOpen(true)} />
+        <AskAgentforceChat isOpen={chatOpen} onClose={() => setChatOpen(false)} />
+      </>
+    )
   }
 
   return (
@@ -635,51 +667,57 @@ export default function ProductsPage() {
           <div className="absolute inset-0 bg-black/20" />
           <div className="relative">
             <h3 className="text-xl font-bold tracking-tight mb-3">🇫🇷 Nos convictions pour la France</h3>
-            <p className="text-white/80 leading-relaxed">{product.convictionsFrance || "Contenu à venir..."}</p>
+            <div className="text-white/80 leading-relaxed">{product.convictionsFrance || "Contenu à venir..."}</div>
           </div>
         </div>
 
-        <Section title="Démo interactive" icon={<Play className="w-5 h-5" />} defaultOpen={true}>
-          {product.demoEmbedUrl && (
-            <div className="rounded-xl overflow-hidden border border-white/10 bg-black">
-              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src={product.demoEmbedUrl}
-                  className="absolute inset-0 w-full h-full"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+        {product.ressources && product.ressources.length > 0 && (
+          <Section title="📚 Ressources clés" icon={<Link2 className="w-5 h-5" />} defaultOpen={true}>
+            <div className="space-y-5">
+              {Object.entries(product.ressources.reduce((acc, r) => {
+                if (!acc[r.category]) acc[r.category] = []
+                acc[r.category].push(r)
+                return acc
+              }, {} as Record<string, Resource[]>)).map(([category, items]) => {
+                const getCategoryIcon = (cat: string) => {
+                  if (cat.includes('First Call') || cat.includes('Pitch')) return <Presentation className="w-4 h-4 text-yellow-400" />
+                  if (cat.includes('Démo') || cat.includes('Vidéo')) return <Video className="w-4 h-4 text-red-400" />
+                  if (cat.includes('Canal Slack')) return <MessageSquare className="w-4 h-4 text-purple-400" />
+                  if (cat.includes('FAQ') || cat.includes('Knowledge')) return <FileText className="w-4 h-4 text-blue-400" />
+                  if (cat.includes('Product Decoded')) return <Play className="w-4 h-4 text-orange-400" />
+                  if (cat.includes('Pricing') || cat.includes('Promo')) return <DollarSign className="w-4 h-4 text-emerald-400" />
+                  if (cat.includes('Playbook') || cat.includes('Activation')) return <Target className="w-4 h-4 text-indigo-400" />
+                  if (cat.includes('Customer')) return <Users className="w-4 h-4 text-pink-400" />
+                  if (cat.includes('Externe') || cat.includes('Ressource')) return <Globe className="w-4 h-4 text-cyan-400" />
+                  return <Link2 className="w-4 h-4 text-white/40" />
+                }
+                return (
+                  <div key={category}>
+                    <div className="flex items-center gap-2 mb-2">
+                      {getCategoryIcon(category)}
+                      <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">{category}</span>
+                    </div>
+                    <div className="space-y-1.5 pl-6">
+                      {items.map((r, i) => (
+                        <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] transition-colors">
+                          <div className="flex-1 min-w-0">
+                            {r.url ? (
+                              <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-white font-medium text-sm hover:text-[#1B96FF] transition-colors">
+                                {r.title} <ExternalLink className="w-3 h-3 inline ml-1 opacity-50" />
+                              </a>
+                            ) : (
+                              <span className="text-white/70 text-sm">{r.title}</span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
-          )}
-          {(product.demoUrl || product.firstCallDeckUrl) && (
-            <div className="mt-5 pt-5 border-t border-white/[0.06] flex flex-wrap gap-3">
-              {product.firstCallDeckUrl && (
-                <a
-                  href={product.firstCallDeckUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 text-white font-medium text-sm border border-white/20 hover:bg-white/20 transition-colors"
-                >
-                  <Presentation className="w-4 h-4" />
-                  First Call Deck
-                </a>
-              )}
-              {product.demoUrl && (
-                <a
-                  href={product.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/10 text-white font-medium text-sm border border-white/20 hover:bg-white/20 transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Page produit
-                </a>
-              )}
-            </div>
-          )}
-        </Section>
+          </Section>
+        )}
 
         <Section title="Éléments de différenciation" icon={<Target className="w-5 h-5" />} defaultOpen={true}>
           <ul className="space-y-3">
