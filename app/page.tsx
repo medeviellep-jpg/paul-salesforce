@@ -1,7 +1,5 @@
-import { IntelligenceChat } from '@/components/intelligence/IntelligenceChat'
-
-export const metadata = { title: 'Agentforce Deal Intelligence' }
+import { redirect } from 'next/navigation'
 
 export default function Home() {
-  return <IntelligenceChat />
+  redirect('/products')
 }

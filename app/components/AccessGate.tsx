@@ -21,7 +21,7 @@ export default function AccessGate({ children }: { children: React.ReactNode }) 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (code === process.env.NEXT_PUBLIC_ACCESS_CODE) {
+    if (code === (process.env.NEXT_PUBLIC_ACCESS_CODE || 'agentforce2026')) {
       sessionStorage.setItem('af-access', 'granted')
       setAuthorized(true)
     } else {

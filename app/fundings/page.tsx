@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { fundings, opportunities, formatAmount } from '@/lib/mock-data'
 import { fundingStatusBadge } from '@/components/Badge'
-import { Wallet, Search, DollarSign, CheckCircle, Clock, FileText } from 'lucide-react'
+import { Wallet, Search, DollarSign, CheckCircle, Clock, FileText, TrendingUp } from 'lucide-react'
 import type { FundingType, FundingStatus } from '@/lib/types'
 
 export default function FundingsPage() {
