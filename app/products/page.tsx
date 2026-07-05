@@ -259,15 +259,43 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-automate-w-actions-720x720-1.webp?w=1024", alt: "Actions automatisées — workflows et escalade" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-personalized-proactive-support-conversational-support-720x720-1.webp?w=1024", alt: "Support conversationnel — self-service intelligent" }
     ],
-    convictionsFrance: (<>Help Agent c'est le play <strong>Time-to-Value immédiat sur le Service</strong> :<br/><br/>1️⃣ <strong>Moins de 10 minutes pour déployer</strong> — argument massue face aux projets CRM à 18 mois. Idéal pour débloquer un client hésitant sur Agentforce.<br/><br/>2️⃣ <strong>Pricing à la résolution</strong> — $2 par résolution réussie. On ne paie que ce qui fonctionne. Argument ROI immédiat et sans risque pour le client.<br/><br/>3️⃣ <strong>Même stack qu'Agentforce Service Agent</strong> — porte d'entrée vers un déploiement plus large. Help Agent aujourd'hui, Service Agent demain.</>),
+    convictionsFrance: (
+      <div className="space-y-4">
+        <div>
+          <p className="font-bold text-white text-lg mb-2">Salesforce lance Agentforce Help Agent — déployable en quelques minutes, facturé uniquement sur les résolutions</p>
+          <p className="leading-relaxed">Nous avons lancé Agentforce il y a près de deux ans. Depuis, des milliers de clients ont construit des agents de service. Et notre propre Help.Salesforce.com a traité plus de 4,3 millions de demandes clients. Nous avons capitalisé sur tous les apprentissages issus de ces interactions pour les intégrer dans Agentforce Help Agent — un agent de service autonome déployable en quelques minutes sur tous les canaux, accompagné d&apos;un nouveau modèle de tarification à la performance où les clients ne paient que lorsque l&apos;agent résout effectivement le problème.</p>
+        </div>
+        <div>
+          <p className="font-semibold text-white mb-2">Les nouveautés (GA juillet) :</p>
+          <ul className="space-y-2 text-sm leading-relaxed">
+            <li><strong className="text-white">Agentforce Help Agent :</strong> Construit sur la plateforme Agentforce, Help Agent a été optimisé pour le self-service client. Une nouvelle expérience de configuration guidée permet aux utilisateurs de connecter leur base de connaissance et de déployer sur tous les canaux (voix, web, portail, messagerie) en quelques minutes.</li>
+            <li><strong className="text-white">Nouveau modèle de tarification à la résolution :</strong> Les clients ne sont facturés pour une interaction self-service que lorsque le problème est résolu. C&apos;est une réponse concurrentielle importante face à des acteurs émergents comme Sierra, qui facturent également à la résolution.</li>
+            <li><strong className="text-white">Nouveau portail Agentforce Service :</strong> Interface moderne avec une barre de conversation unique. Au fil de la description de leur besoin, les clients voient l&apos;expérience portail s&apos;adapter en temps réel — pour les amener vers une résolution rapide.</li>
+          </ul>
+        </div>
+        <div>
+          <p className="font-semibold text-white mb-2">Pourquoi c&apos;est important :</p>
+          <ul className="space-y-2 text-sm leading-relaxed">
+            <li><strong className="text-white">Adoption Agentforce :</strong> Vous l&apos;avez entendu au CKO2 — chaque déploiement d&apos;agent doit commencer par le Service. Utilisez Agentforce Help Agent et son nouveau modèle de tarification pour accélérer les déploiements clients. Sous le capot, les Résolutions fonctionnent sur des Flex Credits : c&apos;est une nouvelle voie pour que les clients consomment du Flex.</li>
+            <li><strong className="text-white">Des agents self-service pour toutes les tailles d&apos;entreprise :</strong> La semaine dernière, vous avez pris connaissance de notre intention d&apos;acquérir Fin. Fin renforcera notre présence auprès des PME et des clients non-Salesforce. Agentforce Help Agent, lui, est conçu pour les clients Salesforce. Parce qu&apos;il est nativement construit sur la plateforme Agentforce, tout ce que les clients possèdent déjà — données, workflows, garde-fous et configurations — est directement disponible pour Help Agent.</li>
+            <li><strong className="text-white">La preuve par Customer Zero :</strong> Agentforce sur Help.Salesforce.com a désormais traité plus de 4,3 millions de conversations et en a résolu 70 %. Nous sommes la preuve qu&apos;Agentforce fonctionne pour le self-service. Tous nos apprentissages issus de millions de conversations clients ont été intégrés dans le nouvel Help Agent.</li>
+          </ul>
+        </div>
+        <div>
+          <p className="font-semibold text-white mb-2">Prochaines étapes :</p>
+          <p className="text-sm leading-relaxed mb-2">Approfondissez le sujet avec <a href="https://secure.video.ibm.com/channel/24382606/video/134868747" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">Product Decoded</a> | <a href="https://docs.google.com/presentation/d/1uaHWWeXoo3j3kTmPBcgbwETTMXmQihHKjEuowHJfO1c/edit?slide=id.g3e205dbdc03_2032_983#slide=id.g3e205dbdc03_2032_983" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">First Call Deck</a> | <a href="https://www.salesforce.com/service/demos/self-service/" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">Web Demo</a></p>
+          <p className="text-sm leading-relaxed">Pour les commerciaux, vous pouvez quoter dès aujourd&apos;hui — les SKUs sont actifs depuis le 16/06 ! Consultez la FAQ Pricing pour les détails tarifaires et le guide de cotation.</p>
+        </div>
+      </div>
+    ),
     ressources: [
-      { title: "First Call Deck (GSlides)", url: "https://docs.google.com/presentation/d/1uaHWWeXoo3j3kTmPBcgbwETTMXmQihHKjEuowHJfO1c/edit", category: "First Call Deck" },
+      { title: "First Call Deck (GSlides)", url: "https://docs.google.com/presentation/d/1uaHWWeXoo3j3kTmPBcgbwETTMXmQihHKjEuowHJfO1c/edit?slide=id.g3e205dbdc03_2032_983#slide=id.g3e205dbdc03_2032_983", category: "First Call Deck" },
       { title: "Sales Play (GSlides)", url: "https://docs.google.com/presentation/d/1j6CLEBNcOLVrvG8OkXreafElOF9xOm7g3XQhTutIraE/edit?slide=id.g3eefb8c9a16_2_2250#slide=id.g3eefb8c9a16_2_2250", category: "First Call Deck" },
       { title: "Community Call Deck — Help Agent + Resolution Pricing + New Portals (GSlides)", category: "First Call Deck" },
       { title: "Sales FAQ / Guide SSOT (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B9D5KJPGR", category: "FAQ & Knowledge" },
       { title: "Pricing & Packaging Deck + Slides Resolution SKUs (GSlides)", category: "Pricing & Packaging" },
-      { title: "Web Demo — Self-Service (Salesforce.com)", category: "Démonstrations & Vidéos" },
-      { title: "Product Decoded — Replay (17 juin 2026)", category: "Product Decoded" },
+      { title: "Web Demo — Self-Service (Salesforce.com)", url: "https://www.salesforce.com/service/demos/self-service/", category: "Démonstrations & Vidéos" },
+      { title: "Product Decoded — Replay (17 juin 2026)", url: "https://secure.video.ibm.com/channel/24382606/video/134868747", category: "Product Decoded" },
       { title: "Product Decoded — Episode Deck (GSlides)", category: "Product Decoded" },
       { title: "Product Decoded — 4-min Highlights Video", category: "Product Decoded" },
       { title: "Newsroom Announcement", category: "Ressources Externes" },
