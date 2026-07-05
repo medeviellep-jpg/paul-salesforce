@@ -659,54 +659,84 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 
         <div className="mb-12">
           {(() => {
-            const p = productsWithPoints[currentProductIndex]
-            const points = execSummaryPoints[p.id]
             const total = productsWithPoints.length
+            const current = productsWithPoints[currentProductIndex]
+            const points = execSummaryPoints[current.id]
+            const RADIUS = 205
+            const SIZE = 540
+
             return (
-              <div className="card-dark rounded-xl p-5">
-                <div className="flex items-center gap-3 mb-4">
-                  <button
-                    onClick={() => setCurrentProductIndex((currentProductIndex - 1 + total) % total)}
-                    className="w-8 h-8 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors flex-shrink-0"
-                    aria-label="Produit précédent"
-                  >
-                    <ChevronLeft className="w-4 h-4 text-white/70" />
-                  </button>
-                  <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${p.color} flex items-center justify-center flex-shrink-0`}>
-                    {p.icon}
+              <div className="flex flex-col items-center">
+                <div className="relative" style={{ width: SIZE, height: SIZE }}>
+                  {productsWithPoints.map((prod, i) => {
+                    const angleDeg = (i * 360 / total) - 90
+                    const angleRad = (angleDeg * Math.PI) / 180
+                    const cx = SIZE / 2 + Math.cos(angleRad) * RADIUS
+                    const cy = SIZE / 2 + Math.sin(angleRad) * RADIUS
+                    const isActive = i === currentProductIndex
+                    return (
+                      <button
+                        key={prod.id}
+                        onClick={() => setCurrentProductIndex(i)}
+                        style={{ left: cx, top: cy }}
+                        className={`absolute -translate-x-1/2 -translate-y-1/2 w-[108px] rounded-2xl p-3 text-center transition-all duration-300 ${
+                          isActive
+                            ? 'bg-white/[0.10] border border-white/25 scale-110 shadow-lg shadow-black/40'
+                            : 'bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.08] hover:border-white/15'
+                        }`}
+                      >
+                        <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${prod.color} flex items-center justify-center mx-auto mb-2`}>
+                          {prod.icon}
+                        </div>
+                        <p className={`text-xs font-medium leading-tight transition-colors ${isActive ? 'text-white' : 'text-white/50'}`}>
+                          {prod.name}
+                        </p>
+                      </button>
+                    )
+                  })}
+
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div
+                      className="rounded-full bg-[#0D1117] border border-white/10 flex flex-col items-center justify-center gap-2.5 pointer-events-auto"
+                      style={{ width: 224, height: 224 }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => setCurrentProductIndex((currentProductIndex - 1 + total) % total)}
+                          className="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors"
+                        >
+                          <ChevronLeft className="w-3.5 h-3.5 text-white/60" />
+                        </button>
+                        <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${current.color} flex items-center justify-center`}>
+                          {current.icon}
+                        </div>
+                        <button
+                          onClick={() => setCurrentProductIndex((currentProductIndex + 1) % total)}
+                          className="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors"
+                        >
+                          <ChevronRight className="w-3.5 h-3.5 text-white/60" />
+                        </button>
+                      </div>
+                      <button
+                        onClick={() => onSelectProduct(current.id)}
+                        className="text-white font-bold text-sm text-center hover:text-[#1B96FF] transition-colors px-5 leading-snug"
+                      >
+                        {current.name}
+                      </button>
+                      <p className="text-white/25 text-xs">{currentProductIndex + 1} / {total}</p>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => onSelectProduct(p.id)}
-                    className="text-white font-semibold hover:text-[#1B96FF] transition-colors text-left flex-1"
-                  >
-                    {p.name}
-                  </button>
-                  <span className="text-white/30 text-sm flex-shrink-0">{currentProductIndex + 1}/{total}</span>
-                  <button
-                    onClick={() => setCurrentProductIndex((currentProductIndex + 1) % total)}
-                    className="w-8 h-8 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors flex-shrink-0"
-                    aria-label="Produit suivant"
-                  >
-                    <ChevronRight className="w-4 h-4 text-white/70" />
-                  </button>
                 </div>
-                <ul className="space-y-2">
-                  {points.map((point, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-white/70">
-                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" />
-                      <span className="leading-relaxed">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex justify-center gap-1.5 mt-4">
-                  {productsWithPoints.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentProductIndex(i)}
-                      className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentProductIndex ? 'bg-white/70 w-4' : 'bg-white/20 hover:bg-white/40'}`}
-                      aria-label={`Aller au produit ${i + 1}`}
-                    />
-                  ))}
+
+                <div className="card-dark rounded-xl p-5 w-full max-w-lg -mt-8 relative z-10">
+                  <ul className="space-y-2">
+                    {points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-white/70">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" />
+                        <span className="leading-relaxed">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             )
