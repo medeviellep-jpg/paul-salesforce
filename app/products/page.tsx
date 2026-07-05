@@ -692,8 +692,8 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
             const SIZE = 580
 
             return (
-              <div className="flex flex-col items-center">
-                <div className="relative" style={{ width: SIZE, height: SIZE }}>
+              <div className="flex gap-8 items-start">
+                <div className="relative flex-shrink-0" style={{ width: SIZE, height: SIZE }}>
                   {productsWithPoints.map((prod, i) => {
                     const angleDeg = (i * 360 / total) - 90
                     const angleRad = (angleDeg * Math.PI) / 180
@@ -745,7 +745,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 {(() => {
                   const accent = productAccents[current.id] ?? { border: 'border-white/10', bg: 'bg-white/[0.04]', label: 'text-white/50', dot: 'bg-white/30' }
                   return (
-                    <div className={`rounded-xl p-6 w-full border ${accent.border} ${accent.bg} mt-6`}>
+                    <div className={`rounded-xl p-6 flex-1 border ${accent.border} ${accent.bg} self-center`}>
                       <p className={`${accent.label} font-semibold text-xs uppercase tracking-wider mb-4`}>{current.name}</p>
                       <ul className="space-y-3">
                         {points.map((point, i) => (
@@ -772,7 +772,11 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 
             <div className="rounded-xl border border-teal-500/20 bg-teal-500/[0.06] p-5 space-y-3">
               <p className="text-teal-300 font-semibold text-sm uppercase tracking-wider">Customer Facing</p>
-              <p className="text-sm text-white/70 leading-relaxed">Help Agent est l&apos;agent de service autonome qui se déploie rapidement sur votre site pour traiter les requêtes de vos clients tandis que Qualified qualifie l&apos;ensemble des prospects B2B en proposant une expérience originale via son Avatar Poper. Pour des expériences riches, vos clients et prospects peuvent également interagir avec Agentforce Voice sur tous les canaux&nbsp;: téléphone, web, mobile et WhatsApp</p>
+              <div className="space-y-2.5 text-sm text-white/70 leading-relaxed">
+                <p>🤖 <strong className="text-white/90">Help Agent</strong> — agent de service autonome déployé en 30 jours sur votre site pour <strong className="text-white/80">traiter les requêtes clients sans intervention humaine</strong></p>
+                <p>🎯 <strong className="text-white/90">Qualified</strong> — qualifie les <strong className="text-white/80">prospects B2B</strong> via son Avatar Piper et engage les acheteurs en temps réel directement dans le CRM</p>
+                <p>🎙️ <strong className="text-white/90">Agentforce Voice</strong> — interactions vocales sur <strong className="text-white/80">tous les canaux</strong>&nbsp;: téléphone, web, mobile et WhatsApp</p>
+              </div>
               <div className="flex flex-wrap gap-2 pt-1">
                 <button onClick={() => onSelectProduct('help-agent')} className="text-xs px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium">Help Agent</button>
                 <button onClick={() => onSelectProduct('qualified')} className="text-xs px-3 py-1.5 rounded-lg bg-orange-500/20 text-orange-300 hover:bg-orange-500/30 transition-colors font-medium">Qualified</button>
@@ -782,7 +786,11 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 
             <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.06] p-5 space-y-3">
               <p className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Employee Facing</p>
-              <p className="text-sm text-white/70 leading-relaxed">Alors que CoWorker agit comme la porte d&apos;entrée de l&apos;IA Agentique dans l&apos;entreprise, véritable Super Agent orchestrateur qui recherche des informations mais exécute également des tâches complexes et appelle des Agents IA spécialisés pour assister vos collaborateurs où ils travaillent, Momentum lui, capture toutes les conversations et données non structurées des calls, visio, emails et SMS pour venir enrichir Salesforce et donner un terrain fertile à vos Agents IA mais aussi coacher vos collaborateurs. Agentforce Operations enfin va au-delà du terrain de jeu habituel de Salesforce en digitalisant des processus back-office complexes de supply chain, procurement, finance pour définir le meilleur process qui sera exécuté par des Agents IA et des humains...</p>
+              <div className="space-y-2.5 text-sm text-white/70 leading-relaxed">
+                <p>🤝 <strong className="text-white/90">CoWorker</strong> — <strong className="text-white/80">Super Agent orchestrateur</strong>, porte d&apos;entrée de l&apos;IA dans l&apos;entreprise&nbsp;: recherche, exécute des tâches complexes et pilote des agents spécialisés sur Salesforce, Slack, Teams et Mobile</p>
+                <p>📊 <strong className="text-white/90">Momentum</strong> — capture <strong className="text-white/80">calls, visios, emails et SMS</strong> pour enrichir Salesforce automatiquement et coacher vos équipes en temps réel</p>
+                <p>⚙️ <strong className="text-white/90">Agentforce Operations</strong> — digitalise les <strong className="text-white/80">processus back-office complexes</strong> (supply chain, procurement, finance) exécutés par des Agents IA et des humains</p>
+              </div>
               <div className="flex flex-wrap gap-2 pt-1">
                 <button onClick={() => onSelectProduct('coworker')} className="text-xs px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-colors font-medium">CoWorker</button>
                 <button onClick={() => onSelectProduct('momentum')} className="text-xs px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium">Momentum</button>
@@ -847,7 +855,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               { id: 'coworker', emoji: '📅', action: 'Webinar — 8 juillet 2026', sub: 'Invitez vos clients A4X et A1E — 30 min, 100% valeur', accent: { border: 'border-purple-500/25', bg: 'bg-purple-500/[0.07]', label: 'text-purple-300' } },
-              { id: 'afo', emoji: '📅', action: 'Visite Courtney Levin', sub: '15 & 16 juillet — Top 12 comptes France', accent: { border: 'border-green-500/25', bg: 'bg-green-500/[0.07]', label: 'text-green-300' } },
+              { id: 'afo', emoji: '📅', action: 'Visite Courtney Levin', sub: '15 & 16 juillet — Top 12 comptes France', accent: { border: 'border-green-500/25', bg: 'bg-green-500/[0.07]', label: 'text-green-300' } , industries: [{ icon: '🏭', label: 'Industrie' }, { icon: '🏦', label: 'Fin. Services' }, { icon: '🛒', label: 'Retail' }, { icon: '💊', label: 'Life Sciences' }, { icon: '⚡', label: 'Energie' }, { icon: '🏗️', label: 'Construction' }] },
               { id: 'momentum', emoji: '📞', action: 'Rapprochez-vous de votre AE', sub: 'Priorisez vos comptes A4S et A1E éligibles', accent: { border: 'border-blue-500/25', bg: 'bg-blue-500/[0.07]', label: 'text-blue-300' } },
               { id: 'voice', emoji: '🎙️', action: 'Démo live disponible', sub: '+1 617 313-7968 — Expérience vocale française', accent: { border: 'border-rose-500/25', bg: 'bg-rose-500/[0.07]', label: 'text-rose-300' } },
               { id: 'qualified', emoji: '🎯', action: 'Ciblez vos comptes BtoB', sub: 'Fort trafic web + motion ABM — Avatar Piper', accent: { border: 'border-orange-500/25', bg: 'bg-orange-500/[0.07]', label: 'text-orange-300' } },
@@ -876,6 +884,24 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                       <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
                         <p className="text-white font-bold text-lg leading-none">38<span className="text-white/40 text-sm font-normal">/100</span></p>
                         <p className="text-white/50 text-xs mt-1">activations clients</p>
+                      </div>
+                    </div>
+                  )}
+                  {item.id === 'afo' && (
+                    <div className="mt-3 space-y-2">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-8 h-8 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                          <img src="/courtney-levin.jpg" alt="Courtney Levin" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display='none'; (e.target as HTMLImageElement).parentElement!.innerHTML='<span class=\"text-green-300 text-[10px] font-bold\">CL</span>'; }} />
+                        </div>
+                        <p className="text-white/60 text-xs">Courtney Levin, VP AFO — visite terrain</p>
+                      </div>
+                      <p className="text-white/40 text-[10px] uppercase tracking-wider">Comptes focus par industrie</p>
+                      <div className="grid grid-cols-3 gap-1">
+                        {('industries' in item ? (item as { industries: {icon: string; label: string}[] }).industries : []).map(ind => (
+                          <div key={ind.label} className="rounded-lg bg-green-500/10 px-2 py-1.5 text-center">
+                            <p className="text-green-300 text-[11px] font-medium">{ind.icon} {ind.label}</p>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )}
