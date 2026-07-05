@@ -662,8 +662,8 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
             const total = productsWithPoints.length
             const current = productsWithPoints[currentProductIndex]
             const points = execSummaryPoints[current.id]
-            const RADIUS = 205
-            const SIZE = 540
+            const RADIUS = 215
+            const SIZE = 580
 
             return (
               <div className="flex flex-col items-center">
@@ -679,16 +679,16 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                         key={prod.id}
                         onClick={() => setCurrentProductIndex(i)}
                         style={{ left: cx, top: cy }}
-                        className={`absolute -translate-x-1/2 -translate-y-1/2 w-[108px] rounded-2xl p-3 text-center transition-all duration-300 ${
+                        className={`absolute -translate-x-1/2 -translate-y-1/2 w-[130px] rounded-2xl p-4 text-center transition-all duration-300 ${
                           isActive
                             ? 'bg-white/[0.10] border border-white/25 scale-110 shadow-lg shadow-black/40'
                             : 'bg-white/[0.03] border border-white/[0.07] hover:bg-white/[0.08] hover:border-white/15'
                         }`}
                       >
-                        <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${prod.color} flex items-center justify-center mx-auto mb-2`}>
+                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${prod.color} flex items-center justify-center mx-auto mb-2.5`}>
                           {prod.icon}
                         </div>
-                        <p className={`text-xs font-medium leading-tight transition-colors ${isActive ? 'text-white' : 'text-white/50'}`}>
+                        <p className={`text-sm font-medium leading-tight transition-colors ${isActive ? 'text-white' : 'text-white/55'}`}>
                           {prod.name}
                         </p>
                       </button>
@@ -697,31 +697,19 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div
-                      className="rounded-full bg-[#0D1117] border border-white/10 flex flex-col items-center justify-center gap-2.5 pointer-events-auto"
-                      style={{ width: 224, height: 224 }}
+                      className="rounded-full bg-[#0D1117] border border-white/10 flex flex-col items-center justify-center gap-3 pointer-events-auto"
+                      style={{ width: 248, height: 248 }}
                     >
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => setCurrentProductIndex((currentProductIndex - 1 + total) % total)}
-                          className="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors"
-                        >
-                          <ChevronLeft className="w-3.5 h-3.5 text-white/60" />
-                        </button>
-                        <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${current.color} flex items-center justify-center`}>
-                          {current.icon}
-                        </div>
-                        <button
-                          onClick={() => setCurrentProductIndex((currentProductIndex + 1) % total)}
-                          className="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors"
-                        >
-                          <ChevronRight className="w-3.5 h-3.5 text-white/60" />
-                        </button>
-                      </div>
                       <button
                         onClick={() => onSelectProduct(current.id)}
-                        className="text-white font-bold text-sm text-center hover:text-[#1B96FF] transition-colors px-5 leading-snug"
+                        className="flex flex-col items-center gap-2.5 group px-4"
                       >
-                        {current.name}
+                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${current.color} flex items-center justify-center`}>
+                          {current.icon}
+                        </div>
+                        <p className="text-white font-bold text-sm text-center group-hover:text-[#1B96FF] transition-colors leading-snug">
+                          {current.name}
+                        </p>
                       </button>
                       <p className="text-white/25 text-xs">{currentProductIndex + 1} / {total}</p>
                     </div>
@@ -860,6 +848,24 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 <p className="text-white/50 text-sm mt-1">Trust Layer, garde-fous, pas d&apos;hallucinations sur vos données. L&apos;IA enterprise responsable, pas l&apos;IA grand public.</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="pt-4 pb-8">
+          <p className="text-white/30 text-xs font-medium uppercase tracking-wider text-center mb-5">Explorer les produits</p>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+            {products.map(p => (
+              <button
+                key={p.id}
+                onClick={() => onSelectProduct(p.id)}
+                className="card-dark rounded-xl p-4 flex flex-col items-center gap-2.5 hover:bg-white/[0.08] hover:-translate-y-0.5 transition-all duration-200 border border-transparent hover:border-white/10"
+              >
+                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center`}>
+                  {p.icon}
+                </div>
+                <p className="text-white/60 text-xs font-medium text-center leading-tight">{p.name}</p>
+              </button>
+            ))}
           </div>
         </div>
 
