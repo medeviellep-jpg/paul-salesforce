@@ -8,9 +8,11 @@ interface Message {
 }
 
 const SUGGESTIONS = [
-  'Momentum est pertinent chez Adecco ?',
-  'Quel est le pricing de Help Agent ?',
-  'Ressources clés pour CoWorker',
+  'Quelle différence entre Help Agent et Agentforce for Service ?',
+  'Quelle différence entre Qualified et SDR Agent ?',
+  'Quelles sont toutes les capacités de Agentforce Voice GA pour la France ?',
+  'Quelles sont les sweet spots pour vendre Agentforce Operations ?',
+  'Momentum ça sert à quoi ?',
 ]
 
 export function AskAgentforceChat({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
