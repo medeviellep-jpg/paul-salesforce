@@ -530,6 +530,28 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/05/Voice-Settings-4.webp?w=1024", alt: "Voice Settings — configuration et personnalisation de l'agent vocal" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/05/Voice-Preview-3.webp?w=986", alt: "Live Call Transcript — conversation client en temps réel" }
     ],
+    convictionsFrance: (
+      <div className="space-y-4">
+        <p className="leading-relaxed">Agentforce Voice est GA globalement depuis le 26 février 2026 via le support SIP, débloquant toutes les régions EMEA. Le produit remplace les IVR rigides par des agents conversationnels qui prennent des actions réelles, avec handoff humain seamless et contexte préservé.</p>
+        <div>
+          <p className="font-semibold text-white mb-2">Les 3 chemins d&apos;intégration (clé pour EMEA)</p>
+          <ul className="space-y-2 text-sm leading-relaxed">
+            <li><strong className="text-white">1. PSTN :</strong> Non disponible pour EMEA</li>
+            <li><strong className="text-white">2. SIP :</strong> Pour clients Genesys &amp; Vonage only</li>
+            <li><strong className="text-white">3. Dynamic Voice Routing</strong> — l&apos;unlock majeur (New GA Juin) : supprime la dépendance aux partenaires CCaaS certifiés et utilise une API (Telephony Integration API) avec un pool de numéros alloués dynamiquement par appel. Pour Amazon Connect, Five9, NICE, Odigo, Bucher+Suter…</li>
+          </ul>
+        </div>
+        <div>
+          <p className="font-semibold text-white mb-2">Nouveau canal : Voice pour Web &amp; Mobile (GA juin 2026)</p>
+          <p className="text-sm leading-relaxed mb-2">Les clients peuvent désormais parler directement à un agent Agentforce depuis un site web ou app mobile (WebRTC, zéro infrastructure supplémentaire) :</p>
+          <ul className="space-y-1.5 text-sm leading-relaxed">
+            <li className="flex items-start gap-2"><span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />Passage seamless voix ↔ texte dans la même session</li>
+            <li className="flex items-start gap-2"><span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />Transcript en temps réel pour les handoffs</li>
+            <li className="flex items-start gap-2"><span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />Pour les clients Agentforce existants : c&apos;est une configuration, pas un projet</li>
+          </ul>
+        </div>
+      </div>
+    ),
     ressources: [
       { title: "NEW FCD FY27 — Agentforce Voice (GSlides)", url: "https://docs.google.com/presentation/d/15IKl4Hz8vHg_y1V6o3fH2a4TP7A4C22H3JU1aYXrsKc/edit?slide=id.g3eaa5629e7a_178_6322#slide=id.g3eaa5629e7a_178_6322", category: "First Call Deck" },
       { title: "Sales Play Deck — Dynamic Voice Routing (GSlides)", url: "https://docs.google.com/presentation/d/1bEQa1BK1u0A1Ip8ToCz7-puelpcZiWyMxAXVaqrUmwc/edit?slide=id.g39bc1274144_3_0#slide=id.g39bc1274144_3_0", category: "First Call Deck" },
@@ -570,6 +592,51 @@ function Section({ title, icon, children, defaultOpen = false }: { title: string
   )
 }
 
+const execSummaryPoints: Record<string, string[]> = {
+  coworker: [
+    "Inclus dans A4X et A1E et disponible aussi avec les Flex Credits",
+    "Accélérateur de cycle de vente (vs Pilot/POC classique)",
+    "Accélérateur d'Adoption et de Change",
+    "Accélérateur de consommation (Flex) et de valeur (A4X)",
+    "Recherche et prend des actions",
+    "Super Agent orchestrateur de sous agents spécialisés",
+  ],
+  momentum: [
+    "Inclus dans A4Sales et A1E",
+    "Conversation Intelligence",
+    "Capture automatiquement les calls, visios, emails et SMS",
+    "Structure la donnée et la réinjecte dans Salesforce",
+    "Répond directement au blocage #1 : notre data n'est pas prête pour l'IA",
+    "Stack 3 couches unique : Ingestion → Structure & Contexte → Exécution & Orchestration",
+  ],
+  'help-agent': [
+    "Nouveau modèle de tarification à la résolution : 2€ par résolution (ou 400 Flex Credits)",
+    "Agent de service autonome déployable en quelques minutes sur tous les canaux",
+    "Optimisé pour le self-service client fort de notre expérience Customer Zero",
+    "Nouveau portail Agentforce Service : barre de conversation unique, expérience adaptative en temps réel",
+  ],
+  afo: [
+    "Digitalise les processus back-office en tâches exécutables par des agents IA",
+    "Conçu pour le back-office complexe (supply chain, finance, assurance)",
+    "Small : 10 Blueprints — $1.5M/an · Medium : 50 Blueprints — $3M/an · Large : 50+ Blueprints, Custom",
+    "Un blueprint est un modèle de processus digitalisé — par ex. 'Audit de facture' ou 'Onboarding fournisseur'",
+  ],
+  qualified: [
+    "Agent de qualification B2B avec un Avatar IA (Piper)",
+    "Moteur de pipeline generation qui alimente les agents Agentforce",
+    "Particulièrement pertinent pour les clients avec un site web à fort trafic BtoB et une motion ABM",
+    "Vendu comme une platform fee avec des leviers basés sur le trafic web mensuel et les contacts email actifs",
+  ],
+  voice: [
+    "Consomme du Flex Credits (1 action = 30 Flex)",
+    "Remplacez les IVR rigides par des agents IA vocaux qui parlent naturellement",
+    "Ces Agents IA agissent sur vos données Salesforce et transfèrent aux humains avec le contexte complet",
+    "Déployez sur téléphone, web, mobile et WhatsApp depuis un seul agent, construit une seule fois",
+    "SIP & Dynamic Voice Routing pour EMEA",
+    "Voice pour Web & Mobile (GA juin 2026)",
+  ],
+}
+
 function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; onSelectProduct: (id: string) => void }) {
   return (
     <div className="min-h-screen bg-[#0D1117] flex flex-col">
@@ -597,6 +664,31 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
               <p className="text-white text-sm font-medium">{p.name}</p>
             </button>
           ))}
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+          {products.map(p => {
+            const points = execSummaryPoints[p.id]
+            if (!points) return null
+            return (
+              <div key={p.id} className="card-dark rounded-xl p-5 hover:bg-white/[0.06] transition-all duration-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${p.color} flex items-center justify-center flex-shrink-0`}>
+                    {p.icon}
+                  </div>
+                  <p className="text-white font-semibold">{p.name}</p>
+                </div>
+                <ul className="space-y-2">
+                  {points.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-white/70">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" />
+                      <span className="leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          })}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
