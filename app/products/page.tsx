@@ -792,6 +792,47 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           </div>
         </div>
 
+        <div className="card-dark rounded-xl p-8 mb-12">
+          <h3 className="text-white font-bold text-xl mb-6">💬 Différenciateurs clés pour vos conversations</h3>
+          <div className="space-y-4">
+            <div className="flex items-start gap-4">
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">1</span>
+              <div>
+                <p className="text-white font-medium">Pricing à la carte 🎁</p>
+                <p className="text-white/50 text-sm mt-1">Bundles (PUPM), conso (Flex Credits), résolution (outcome-based), blueprints (process) — chaque client trouve le modèle adapté à sa maturité et son usage.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">2</span>
+              <div>
+                <p className="text-white font-medium">Time To Value ⏱️</p>
+                <p className="text-white/50 text-sm mt-1">CoWorker s&apos;active en 2 clics. Help Agent déployé en 30 jours. AFO opérationnel en heures. Pas de projet à 18 mois.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">3</span>
+              <div>
+                <p className="text-white font-medium">Customer Zero 🍽️</p>
+                <p className="text-white/50 text-sm mt-1">Nous utilisons nos produits et nos clients bénéficient de nos apprentissages — ex : Help Agent déployé sur notre propre ligne support.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">4</span>
+              <div>
+                <p className="text-white font-medium">Consolidation 💰</p>
+                <p className="text-white/50 text-sm mt-1">Nos solutions remplacent des outils tiers coûteux — Momentum remplace Gong ($100-150/user/mois), Voice remplace les IVR rigides, AFO remplace les BPM à 18 mois de setup.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">5</span>
+              <div>
+                <p className="text-white font-medium">Confiance et sécurité natives 🛡️</p>
+                <p className="text-white/50 text-sm mt-1">Trust Layer, garde-fous, pas d&apos;hallucinations sur vos données. L&apos;IA enterprise responsable, pas l&apos;IA grand public.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </main>
 
       <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-sm">
