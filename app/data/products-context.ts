@@ -246,6 +246,52 @@ export const productsContext: ProductContext[] = [
     ]
   },
   {
+    id: "qualified",
+    name: "Qualified",
+    elevatorPitch: "Qualified est la plateforme de pipeline generation IA de Salesforce. Elle identifie les visiteurs à fort potentiel sur votre site web, engage les acheteurs en temps réel via des agents IA conversationnels, et génère des opportunités directement dans votre CRM. GA dans Org62 depuis août 2025, Qualified est nativement intégré à la motion de vente Agentforce.",
+    differenciation: [
+      "vs Drift / Intercom : Qualified est nativement intégré à Salesforce CRM — les données, le scoring et les alertes s'appuient sur le Customer 360 en temps réel, sans silo",
+      "Pipeline generation IA : identification des comptes cibles en temps réel via le scoring ABM et les signaux d'intent",
+      "Agent conversationnel autonome : engage les visiteurs 24/7, qualifie et route vers le bon AE sans intervention humaine",
+      "GA dans Org62 depuis août 2025 — Customer Zero avec données réelles",
+      "Inclus dans la motion de vente Agentforce — synergies naturelles avec CoWorker et Momentum"
+    ],
+    casUsages: [
+      { title: "Identification des visiteurs à fort potentiel", description: "Qualified identifie en temps réel quels comptes cibles visitent votre site et déclenche des alertes proactives aux AEs responsables" },
+      { title: "Engagement conversationnel en temps réel", description: "L'agent IA engage les visiteurs qualifiés instantanément — qualification, réponses aux questions produit et routing vers le bon commercial" },
+      { title: "Pipeline generation automatisée", description: "Création d'opportunités CRM directement depuis les conversations — les leads chauds ne passent plus entre les mailles du filet" },
+      { title: "ABM & Account-Based Marketing", description: "Orchestration des campagnes ABM avec personnalisation du message en fonction du profil du compte visiteur et de son historique CRM" }
+    ],
+    storyClient: {
+      client: "Salesforce (Customer Zero — Org62)",
+      resultats: [
+        "GA dans Org62 depuis août 2025 — utilisé en production par les équipes Salesforce",
+        "Pipeline generation nativement intégré à la motion Agentforce",
+        "Qualification automatique des visiteurs salesforce.com",
+        "Routing intelligent vers les AEs avec contexte CRM complet"
+      ],
+      citation: "Qualified transforme notre site en machine à pipeline — chaque visiteur qualifié est identifié, engagé et routé vers le bon AE avec le contexte complet de son compte."
+    },
+    pricing: [
+      "Inclus dans la motion de sell Agentforce",
+      "Licensing Qualified standard — se renseigner auprès de l'équipe produit pour les détails",
+      "GA dans Org62 depuis août 2025"
+    ],
+    faq: [
+      { question: "Quelle est la différence avec Drift ou Intercom ?", reponse: "Qualified est nativement intégré à Salesforce CRM — les données, le scoring et les alertes s'appuient sur le Customer 360 en temps réel. Pas de silo, pas de sync bidirectionnelle fragile." },
+      { question: "Qualified fonctionne-t-il sans Salesforce CRM ?", reponse: "Non — Qualified est conçu pour fonctionner nativement avec Salesforce. C'est précisément sa différenciation vs les solutions point du marché." },
+      { question: "Comment Qualified s'intègre-t-il à la motion Agentforce ?", reponse: "Qualified génère le pipeline, CoWorker le prépare et qualifie, Momentum capture les interactions. Ensemble, ils forment la stack complète de productivité commerciale Agentforce." },
+      { question: "Où trouver les ressources enablement ?", reponse: "Le canal Slack #qualified-gtm-faq est le point d'entrée principal. Le Qualified Resources Canvas centralise tous les matériaux d'enablement." }
+    ],
+    convictionsFranceText: "Qualified est notre play pipeline generation natif — particulièrement pertinent pour les clients avec un site web à fort trafic BtoB et une motion ABM. Key play : positionner Qualified comme le moteur de pipeline generation qui alimente les agents Agentforce. Customer Zero : GA dans Org62 depuis août 2025.",
+    ressources: [
+      { title: "FY27 Corporate Pitch — External (GSlides)", url: "https://docs.google.com/presentation/d/1rQmpC4QK9eZjjBD1qywgPEUSYN1H4Us94OUJF6oodpA/edit?slide=id.p#slide=id.p", category: "First Call Deck" },
+      { title: "Channel Agent FAQ (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0AQNTURPFW", category: "FAQ & Knowledge" },
+      { title: "5-Min Overview Video (Vidyard)", url: "https://salesforce.vidyard.com/watch/Shuy2q6pceoTFyjxtc9Xs7", category: "Démonstrations & Vidéos" },
+      { title: "#qualified-gtm-faq", category: "Canal Slack" }
+    ]
+  },
+  {
     id: "voice",
     name: "Agentforce Voice",
     elevatorPitch: "Remplacez les IVR rigides et les bots scriptés par des agents IA vocaux qui parlent naturellement, agissent sur vos données Salesforce et transfèrent aux humains avec le contexte complet. Nativement construit sur la Salesforce Platform. Déployez sur téléphone, web, mobile et WhatsApp depuis un seul agent, construit une seule fois.",
