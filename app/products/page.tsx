@@ -169,41 +169,40 @@ const products: Product[] = [
     name: 'Help Agent',
     icon: <Phone className="w-6 h-6" />,
     color: 'from-teal-600 to-cyan-700',
-    elevatorPitch: "Help Agent est l'agent de support client Salesforce propulsé par Agentforce Voice, déployé sur la ligne 1-800-NO-SOFTWARE. C'est notre histoire Customer Zero la plus puissante : un agent IA vocal qui gère des scénarios de support réels à grande échelle, capable de résoudre les problèmes des clients et de répondre aux questions sans intervention humaine.",
+    elevatorPitch: "Help Agent est l'agent IA de self-service client déployable en moins de 10 minutes. GA juillet 2026. Construit sur la même stack qu'Agentforce Service Agent, mais packagé pour aller vite — sans projet, sans intégrateur. Tarification à la résolution réussie : $2/résolution (= 400 Flex Credits).",
     differenciation: [
-      "Agent IA vocal (pas texte uniquement) — première ligne de support téléphonique entièrement automatisée par Agentforce",
-      "Customer Zero : Salesforce utilise sa propre technologie en production à grande échelle sur sa ligne support",
-      "Déployé en 30 jours seulement — démontrant la rapidité de mise en production d'Agentforce",
-      "Capacités de troubleshooting et Q&A combinées dans un même agent vocal",
-      "Démonstrable en live — numéro dédié disponible pour les présentations clients : +1 855-302-7007"
+      "Déployable en moins de 10 minutes — aucun service pro requis, setup no-code",
+      "Pricing à la résolution : $2 par résolution réussie (= 400 Flex Credits) — on ne paie que ce qui fonctionne",
+      "Même stack qu'Agentforce Service Agent, mais packagé pour aller vite",
+      "Self-service web et chat natif — répond, résout, escalade avec contexte complet",
+      "GA juillet 2026 — disponible immédiatement pour tous les clients"
     ],
     casUsages: [
-      { title: "Support client téléphonique 24/7", description: "Help Agent répond aux appels clients, comprend leurs problèmes en langage naturel et fournit des résolutions sans temps d'attente" },
-      { title: "Troubleshooting guidé", description: "L'agent guide le client pas à pas à travers les procédures de diagnostic et résolution, comme un agent humain expert" },
-      { title: "Questions-Réponses produit", description: "Réponses instantanées aux questions sur les produits, fonctionnalités, configuration et bonnes pratiques Salesforce" },
-      { title: "Escalade intelligente", description: "Si le cas dépasse les capacités de l'agent IA, escalade fluide vers un agent humain avec le contexte complet de la conversation" }
+      { title: "Self-service client 24/7", description: "Help Agent répond aux questions clients en langage naturel, résout les problèmes courants et s'appuie sur la base de connaissances existante — sans attente, sans agent humain" },
+      { title: "Déflexion de tickets", description: "Résolution automatique des cas simples et répétitifs avant qu'ils atteignent les agents humains — réduction directe du volume de tickets entrants" },
+      { title: "Escalade intelligente", description: "Quand l'agent ne peut pas résoudre, il transfère vers un agent humain avec le transcript complet et le contexte du problème — zéro friction pour le client" },
+      { title: "Portails clients et communautés", description: "Intégration native dans les portails Experience Cloud existants — enrichit l'expérience self-service sans refonte du portail" }
     ],
     storyClient: {
-      client: "Salesforce (Customer Zero — ligne 1-800-NO-SOFTWARE)",
+      client: "Clients Service Cloud — GA juillet 2026",
       resultats: [
-        "Déployé sur la ligne de support client Salesforce en production",
-        "Capacités de troubleshooting + Q&A construites et lancées en seulement 30 jours",
-        "Gère des scénarios de support réels à grande échelle",
-        "Démonstrable en live aux clients via le numéro +1 855-302-7007",
-        "Collaboration DET, T&P, Legal et Customer Success pour un lancement rapide"
+        "Déployable en moins de 10 minutes sans services professionnels",
+        "Pricing à la résolution : on ne paie que les résolutions réussies",
+        "Même technologie qu'Agentforce Service Agent — fiabilité enterprise",
+        "Intégration native aux portails Experience Cloud existants"
       ],
-      citation: "Nos nouvelles capacités Help Agent, propulsées par Agentforce Voice, sont live sur notre ligne de support. C'est une histoire Customer Zero puissante d'Agentforce Voice gérant des scénarios de support réels à grande échelle."
+      citation: "Avec Help Agent, nos clients peuvent avoir un agent IA de self-service en production en moins de 10 minutes — et ne payer que pour les problèmes réellement résolus."
     },
     pricing: [
-      "Inclus dans la plateforme Agentforce — fait partie des capacités Agentforce Voice",
-      "Modèle de consommation Agentforce standard (conversations)",
-      "Disponible pour les clients Service Cloud avec Agentforce"
+      "$2 par résolution réussie = 400 Flex Credits",
+      "On ne paie que ce qui fonctionne — pricing à la valeur délivrée",
+      "GA juillet 2026 — disponible via les SKUs Agentforce standard"
     ],
     faq: [
-      { question: "Help Agent est-il utilisable par nos clients ?", reponse: "Oui — la technologie sous-jacente (Agentforce Voice) est disponible pour tous les clients. L'implémentation sur la ligne Salesforce sert de référence et de démonstration Customer Zero." },
-      { question: "Peut-on faire une démo live ?", reponse: "Oui ! Un numéro dédié bypass le menu et connecte directement à l'agent : +1 855-302-7007. Des slides et démos pré-enregistrées sont aussi disponibles." },
-      { question: "En combien de temps peut-on déployer un agent vocal similaire ?", reponse: "L'équipe Salesforce a construit et lancé les capacités en 30 jours. Le time-to-value dépend de la complexité du cas d'usage client." },
-      { question: "Quelles langues sont supportées ?", reponse: "Actuellement disponible en anglais. Le support multilingue pour Agentforce Voice est sur la roadmap." }
+      { question: "Quelle différence avec Agentforce Service Agent ?", reponse: "Help Agent est construit sur la même stack qu'Agentforce Service Agent, mais packagé pour aller vite — déployable en moins de 10 minutes sans projet ni intégrateur. Agentforce Service Agent est la version enterprise pour des cas d'usage complexes et des déploiements plus larges." },
+      { question: "Comment fonctionne le pricing à la résolution ?", reponse: "$2 par résolution réussie = 400 Flex Credits. Si l'agent ne résout pas le problème et escalade vers un humain, la conversation n'est pas facturée comme résolution. On ne paie que la valeur délivrée." },
+      { question: "En combien de temps peut-on déployer Help Agent ?", reponse: "Moins de 10 minutes pour un premier déploiement. Setup no-code, sans services professionnels requis." },
+      { question: "Faut-il Experience Cloud pour utiliser Help Agent ?", reponse: "Help Agent s'intègre nativement dans les portails Experience Cloud mais peut aussi être déployé sur d'autres canaux web. Vérifier les prérequis avec l'équipe produit pour les configurations spécifiques." }
     ],
     visuels: [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-launch-fast-720x720-1.webp?w=1024", alt: "Setup no-code — lancement rapide de Help Agent" },
@@ -211,19 +210,19 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-af-help-agent-automate-w-actions-720x720-1.webp?w=1024", alt: "Actions automatisées — workflows et escalade" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/06/svc-pdp-sp-pf-personalized-proactive-support-conversational-support-720x720-1.webp?w=1024", alt: "Support conversationnel — self-service intelligent" }
     ],
+    convictionsFrance: (<>Help Agent c'est le play <strong>Time-to-Value immédiat sur le Service</strong> :<br/><br/>1️⃣ <strong>Moins de 10 minutes pour déployer</strong> — argument massue face aux projets CRM à 18 mois. Idéal pour débloquer un client hésitant sur Agentforce.<br/><br/>2️⃣ <strong>Pricing à la résolution</strong> — $2 par résolution réussie. On ne paie que ce qui fonctionne. Argument ROI immédiat et sans risque pour le client.<br/><br/>3️⃣ <strong>Même stack qu'Agentforce Service Agent</strong> — porte d'entrée vers un déploiement plus large. Help Agent aujourd'hui, Service Agent demain.</>),
     ressources: [
-      { title: "Help Agent First Call Deck (GSlides)", category: "First Call Deck" },
-      { title: "Help Agent Sales Play (GSlides)", category: "First Call Deck" },
-      { title: "FY27 Community Call Deck — Help Agent + Resolution Pricing + New Portals UI (GSlides)", category: "First Call Deck" },
-      { title: "Help Agent Sales FAQ / Sales Guide SSOT (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B9D5KJPGR", category: "FAQ & Knowledge" },
-      { title: "Help Agent Pricing & Packaging Deck (GSlides)", category: "Pricing & Packaging" },
-      { title: "Slides Pricing & Nouveaux Portails — Resolution SKUs, Login & Members (GSlides)", category: "Pricing & Packaging" },
+      { title: "First Call Deck (GSlides)", url: "https://docs.google.com/presentation/d/1uaHWWeXoo3j3kTmPBcgbwETTMXmQihHKjEuowHJfO1c/edit", category: "First Call Deck" },
+      { title: "Sales Play (GSlides)", url: "https://docs.google.com/presentation/d/1j6CLEBNcOLVrvG8OkXreafElOF9xOm7g3XQhTutIraE/edit?slide=id.g3eefb8c9a16_2_2250#slide=id.g3eefb8c9a16_2_2250", category: "First Call Deck" },
+      { title: "Community Call Deck — Help Agent + Resolution Pricing + New Portals (GSlides)", category: "First Call Deck" },
+      { title: "Sales FAQ / Guide SSOT (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B9D5KJPGR", category: "FAQ & Knowledge" },
+      { title: "Pricing & Packaging Deck + Slides Resolution SKUs (GSlides)", category: "Pricing & Packaging" },
       { title: "Web Demo — Self-Service (Salesforce.com)", category: "Démonstrations & Vidéos" },
-      { title: "Product Decoded Help Agent — Replay (IBM Video, 17 juin 2026)", category: "Product Decoded" },
-      { title: "Product Decoded Help Agent — Episode Deck (GSlides)", category: "Product Decoded" },
-      { title: "4-min Highlights Video", category: "Product Decoded" },
+      { title: "Product Decoded — Replay (17 juin 2026)", category: "Product Decoded" },
+      { title: "Product Decoded — Episode Deck (GSlides)", category: "Product Decoded" },
+      { title: "Product Decoded — 4-min Highlights Video", category: "Product Decoded" },
       { title: "Newsroom Announcement", category: "Ressources Externes" },
-      { title: "#help-sell-ai", category: "Canal Slack" }
+      { title: "#help-sell-ai", url: "https://slack.com/archives/C01PVR4M88G", category: "Canal Slack" }
     ]
   },
   {
