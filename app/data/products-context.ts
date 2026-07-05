@@ -219,7 +219,10 @@ export const productsContext: ProductContext[] = [
       citation: "Ce qui prenait des mois à construire et modifier se fait maintenant en heures."
     },
     pricing: [
-      "Modèle packagé par taille : Small (10 blueprints), Medium (50 blueprints), Large (50+ personnalisés)",
+      "Small : 10 Blueprints — $1.5M / an",
+      "Medium : 50 Blueprints — $3M / an",
+      "Large : 50+ Blueprints — Custom Price (spécifier la quantité de Blueprints dans le pricing case)",
+      "Tous les packages incluent un accès complet sans limite d'usage sur les Blueprints inclus",
       "Doit être vendu sur un OrgID force.com nouveau (brand new)",
       "Actuellement disponible pour les clients PACE et FINS"
     ],
@@ -235,7 +238,7 @@ export const productsContext: ProductContext[] = [
       { title: "FCD Financial Services / FINS (GSlides)", url: "https://docs.google.com/presentation/d/1BjubIJkIHLZb2btLdEhGrZErXXqkOgfw14oHJ0-fazg/edit", category: "First Call Deck" },
       { title: "Internal FAQ (Google Doc)", url: "https://docs.google.com/document/d/13m9A6y-cUqsbk4SnXPanXI71J5KHxWUOM5DgBkUW5nU/edit", category: "FAQ & Knowledge" },
       { title: "EMEA FAQ (Agentforce Pulse Canvas)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B1UDAJFNV", category: "FAQ & Knowledge" },
-      { title: "Pricing & Packaging (GSlides)", url: "https://docs.google.com/presentation/d/1NFIxGq3YzFBElUXfLxyDV0NJyvP9fijayjl3pLgIrFY/edit", category: "Pricing & Packaging" },
+      { title: "Pricing & Packaging (GSlides)", url: "https://docs.google.com/presentation/d/1xyrirgXZU0m6yRmNKpodOpK5qKU69CsQz1j3AXAoCLM/edit?slide=id.g3d28f8580c8_0_4813#slide=id.g3d28f8580c8_0_4813", category: "Pricing & Packaging" },
       { title: "SKU Quoting Guide (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0AARDWPXEH", category: "Pricing & Packaging" },
       { title: "Demo Video (Vidyard)", url: "https://salesforce.vidyard.com/watch/TAHyStu6wePV2ZZ98WQCoz", category: "Démonstrations & Vidéos" },
       { title: "Main Keynote — Agentforce World Tour NY (YouTube)", url: "https://www.youtube.com/live/tB53TdyLqQk", category: "Démonstrations & Vidéos" },
