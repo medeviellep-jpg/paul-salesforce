@@ -33,7 +33,8 @@
       "mcp__slack__slack_read_user_profile",
       "mcp__plugin_google-workspace_vmcp-google-workspace__get_doc_as_markdown",
       "mcp__slack__slack_read_file",
-      "mcp__plugin_google-workspace_vmcp-google-workspace__get_drive_file_content"
+      "mcp__plugin_google-workspace_vmcp-google-workspace__get_drive_file_content",
+      "Bash(python3 -c \"import sys; s=sys.stdin.read\\(\\); print\\(repr\\(s[-200:]\\)\\)\")"
     ]
   }
 }

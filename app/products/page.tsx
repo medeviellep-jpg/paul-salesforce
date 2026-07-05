@@ -852,63 +852,114 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
         <div className="card-dark rounded-xl p-8 mb-12">
           <h3 className="text-white font-bold text-xl mb-2">🎯 Prochaines étapes</h3>
           <p className="text-white/50 text-sm mb-6">Actions prioritaires par produit pour vos comptes</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { id: 'coworker', emoji: '📅', action: 'Webinar — 8 juillet 2026', sub: 'Invitez vos clients A4X et A1E — 30 min, 100% valeur', accent: { border: 'border-purple-500/25', bg: 'bg-purple-500/[0.07]', label: 'text-purple-300' } },
-              { id: 'afo', emoji: '📅', action: 'Visite Courtney Levin', sub: '15 & 16 juillet — Top 12 comptes France', accent: { border: 'border-green-500/25', bg: 'bg-green-500/[0.07]', label: 'text-green-300' } , industries: [{ icon: '🏭', label: 'Industrie' }, { icon: '🏦', label: 'Fin. Services' }, { icon: '🛒', label: 'Retail' }, { icon: '💊', label: 'Life Sciences' }, { icon: '⚡', label: 'Energie' }, { icon: '🏗️', label: 'Construction' }] },
-              { id: 'momentum', emoji: '📞', action: 'Rapprochez-vous de votre AE', sub: 'Priorisez vos comptes A4S et A1E éligibles', accent: { border: 'border-blue-500/25', bg: 'bg-blue-500/[0.07]', label: 'text-blue-300' } },
-              { id: 'voice', emoji: '🎙️', action: 'Démo live disponible', sub: '+1 617 313-7968 — Expérience vocale française', accent: { border: 'border-rose-500/25', bg: 'bg-rose-500/[0.07]', label: 'text-rose-300' } },
-              { id: 'qualified', emoji: '🎯', action: 'Ciblez vos comptes BtoB', sub: 'Fort trafic web + motion ABM — Avatar Piper', accent: { border: 'border-orange-500/25', bg: 'bg-orange-500/[0.07]', label: 'text-orange-300' } },
-            ].map(item => {
-              const prod = products.find(p => p.id === item.id)!
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => onSelectProduct(item.id)}
-                  className={`rounded-xl p-5 border ${item.accent.border} ${item.accent.bg} text-left hover:scale-[1.01] hover:brightness-110 transition-all duration-200 group`}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            {/* CoWorker — inchangé */}
+            <button
+              onClick={() => onSelectProduct('coworker')}
+              className="rounded-xl p-5 border border-purple-500/25 bg-purple-500/[0.07] text-left hover:scale-[1.01] hover:brightness-110 transition-all duration-200"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${products.find(p => p.id === 'coworker')!.color} flex items-center justify-center flex-shrink-0`}>
+                  {products.find(p => p.id === 'coworker')!.icon}
+                </div>
+                <p className="text-purple-300 font-semibold text-xs uppercase tracking-wider">Agentforce CoWorker</p>
+              </div>
+              <p className="text-white font-medium text-sm">📅 Webinar — 8 juillet 2026</p>
+              <p className="text-white/50 text-xs mt-1 leading-relaxed">Invitez vos clients A4X et A1E — 30 min, 100% valeur</p>
+              <div className="flex gap-2 mt-3">
+                <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
+                  <p className="text-white font-bold text-lg leading-none">260</p>
+                  <p className="text-white/50 text-xs mt-1">inscrits webinar</p>
+                </div>
+                <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
+                  <p className="text-white font-bold text-lg leading-none">38<span className="text-white/40 text-sm font-normal">/100</span></p>
+                  <p className="text-white/50 text-xs mt-1">activations clients</p>
+                </div>
+              </div>
+              <p className="mt-3 text-xs font-medium text-purple-300 flex items-center gap-1">Voir le détail <ArrowRight className="w-3 h-3" /></p>
+            </button>
+
+            {/* AFO — visite Courtney + comptes par industrie */}
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => onSelectProduct('afo')}
+              onKeyDown={e => e.key === 'Enter' && onSelectProduct('afo')}
+              className="rounded-xl p-5 border border-green-500/25 bg-green-500/[0.07] text-left hover:scale-[1.01] hover:brightness-110 transition-all duration-200 cursor-pointer"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${products.find(p => p.id === 'afo')!.color} flex items-center justify-center flex-shrink-0`}>
+                  {products.find(p => p.id === 'afo')!.icon}
+                </div>
+                <p className="text-green-300 font-semibold text-xs uppercase tracking-wider">Agentforce Operations</p>
+              </div>
+              <p className="text-white font-medium text-sm">📅 Visite Courtney Levin</p>
+              <p className="text-white/50 text-xs mt-1 leading-relaxed">15 &amp; 16 juillet — Top 12 comptes France</p>
+              <div className="mt-3 space-y-2.5">
+                <a
+                  href="https://www.linkedin.com/in/courtneylevin/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={e => e.stopPropagation()}
+                  className="flex items-center gap-2 w-fit group/li"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${prod.color} flex items-center justify-center flex-shrink-0`}>
-                      {prod.icon}
-                    </div>
-                    <p className={`${item.accent.label} font-semibold text-xs uppercase tracking-wider`}>{prod.name}</p>
+                  <div className="w-6 h-6 rounded bg-[#0A66C2]/20 border border-[#0A66C2]/40 flex items-center justify-center flex-shrink-0">
+                    <Link2 className="w-3 h-3 text-[#0A66C2]" />
                   </div>
-                  <p className="text-white font-medium text-sm">{item.emoji} {item.action}</p>
-                  <p className="text-white/50 text-xs mt-1 leading-relaxed">{item.sub}</p>
-                  {item.id === 'coworker' && (
-                    <div className="flex gap-2 mt-3">
-                      <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
-                        <p className="text-white font-bold text-lg leading-none">260</p>
-                        <p className="text-white/50 text-xs mt-1">inscrits webinar</p>
-                      </div>
-                      <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
-                        <p className="text-white font-bold text-lg leading-none">38<span className="text-white/40 text-sm font-normal">/100</span></p>
-                        <p className="text-white/50 text-xs mt-1">activations clients</p>
-                      </div>
+                  <span className="text-white/50 text-xs underline group-hover/li:text-[#0A66C2] transition-colors">Courtney Levin, VP AFO — LinkedIn</span>
+                </a>
+                <p className="text-white/40 text-[10px] uppercase tracking-wider">Comptes focus par industrie</p>
+                <div className="space-y-1.5">
+                  {[
+                    { icon: '🚄', label: 'Accelerated',   accounts: 'EDF, CMA CGM, Sodexo' },
+                    { icon: '🏦', label: 'Regulated',      accounts: 'Société Générale, Sofinco' },
+                    { icon: '🛍️', label: 'Retail / CG',  accounts: "Carrefour, LVMH, L'Oréal" },
+                    { icon: '🏭', label: 'Manufacturing',  accounts: 'Safran, Saint-Gobain, Schneider Electric, Renault' },
+                  ].map(ind => (
+                    <div key={ind.label} className="flex items-baseline gap-2 text-xs">
+                      <span>{ind.icon}</span>
+                      <span className="text-green-300 font-medium w-24 shrink-0">{ind.label}</span>
+                      <span className="text-white/50">{ind.accounts}</span>
                     </div>
-                  )}
-                  {item.id === 'afo' && (
-                    <div className="mt-3 space-y-2">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-full bg-green-500/20 border border-green-500/40 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                          <img src="/courtney-levin.jpg" alt="Courtney Levin" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display='none'; (e.target as HTMLImageElement).parentElement!.innerHTML='<span class=\"text-green-300 text-[10px] font-bold\">CL</span>'; }} />
-                        </div>
-                        <p className="text-white/60 text-xs">Courtney Levin, VP AFO — visite terrain</p>
-                      </div>
-                      <p className="text-white/40 text-[10px] uppercase tracking-wider">Comptes focus par industrie</p>
-                      <div className="grid grid-cols-3 gap-1">
-                        {('industries' in item ? (item as { industries: {icon: string; label: string}[] }).industries : []).map(ind => (
-                          <div key={ind.label} className="rounded-lg bg-green-500/10 px-2 py-1.5 text-center">
-                            <p className="text-green-300 text-[11px] font-medium">{ind.icon} {ind.label}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  <p className={`mt-3 text-xs font-medium ${item.accent.label} flex items-center gap-1`}>Voir le détail <ArrowRight className="w-3 h-3" /></p>
-                </button>
-              )
-            })}
+                  ))}
+                </div>
+              </div>
+              <p className="mt-3 text-xs font-medium text-green-300 flex items-center gap-1">Voir le détail <ArrowRight className="w-3 h-3" /></p>
+            </div>
+
+            {/* Momentum + Qualified */}
+            <div className="rounded-xl p-5 border border-blue-500/25 bg-blue-500/[0.07]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex -space-x-2">
+                  {['momentum', 'qualified'].map(pid => { const p = products.find(pr => pr.id === pid)!; return (<div key={pid} className={`w-9 h-9 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center border-2 border-[#0D1117]`}>{p.icon}</div>) })}
+                </div>
+                <p className="text-blue-300 font-semibold text-xs uppercase tracking-wider">Momentum &amp; Qualified</p>
+              </div>
+              <p className="text-white font-medium text-sm">📞 Activez vos comptes prioritaires</p>
+              <p className="text-white/60 text-sm mt-2 leading-relaxed">Rapprochez vous de vos AEs Specialist Agentforce, Service et Digital pour prioriser les comptes</p>
+              <div className="flex gap-2 mt-3">
+                <button onClick={() => onSelectProduct('momentum')} className="text-xs px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium flex items-center gap-1">Momentum <ArrowRight className="w-3 h-3" /></button>
+                <button onClick={() => onSelectProduct('qualified')} className="text-xs px-3 py-1.5 rounded-lg bg-orange-500/20 text-orange-300 hover:bg-orange-500/30 transition-colors font-medium flex items-center gap-1">Qualified <ArrowRight className="w-3 h-3" /></button>
+              </div>
+            </div>
+
+            {/* Help Agent + Agentforce Voice */}
+            <div className="rounded-xl p-5 border border-teal-500/25 bg-teal-500/[0.07]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="flex -space-x-2">
+                  {['help-agent', 'voice'].map(pid => { const p = products.find(pr => pr.id === pid)!; return (<div key={pid} className={`w-9 h-9 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center border-2 border-[#0D1117]`}>{p.icon}</div>) })}
+                </div>
+                <p className="text-teal-300 font-semibold text-xs uppercase tracking-wider">Help Agent &amp; Agentforce Voice</p>
+              </div>
+              <p className="text-white font-medium text-sm">🔜 Programmes à venir en Q3</p>
+              <p className="text-white/60 text-sm mt-2 leading-relaxed">Restez à l&apos;écoute des annonces — programmes en cours de finalisation</p>
+              <div className="flex gap-2 mt-3">
+                <button onClick={() => onSelectProduct('help-agent')} className="text-xs px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium flex items-center gap-1">Help Agent <ArrowRight className="w-3 h-3" /></button>
+                <button onClick={() => onSelectProduct('voice')} className="text-xs px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-medium flex items-center gap-1">Agentforce Voice <ArrowRight className="w-3 h-3" /></button>
+              </div>
+            </div>
+
           </div>
         </div>
 
