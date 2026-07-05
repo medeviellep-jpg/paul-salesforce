@@ -756,11 +756,21 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
             <div className="rounded-xl border border-teal-500/20 bg-teal-500/[0.06] p-5 space-y-3">
               <p className="text-teal-300 font-semibold text-sm uppercase tracking-wider">Customer Facing</p>
               <p className="text-sm text-white/70 leading-relaxed">Help Agent est l&apos;agent de service autonome qui se déploie rapidement sur votre site pour traiter les requêtes de vos clients tandis que Qualified qualifie l&apos;ensemble des prospects B2B en proposant une expérience originale via son Avatar Poper. Pour des expériences riches, vos clients et prospects peuvent également interagir avec Agentforce Voice sur tous les canaux&nbsp;: téléphone, web, mobile et WhatsApp</p>
+              <div className="flex flex-wrap gap-2 pt-1">
+                <button onClick={() => onSelectProduct('help-agent')} className="text-xs px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium">Help Agent</button>
+                <button onClick={() => onSelectProduct('qualified')} className="text-xs px-3 py-1.5 rounded-lg bg-orange-500/20 text-orange-300 hover:bg-orange-500/30 transition-colors font-medium">Qualified</button>
+                <button onClick={() => onSelectProduct('voice')} className="text-xs px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-medium">Agentforce Voice</button>
+              </div>
             </div>
 
             <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.06] p-5 space-y-3">
               <p className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Employee Facing</p>
               <p className="text-sm text-white/70 leading-relaxed">Alors que CoWorker agit comme la porte d&apos;entrée de l&apos;IA Agentique dans l&apos;entreprise, véritable Super Agent orchestrateur qui recherche des informations mais exécute également des tâches complexes et appelle des Agents IA spécialisés pour assister vos collaborateurs où ils travaillent, Momentum lui, capture toutes les conversations et données non structurées des calls, visio, emails et SMS pour venir enrichir Salesforce et donner un terrain fertile à vos Agents IA mais aussi coacher vos collaborateurs. Agentforce Operations enfin va au-delà du terrain de jeu habituel de Salesforce en digitalisant des processus back-office complexes de supply chain, procurement, finance pour définir le meilleur process qui sera exécuté par des Agents IA et des humains...</p>
+              <div className="flex flex-wrap gap-2 pt-1">
+                <button onClick={() => onSelectProduct('coworker')} className="text-xs px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-colors font-medium">CoWorker</button>
+                <button onClick={() => onSelectProduct('momentum')} className="text-xs px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium">Momentum</button>
+                <button onClick={() => onSelectProduct('afo')} className="text-xs px-3 py-1.5 rounded-lg bg-green-500/20 text-green-300 hover:bg-green-500/30 transition-colors font-medium">Agentforce Operations</button>
+              </div>
             </div>
 
             <p className="text-white/70 text-sm leading-relaxed">
