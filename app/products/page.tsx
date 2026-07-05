@@ -637,6 +637,15 @@ const execSummaryPoints: Record<string, string[]> = {
   ],
 }
 
+const productAccents: Record<string, { border: string; bg: string; label: string; dot: string }> = {
+  coworker:     { border: 'border-purple-500/25', bg: 'bg-purple-500/[0.07]', label: 'text-purple-300', dot: 'bg-purple-400/50' },
+  momentum:     { border: 'border-blue-500/25',   bg: 'bg-blue-500/[0.07]',   label: 'text-blue-300',   dot: 'bg-blue-400/50'   },
+  'help-agent': { border: 'border-teal-500/25',   bg: 'bg-teal-500/[0.07]',   label: 'text-teal-300',   dot: 'bg-teal-400/50'   },
+  afo:          { border: 'border-green-500/25',  bg: 'bg-green-500/[0.07]',  label: 'text-green-300',  dot: 'bg-green-400/50'  },
+  qualified:    { border: 'border-orange-500/25', bg: 'bg-orange-500/[0.07]', label: 'text-orange-300', dot: 'bg-orange-400/50' },
+  voice:        { border: 'border-rose-500/25',   bg: 'bg-rose-500/[0.07]',   label: 'text-rose-300',   dot: 'bg-rose-400/50'   },
+}
+
 function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; onSelectProduct: (id: string) => void }) {
   const [currentProductIndex, setCurrentProductIndex] = useState(0)
   const productsWithPoints = products.filter(p => execSummaryPoints[p.id])
@@ -716,16 +725,22 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                   </div>
                 </div>
 
-                <div className="card-dark rounded-xl p-5 w-full max-w-lg -mt-8 relative z-10">
-                  <ul className="space-y-2">
-                    {points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-white/70">
-                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-white/30 flex-shrink-0" />
-                        <span className="leading-relaxed">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {(() => {
+                  const accent = productAccents[current.id] ?? { border: 'border-white/10', bg: 'bg-white/[0.04]', label: 'text-white/50', dot: 'bg-white/30' }
+                  return (
+                    <div className={`rounded-xl p-6 w-full border ${accent.border} ${accent.bg} mt-6`}>
+                      <p className={`${accent.label} font-semibold text-xs uppercase tracking-wider mb-4`}>{current.name}</p>
+                      <ul className="space-y-3">
+                        {points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-3 text-sm text-white/80">
+                            <span className={`mt-2 w-1.5 h-1.5 rounded-full ${accent.dot} flex-shrink-0`} />
+                            <span className="leading-relaxed">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
+                })()}
               </div>
             )
           })()}
