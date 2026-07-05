@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import { Mic, MicOff, ChevronRight, ChevronDown, Sparkles, Target, Users, DollarSign, HelpCircle, Megaphone, Zap, Building2, Phone, Globe, BarChart3, ExternalLink, LayoutDashboard, ArrowRight, AudioLines, Presentation, Play, Link2, FileText, MessageSquare, Video } from 'lucide-react'
+import { ChevronRight, ChevronDown, Sparkles, Target, Users, DollarSign, HelpCircle, Megaphone, Zap, Building2, Phone, Globe, BarChart3, ExternalLink, LayoutDashboard, ArrowRight, AudioLines, Presentation, Play, Link2, FileText, MessageSquare, Video } from 'lucide-react'
 import { AskAgentforceChat } from '@/app/components/AskAgentforceChat'
 
 type Resource = {
@@ -74,7 +74,7 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/05/Plan.png?w=900", alt: "Plan & Act — déclenchement de flows et agents autonomes" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/05/Coworker-2-Available-everywhere.png?w=980", alt: "Disponible partout — Salesforce, Slack, Teams, Mobile" }
     ],
-    convictionsFrance: (<>CoWorker est un play tactique puissant au-delà du CRM conversationnel :<br/><br/>1️⃣ <strong>Accélérateur de cycle de vente</strong> — Activer CoWorker pour rassurer sur notre techno et éviter un pilote/POC à rallonge avant de signer un AELA. Exemple : T&S (CMRCL), on réduit le cycle de vente en activant CoWorker une semaine plutôt que x mois de pilote at risk.<br/><br/>2️⃣ <strong>Accélérateur d'Adoption et de Change</strong> — Positionner CoWorker en Super Agent Orchestrateur de sous-agents spécialisés. On commence rapidement, super simple à utiliser, chaque nouveau use case enrichit CoWorker sans complexifier l'usage. Exemple : Atos / Bureau Veritas → "pas besoin de training, activons-le de suite."<br/><br/>3️⃣ <strong>Accélérateur de Consommation (Flex) et de valeur (A4X)</strong> — Tous les clients avec des grosses allocations doivent montrer qu'ils n'ont pas acheté pour rien. Exemple : Atos, CIO → "activons-le de suite pour mes sellers, on va enfin montrer qu'on avance sans attendre la fin du projet sur les 5 agents spés."</>),
+    convictionsFrance: (<>CoWorker c'est un &ldquo;Play tactique&rdquo; si on se cantonne de penser au play &ldquo;CRM conversationnel&rdquo; mais le vrai impact est ailleurs :<br/><br/>1️⃣ <strong>Accélérateur de cycle de vente</strong> — Activer CoWorker pour rassurer sur notre techno et éviter un pilote/POC à rallonge avant de signer un AELA. Exemple : T&S (CMRCL), on réduit le cycle de vente en activant CoWorker une semaine plutôt que x mois de pilote at risk.<br/><br/>2️⃣ <strong>Accélérateur d'Adoption et de Change</strong> — Positionner CoWorker en Super Agent Orchestrateur de sous-agents spécialisés. On commence rapidement, super simple à utiliser, chaque nouveau use case enrichit CoWorker sans complexifier l'usage. Exemple : Atos / Bureau Veritas → "pas besoin de training, activons-le de suite."<br/><br/>3️⃣ <strong>Accélérateur de Consommation (Flex) et de valeur (A4X)</strong> — Tous les clients avec des grosses allocations doivent montrer qu'ils n'ont pas acheté pour rien. Exemple : Atos, CIO → "activons-le de suite pour mes sellers, on va enfin montrer qu'on avance sans attendre la fin du projet sur les 5 agents spés."</>),
     ressources: [
       { title: "First Call Deck / Pitch Deck (GSlides)", url: "https://docs.google.com/presentation/d/1yTs6djUG9LgBLrfmMy1g0zAM8V4ArK6vwsGAPMvHTIQ/edit", category: "First Call Deck" },
       { title: "Internal FAQs (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B2RMADLP3", category: "FAQ & Knowledge" },
@@ -415,71 +415,6 @@ const products: Product[] = [
   }
 ]
 
-function VoiceControl({ onCommand }: { onCommand: (text: string) => void }) {
-  const [isListening, setIsListening] = useState(false)
-  const [transcript, setTranscript] = useState('')
-  const [mounted, setMounted] = useState(false)
-  const [supported, setSupported] = useState(false)
-  const recognitionRef = useRef<any>(null)
-
-  useEffect(() => {
-    setMounted(true)
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
-    if (!SpeechRecognition) return
-    setSupported(true)
-
-    const recognition = new SpeechRecognition()
-    recognition.continuous = false
-    recognition.interimResults = true
-    recognition.lang = 'fr-FR'
-
-    recognition.onresult = (event: any) => {
-      const result = event.results[event.results.length - 1]
-      const text = result[0].transcript
-      setTranscript(text)
-      if (result.isFinal) {
-        onCommand(text)
-        setTranscript('')
-      }
-    }
-
-    recognition.onend = () => setIsListening(false)
-    recognition.onerror = () => setIsListening(false)
-
-    recognitionRef.current = recognition
-  }, [onCommand])
-
-  const toggle = () => {
-    if (!recognitionRef.current) return
-    if (isListening) {
-      recognitionRef.current.stop()
-    } else {
-      recognitionRef.current.start()
-      setIsListening(true)
-    }
-  }
-
-  if (!mounted || !supported) return null
-
-  return (
-    <div className="flex items-center gap-3">
-      <button
-        onClick={toggle}
-        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
-          isListening
-            ? 'bg-red-500 text-white animate-pulse'
-            : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
-        }`}
-      >
-        {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-        {isListening ? 'Arrêter' : 'Commande vocale'}
-      </button>
-      {transcript && (
-        <span className="text-sm text-white/60 italic">&ldquo;{transcript}&rdquo;</span>
-      )}
-    </div>
-  )
-}
 
 function Section({ title, icon, children, defaultOpen = false }: { title: string; icon: React.ReactNode; children: React.ReactNode; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen)
@@ -504,7 +439,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct, onAskAgentforce }: { onEnt
       <header className="glass px-6 py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce</h1>
+            <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
             <p className="text-white/50 text-sm mt-1">Meeting Managers — Juillet 2026</p>
           </div>
           <button
@@ -635,22 +570,6 @@ export default function ProductsPage() {
   const [chatOpen, setChatOpen] = useState(false)
   const product = products.find(p => p.id === activeProduct)!
 
-  const handleVoiceCommand = (text: string) => {
-    const lower = text.toLowerCase()
-    const productMap: Record<string, string> = {
-      'coworker': 'coworker', 'co-worker': 'coworker', 'co worker': 'coworker',
-      'help': 'help-agent', 'help agent': 'help-agent',
-      'momentum': 'momentum',
-      'operations': 'afo', 'opérations': 'afo', 'afo': 'afo',
-      'voice': 'voice', 'voix': 'voice', 'vocal': 'voice'
-    }
-    for (const [keyword, id] of Object.entries(productMap)) {
-      if (lower.includes(keyword)) {
-        setActiveProduct(id)
-        return
-      }
-    }
-  }
 
   if (view === 'summary') {
     return (
@@ -670,12 +589,9 @@ export default function ProductsPage() {
               <LayoutDashboard className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce</h1>
+              <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
               <p className="text-white/50 text-sm mt-1">Présentation Interactive Managers</p>
             </div>
-          </div>
-          <div suppressHydrationWarning>
-            <VoiceControl onCommand={handleVoiceCommand} />
           </div>
         </div>
       </header>
