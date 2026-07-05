@@ -23,6 +23,7 @@ type Product = {
   faq: { question: string; reponse: string }[]
   visuels: { src: string; alt: string }[]
   convictionsFrance?: React.ReactNode
+  callToAction?: React.ReactNode
   ressources?: Resource[]
 }
 
@@ -74,6 +75,49 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/05/Coworker-2-Available-everywhere.png?w=980", alt: "Disponible partout — Salesforce, Slack, Teams, Mobile" }
     ],
     convictionsFrance: (<>CoWorker c'est un &ldquo;Play tactique&rdquo; si on se cantonne de penser au play &ldquo;CRM conversationnel&rdquo; mais le vrai impact est ailleurs :<br/><br/>1️⃣ <strong>Accélérateur de cycle de vente</strong> — Activer CoWorker pour rassurer sur notre techno et éviter un pilote/POC à rallonge avant de signer un AELA. Exemple : T&S (CMRCL), on réduit le cycle de vente en activant CoWorker une semaine plutôt que x mois de pilote at risk.<br/><br/>2️⃣ <strong>Accélérateur d'Adoption et de Change</strong> — Positionner CoWorker en Super Agent Orchestrateur de sous-agents spécialisés. On commence rapidement, super simple à utiliser, chaque nouveau use case enrichit CoWorker sans complexifier l'usage. Exemple : Atos / Bureau Veritas → "pas besoin de training, activons-le de suite."<br/><br/>3️⃣ <strong>Accélérateur de Consommation (Flex) et de valeur (A4X)</strong> — Tous les clients avec des grosses allocations doivent montrer qu'ils n'ont pas acheté pour rien. Exemple : Atos, CIO → "activons-le de suite pour mes sellers, on va enfin montrer qu'on avance sans attendre la fin du projet sur les 5 agents spés."</>),
+    callToAction: (
+      <div className="space-y-5">
+        <div className="rounded-xl bg-[#0176D3]/20 border border-[#1B96FF]/30 p-5">
+          <p className="text-[#58B0FF] font-bold text-lg">📅 Webinar — Mercredi 8 juillet 2026 | 11h00 – 11h30 (CEST)</p>
+          <p className="text-white/60 text-sm mt-1">⏱️ Format ultra-court : 30 minutes chrono, 100% valeur ajoutée</p>
+        </div>
+        <div className="grid md:grid-cols-2 gap-5">
+          <div>
+            <p className="font-semibold text-white mb-3">➡️ Pourquoi inviter vos clients ?</p>
+            <ul className="space-y-2 text-white/70 text-sm">
+              <li>⚡ S&apos;active en 20 minutes seulement</li>
+              <li>🔍 S&apos;intègre directement dans la barre de recherche Salesforce</li>
+              <li>🧠 Connaît les données CRM, opportunités et historiques clients</li>
+              <li>🔧 Prend des actions métier en langage naturel (brief client, mise à jour d&apos;opps, escalade...)</li>
+              <li>🎯 Joue le rôle de Super Agent pour orchestrer des agents spécialisés !</li>
+            </ul>
+          </div>
+          <div className="space-y-5">
+            <div>
+              <p className="font-semibold text-white mb-2">🎤 Speakers</p>
+              <ul className="space-y-1.5 text-white/70 text-sm">
+                <li>Paul Medevielle — RVP, Agentforce France</li>
+                <li>Chloé Rance — Cloud Account Executive</li>
+                <li>Pitch Chevalier — VP, Software Engineering (Team Produit CoWorker 🇫🇷)</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-white mb-2">👥 Qui inviter en priorité ?</p>
+              <p className="text-white/70 text-sm">✅ Clients ayant des licences Agentforce for Sales/Service, A1E ou Flex Credits — Co-Worker est déjà disponible pour eux !</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p className="font-semibold text-white mb-3">✉️ Comment faire ?</p>
+          <p className="text-white/70 text-sm mb-3">Un email d&apos;invitation clé en main est disponible, prêt à être envoyé à vos clients.</p>
+          <div className="flex flex-wrap gap-3">
+            <span className="inline-block px-4 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-white/50 text-sm">👉 Kit d&apos;invitation — à demander à votre AE</span>
+            <span className="inline-block px-4 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-white/50 text-sm">👉 Lien d&apos;inscription — à venir</span>
+            <span className="inline-block px-4 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-white/50 text-sm">📊 Suivi des inscrits — à venir</span>
+          </div>
+        </div>
+      </div>
+    ),
     ressources: [
       { title: "First Call Deck / Pitch Deck (GSlides)", url: "https://docs.google.com/presentation/d/1yTs6djUG9LgBLrfmMy1g0zAM8V4ArK6vwsGAPMvHTIQ/edit", category: "First Call Deck" },
       { title: "Internal FAQs (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0B2RMADLP3", category: "FAQ & Knowledge" },
@@ -141,7 +185,12 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/06/Deep-Research-1.webp?w=1024", alt: "Deep Research — dashboard sales et signaux IA" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2025/06/sales-overview-marquee-1.webp?w=800", alt: "Sales Cloud — auto-population CRM et pipeline" }
     ],
-    convictionsFrance: (<>Momentum c'est un peu le 🎵 TikTok du CRM — on capture les moments importants pour les partager en interne et mettre à jour le CRM en temps réel.<br/><br/>C'est notre nouvel outil de <strong>Conversation Intelligence</strong> qui capture automatiquement les calls, emails et SMS, structure la donnée et la réinjecte dans Salesforce, sans aucune action manuelle du rep. C'est la fondation data qui rend tous les types de Sales Agents vraiment efficaces.<br/><br/><strong>Pourquoi le mettre en avant ?</strong><br/>• Inclus dans Agentforce for Sales et Agentforce One Sales Edition — pas de conversation budget supplémentaire<br/>• Répond directement au blocage #1 : "notre data n'est pas prête pour l'IA" → Momentum règle ça out of the box<br/>• Play de consolidation vs. Gong / Clari / Salesloft — le budget existe déjà, on aide nos clients à mieux l'investir<br/><br/>✅ <strong>Comment le vendre — c'est simple</strong><br/>Quoter Agentforce for Sales et ajouter le QST Momentum → Momentum est inclus gratuitement. C'est tout.<br/><br/>🎤 <strong>Top features à démontrer</strong><br/>• <strong>Autopilot</strong> : écriture automatique des données structurées dans le CRM en temps réel<br/>• <strong>Smart Clips</strong> : extraits vidéo de 20 secondes postés directement dans Slack (hashtag TikTok)<br/>• <strong>Agentforce-ready</strong> : alimente les agents SDR, préparation de réunion, coaching, pipeline management et forecasting<br/><br/>📊 <strong>Preuves terrain</strong><br/>• Zscaler : 3 à 10h d'admin économisées par rep et par semaine<br/>• Ramp : ~30 000 champs CRM mis à jour automatiquement chaque semaine<br/><br/>🗓️ <strong>Roadmap</strong><br/>GA à Dreamforce — Momentum + A4S deviennent un seul produit intégré (call capture, deal inspection, coaching, forecasting, etc). On vend dès maintenant.<br/><br/>💰 <strong>Incentive seller</strong> : SPIFF jusqu'à 15 000$ sur les deals qualifiants</>),
+    convictionsFrance: (<>Momentum c&apos;est un peu le 🎵 TikTok du CRM — on capture les moments importants pour les partager en interne et mettre à jour le CRM en temps réel.<br/><br/>C'est notre nouvel outil de <strong>Conversation Intelligence</strong> qui capture automatiquement les calls, emails et SMS, structure la donnée et la réinjecte dans Salesforce, sans aucune action manuelle du rep. C'est la fondation data qui rend tous les types de Sales Agents vraiment efficaces.<br/><br/><strong>Pourquoi le mettre en avant ?</strong><br/>• Inclus dans Agentforce for Sales et Agentforce One Sales Edition — pas de conversation budget supplémentaire<br/>• Répond directement au blocage #1 : "notre data n'est pas prête pour l'IA" → Momentum règle ça out of the box<br/>• Play de consolidation vs. Gong / Clari / Salesloft — le budget existe déjà, on aide nos clients à mieux l'investir<br/><br/>✅ <strong>Comment le vendre — c'est simple</strong><br/>Quoter Agentforce for Sales et ajouter le QST Momentum → Momentum est inclus gratuitement. C'est tout.<br/><br/>🎤 <strong>Top features à démontrer</strong><br/>• <strong>Autopilot</strong> : écriture automatique des données structurées dans le CRM en temps réel<br/>• <strong>Smart Clips</strong> : extraits vidéo de 20 secondes postés directement dans Slack (hashtag TikTok)<br/>• <strong>Agentforce-ready</strong> : alimente les agents SDR, préparation de réunion, coaching, pipeline management et forecasting<br/><br/>📊 <strong>Preuves terrain</strong><br/>• Zscaler : 3 à 10h d'admin économisées par rep et par semaine<br/>• Ramp : ~30 000 champs CRM mis à jour automatiquement chaque semaine<br/><br/>🗓️ <strong>Roadmap</strong><br/>GA à Dreamforce — Momentum + A4S deviennent un seul produit intégré (call capture, deal inspection, coaching, forecasting, etc). On vend dès maintenant.<br/><br/>💰 <strong>Incentive seller</strong> : SPIFF jusqu'à 15 000$ sur les deals qualifiants</>),
+    callToAction: (
+      <div className="rounded-xl bg-white/[0.04] border border-white/[0.1] p-6">
+        <p className="text-white font-semibold text-lg">📞 Rapprochez vous de votre AE Agentforce pour prioriser les comptes à cibler !</p>
+      </div>
+    ),
     ressources: [
       { title: "Momentum Sales Play Deck (GSlides)", url: "https://docs.google.com/presentation/d/1xPoQWWdMNMtndvFi_IiKnlzcsUX76GR76CI8Z8KmZ7M/edit?slide=id.g3cb30e3fe93_0_1266#slide=id.g3cb30e3fe93_0_1266", category: "First Call Deck" },
       { title: "A4S + Momentum First Call Deck (GSlides)", url: "https://docs.google.com/presentation/d/1autdhwtvN-9PellsatIOFE6CuDFk8dLETOI75dEI5OE/edit?slide=id.g389ca30296e_0_1117#slide=id.g389ca30296e_0_1117", category: "First Call Deck" },
@@ -277,6 +326,60 @@ const products: Product[] = [
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/02/Blade-2.webp?w=975", alt: "Orchestration — agents spécialisés back-office en action" },
       { src: "https://wp.sfdcdigital.com/en-us/wp-content/uploads/sites/4/2026/02/Blade-3.webp?w=938", alt: "Dashboard — suivi des processus, taux de complétion, escalades" }
     ],
+    callToAction: (
+      <div className="space-y-5">
+        <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-5">
+          <p className="text-emerald-400 font-bold text-lg">📅 Visite Courtney Levin — 15 & 16 juillet 2026 | France</p>
+          <p className="text-white/60 text-sm mt-1">Opportunité unique de prendre des meetings avec vos Top Targeted Accounts sur Agentforce Operations (avec Sophie Gray &amp; Daniele Francis)</p>
+        </div>
+        <div>
+          <p className="font-semibold text-white mb-3">🎯 Sweet spots — Personas cibles</p>
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm font-medium">COO</span>
+            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm font-medium">VP / SVP Supply Chain ou Operations</span>
+            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm font-medium">Head of Digital / CDO</span>
+          </div>
+        </div>
+        <div>
+          <p className="font-semibold text-white mb-3">🏆 Top comptes (x8 P1 &amp; x4 P2)</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-blue-400 mb-3">🚄 ACCELERATED</p>
+              <ul className="space-y-1.5 text-sm">
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">EDF</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">CMA CGM</span></li>
+                <li className="flex items-center gap-2"><span className="text-white/30 text-xs">—</span><span className="text-white/70">Capgemini</span></li>
+              </ul>
+            </div>
+            <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-orange-400 mb-1">🏦 REGULATED</p>
+              <p className="text-white/30 text-xs mb-3 font-normal normal-case">on hold — Data Residency / RGPD</p>
+              <ul className="space-y-1.5 text-sm">
+                <li className="flex items-center gap-2"><span className="text-white/30 text-xs">—</span><span className="text-white/70">Société Générale</span></li>
+                <li className="flex items-center gap-2"><span className="text-white/30 text-xs">—</span><span className="text-white/70">Sofinco</span></li>
+              </ul>
+            </div>
+            <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-pink-400 mb-3">🛍️ RETAIL / CONSUMER GOODS</p>
+              <ul className="space-y-1.5 text-sm">
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Carrefour</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">LVMH</span></li>
+                <li className="flex items-center gap-2"><span className="text-blue-400 text-xs font-bold">P2</span><span className="text-white/70">L&apos;Oréal</span></li>
+              </ul>
+            </div>
+            <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
+              <p className="text-xs font-bold uppercase tracking-wider text-purple-400 mb-3">🏭 MANUFACTURING / ELITE</p>
+              <ul className="space-y-1.5 text-sm">
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Safran</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Saint-Gobain</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Schneider Electric</span></li>
+                <li className="flex items-center gap-2"><span className="text-blue-400 text-xs font-bold">P2</span><span className="text-white/70">Renault</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
     ressources: [
       { title: "FCD Supply Chain (GSlides)", url: "https://docs.google.com/presentation/d/1UXYCvYZYsiCjodY97fSodlJMKhM57Z7hYXE-dwbyrO4/edit?usp=sharing", category: "First Call Deck" },
       { title: "FCD Financial Services / FINS (GSlides)", url: "https://docs.google.com/presentation/d/1BjubIJkIHLZb2btLdEhGrZErXXqkOgfw14oHJ0-fazg/edit?usp=sharing", category: "First Call Deck" },
@@ -625,6 +728,12 @@ export default function ProductsPage() {
           </div>
         </div>
 
+        {product.callToAction && (
+          <Section title="🎯 Call to Action" icon={<ChevronRight className="w-5 h-5" />} defaultOpen={true}>
+            {product.callToAction}
+          </Section>
+        )}
+
         {product.ressources && product.ressources.length > 0 && (
           <Section title="📚 Ressources clés" icon={<Link2 className="w-5 h-5" />} defaultOpen={true}>
             <div className="space-y-5">
@@ -736,11 +845,6 @@ export default function ProductsPage() {
           </div>
         </Section>
 
-        <Section title="Call to Action" icon={<ChevronRight className="w-5 h-5" />}>
-          <div className="bg-white/[0.03] border border-dashed border-white/20 rounded-xl p-6 text-center text-white/40 italic">
-            À compléter par le présentateur
-          </div>
-        </Section>
       </main>
 
       <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-sm">
