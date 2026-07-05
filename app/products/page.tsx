@@ -77,6 +77,23 @@ const products: Product[] = [
     convictionsFrance: (<>CoWorker c'est un &ldquo;Play tactique&rdquo; si on se cantonne de penser au play &ldquo;CRM conversationnel&rdquo; mais le vrai impact est ailleurs :<br/><br/>1️⃣ <strong>Accélérateur de cycle de vente</strong> — Activer CoWorker pour rassurer sur notre techno et éviter un pilote/POC à rallonge avant de signer un AELA. Exemple : T&S (CMRCL), on réduit le cycle de vente en activant CoWorker une semaine plutôt que x mois de pilote at risk.<br/><br/>2️⃣ <strong>Accélérateur d'Adoption et de Change</strong> — Positionner CoWorker en Super Agent Orchestrateur de sous-agents spécialisés. On commence rapidement, super simple à utiliser, chaque nouveau use case enrichit CoWorker sans complexifier l'usage. Exemple : Atos / Bureau Veritas → "pas besoin de training, activons-le de suite."<br/><br/>3️⃣ <strong>Accélérateur de Consommation (Flex) et de valeur (A4X)</strong> — Tous les clients avec des grosses allocations doivent montrer qu'ils n'ont pas acheté pour rien. Exemple : Atos, CIO → "activons-le de suite pour mes sellers, on va enfin montrer qu'on avance sans attendre la fin du projet sur les 5 agents spés."</>),
     callToAction: (
       <div className="space-y-5">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="rounded-xl bg-[#0176D3]/20 border border-[#1B96FF]/30 p-5">
+            <p className="text-[#58B0FF] font-bold text-2xl">260</p>
+            <p className="text-white font-semibold text-sm mt-1">inscrits au webinar 🎉</p>
+            <p className="text-white/50 text-xs mt-1">Mercredi 8 juillet — objectif 500</p>
+          </div>
+          <div className="rounded-xl bg-purple-500/10 border border-purple-500/30 p-5">
+            <div className="flex items-end gap-2">
+              <p className="text-purple-300 font-bold text-2xl">38</p>
+              <p className="text-white/40 text-sm mb-1">/ 100</p>
+            </div>
+            <p className="text-white font-semibold text-sm mt-1">activations CoWorker clients</p>
+            <div className="mt-2 h-1.5 rounded-full bg-white/10 overflow-hidden">
+              <div className="h-full rounded-full bg-purple-400" style={{ width: '38%' }} />
+            </div>
+          </div>
+        </div>
         <div className="rounded-xl bg-[#0176D3]/20 border border-[#1B96FF]/30 p-5">
           <p className="text-[#58B0FF] font-bold text-lg">📅 Webinar — Mercredi 8 juillet 2026 | 11h00 – 11h30 (CEST)</p>
           <p className="text-white/60 text-sm mt-1">⏱️ Format ultra-court : 30 minutes chrono, 100% valeur ajoutée</p>
@@ -850,6 +867,18 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                   </div>
                   <p className="text-white font-medium text-sm">{item.emoji} {item.action}</p>
                   <p className="text-white/50 text-xs mt-1 leading-relaxed">{item.sub}</p>
+                  {item.id === 'coworker' && (
+                    <div className="flex gap-2 mt-3">
+                      <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
+                        <p className="text-white font-bold text-lg leading-none">260</p>
+                        <p className="text-white/50 text-xs mt-1">inscrits webinar</p>
+                      </div>
+                      <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
+                        <p className="text-white font-bold text-lg leading-none">38<span className="text-white/40 text-sm font-normal">/100</span></p>
+                        <p className="text-white/50 text-xs mt-1">activations clients</p>
+                      </div>
+                    </div>
+                  )}
                   <p className={`mt-3 text-xs font-medium ${item.accent.label} flex items-center gap-1`}>Voir le détail <ArrowRight className="w-3 h-3" /></p>
                 </button>
               )
@@ -948,13 +977,9 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        <div className={`bg-gradient-to-br ${product.color} rounded-2xl p-8 text-white shadow-xl relative overflow-hidden`}>
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="relative">
-            <h3 className="text-xl font-bold tracking-tight mb-3">🇫🇷 Nos convictions pour la France</h3>
-            <div className="text-white/80 leading-relaxed">{product.convictionsFrance || "Contenu à venir..."}</div>
-          </div>
-        </div>
+        <Section title="🇫🇷 Nos convictions pour la France" icon={<Target className="w-5 h-5" />} defaultOpen={true}>
+          <div className="text-white/80 leading-relaxed">{product.convictionsFrance || "Contenu à venir..."}</div>
+        </Section>
 
         {product.callToAction && (
           <Section title="🎯 Call to Action" icon={<ChevronRight className="w-5 h-5" />} defaultOpen={true}>
