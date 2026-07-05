@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import { ChevronRight, ChevronDown, Sparkles, Target, Users, DollarSign, HelpCircle, Megaphone, Zap, Building2, Phone, Globe, BarChart3, ExternalLink, LayoutDashboard, ArrowRight, AudioLines, Presentation, Play, Link2, FileText, MessageSquare, Video } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ChevronDown, Sparkles, Target, Users, DollarSign, HelpCircle, Megaphone, Zap, Building2, Phone, Globe, BarChart3, ExternalLink, LayoutDashboard, ArrowRight, AudioLines, Presentation, Play, Link2, FileText, MessageSquare, Video } from 'lucide-react'
 
 type Resource = {
   title: string
@@ -638,6 +638,8 @@ const execSummaryPoints: Record<string, string[]> = {
 }
 
 function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; onSelectProduct: (id: string) => void }) {
+  const [currentProductIndex, setCurrentProductIndex] = useState(0)
+  const productsWithPoints = products.filter(p => execSummaryPoints[p.id])
   return (
     <div className="min-h-screen bg-[#0D1117] flex flex-col">
       <header className="glass px-6 py-6">
@@ -655,28 +657,38 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           <p className="text-white/60 text-lg max-w-3xl">L'ère de l'entreprise agentique est là. Agentforce transforme chaque équipe avec des agents IA autonomes qui travaillent aux côtés de vos collaborateurs — 24/7, à grande échelle.</p>
         </div>
 
-        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
-          {products.map(p => (
-            <button key={p.id} onClick={() => onSelectProduct(p.id)} className="card-dark rounded-xl p-4 text-center hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-200 cursor-pointer border border-transparent hover:border-white/20">
-              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${p.color} flex items-center justify-center mx-auto mb-3`}>
-                {p.icon}
-              </div>
-              <p className="text-white text-sm font-medium">{p.name}</p>
-            </button>
-          ))}
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-          {products.map(p => {
+        <div className="mb-12">
+          {(() => {
+            const p = productsWithPoints[currentProductIndex]
             const points = execSummaryPoints[p.id]
-            if (!points) return null
+            const total = productsWithPoints.length
             return (
-              <div key={p.id} className="card-dark rounded-xl p-5 hover:bg-white/[0.06] transition-all duration-200">
+              <div className="card-dark rounded-xl p-5">
                 <div className="flex items-center gap-3 mb-4">
+                  <button
+                    onClick={() => setCurrentProductIndex((currentProductIndex - 1 + total) % total)}
+                    className="w-8 h-8 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors flex-shrink-0"
+                    aria-label="Produit précédent"
+                  >
+                    <ChevronLeft className="w-4 h-4 text-white/70" />
+                  </button>
                   <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${p.color} flex items-center justify-center flex-shrink-0`}>
                     {p.icon}
                   </div>
-                  <p className="text-white font-semibold">{p.name}</p>
+                  <button
+                    onClick={() => onSelectProduct(p.id)}
+                    className="text-white font-semibold hover:text-[#1B96FF] transition-colors text-left flex-1"
+                  >
+                    {p.name}
+                  </button>
+                  <span className="text-white/30 text-sm flex-shrink-0">{currentProductIndex + 1}/{total}</span>
+                  <button
+                    onClick={() => setCurrentProductIndex((currentProductIndex + 1) % total)}
+                    className="w-8 h-8 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] flex items-center justify-center transition-colors flex-shrink-0"
+                    aria-label="Produit suivant"
+                  >
+                    <ChevronRight className="w-4 h-4 text-white/70" />
+                  </button>
                 </div>
                 <ul className="space-y-2">
                   {points.map((point, i) => (
@@ -686,9 +698,19 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                     </li>
                   ))}
                 </ul>
+                <div className="flex justify-center gap-1.5 mt-4">
+                  {productsWithPoints.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentProductIndex(i)}
+                      className={`w-1.5 h-1.5 rounded-full transition-all ${i === currentProductIndex ? 'bg-white/70 w-4' : 'bg-white/20 hover:bg-white/40'}`}
+                      aria-label={`Aller au produit ${i + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             )
-          })}
+          })()}
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -736,43 +758,37 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
         </div>
 
         <div className="card-dark rounded-xl p-8 mb-12">
-          <h3 className="text-white font-bold text-xl mb-6">💬 Messages clés pour vos conversations</h3>
-          <div className="space-y-4">
-            <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">1</span>
-              <div>
-                <p className="text-white font-medium">🎁 Inclus dans vos licences existantes</p>
-                <p className="text-white/50 text-sm mt-1">CoWorker et Momentum sont inclus sans surcoût dans A4S et A1E. Pas de budget additionnel à aller chercher.</p>
-              </div>
+          <h3 className="text-white font-bold text-xl mb-6">🎯 Donner du sens à toutes ces annonces</h3>
+          <div className="space-y-6">
+            <p className="text-white/70 text-sm leading-relaxed">
+              Notre stratégie d&apos;acquisition et d&apos;innovation n&apos;a qu&apos;un seul objectif : mettre à disposition de nos clients la plateforme agentique la plus complète pour accélérer les déploiements en restant ancré dans le contexte salesforce, alignés aux règles de sécurité et de compliance de l&apos;entreprise, en respectant les droits et permissions de chacun nativement. Derrière chaque annonce, il y a une pièce du puzzle qui s&apos;assemble — et la bonne nouvelle, c&apos;est que cette fois le puzzle a du sens.
+            </p>
+
+            <div className="rounded-xl border border-teal-500/20 bg-teal-500/[0.06] p-5 space-y-3">
+              <p className="text-teal-300 font-semibold text-sm uppercase tracking-wider">Customer Facing</p>
+              <ul className="space-y-2 text-sm text-white/70">
+                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400/50 flex-shrink-0" /><span><strong className="text-white">Help Agent</strong> — le service client devient autonome, sans agents humains pour les cas simples</span></li>
+                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400/50 flex-shrink-0" /><span><strong className="text-white">Qualified</strong> — la qualification B2B devient proactive, pilotée par un avatar IA (Piper) 24/7</span></li>
+                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400/50 flex-shrink-0" /><span><strong className="text-white">Voice</strong> — la voix devient multicanal : téléphone, web, mobile, WhatsApp — un seul agent, construit une seule fois</span></li>
+              </ul>
             </div>
-            <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">2</span>
-              <div>
-                <p className="text-white font-medium">⏱️ Time-to-Value immédiat</p>
-                <p className="text-white/50 text-sm mt-1">CoWorker s&apos;active en 2 clics. Help Agent déployé en 30 jours. AFO opérationnel en heures. Pas de projet à 18 mois.</p>
-              </div>
+
+            <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.06] p-5 space-y-3">
+              <p className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Employee Facing</p>
+              <ul className="space-y-2 text-sm text-white/70">
+                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-purple-400/50 flex-shrink-0" /><span><strong className="text-white">Momentum</strong> — capture toutes les conversations et réinjecte la donnée structurée dans Salesforce automatiquement</span></li>
+                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-purple-400/50 flex-shrink-0" /><span><strong className="text-white">CoWorker</strong> — le Super Agent Orchestrateur qui délègue aux bons sous-agents spécialisés, inclus dans A4X et A1E</span></li>
+                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-purple-400/50 flex-shrink-0" /><span><strong className="text-white">Agentforce Operations</strong> — digitalise le back-office complexe : supply chain, procurement, finance — en heures, pas en mois</span></li>
+              </ul>
             </div>
-            <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">3</span>
-              <div>
-                <p className="text-white font-medium">🍽️ Customer Zero — on mange notre propre nourriture</p>
-                <p className="text-white/50 text-sm mt-1">CoWorker déployé pour 70K+ employés, Help Agent en prod sur notre ligne support. Preuve par l'usage à grande échelle.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">4</span>
-              <div>
-                <p className="text-white font-medium">💰 Remplace les outils tiers coûteux</p>
-                <p className="text-white/50 text-sm mt-1">Momentum remplace Gong ($100-150/user/mois). Voice remplace les IVR rigides. AFO remplace les BPM à 18 mois de setup.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">5</span>
-              <div>
-                <p className="text-white font-medium">🛡️ Confiance et sécurité natives</p>
-                <p className="text-white/50 text-sm mt-1">Trust Layer, garde-fous, pas d'hallucinations sur vos données. L'IA enterprise responsable, pas l'IA grand public.</p>
-              </div>
-            </div>
+
+            <p className="text-white/70 text-sm leading-relaxed">
+              L&apos;acquisition de FIN de son côté nous permet de proposer une alternative encore plus plug &amp; play pour le service client sur le marché SMB, nous donnant aussi accès à une base installée de plus de 30k entreprises et une technologie de conversation éprouvée qui vient renforcer notre stack agentique sur les cas d&apos;usage de support autonome à fort volume.
+            </p>
+
+            <blockquote className="border-l-2 border-[#1B96FF]/50 pl-4 text-white/60 text-sm italic leading-relaxed">
+              Tout a du sens, il suffit de faire une Pause dans la frénésie du quotidien pour le comprendre, et rassurer nos clients, et le marché !
+            </blockquote>
           </div>
         </div>
 
