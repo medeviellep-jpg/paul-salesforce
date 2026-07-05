@@ -746,50 +746,6 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           })()}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
-            <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
-              <Sparkles className="w-5 h-5 text-purple-400" />
-            </div>
-            <h3 className="text-white font-semibold text-lg mb-2">⚡ Productivité augmentée</h3>
-            <p className="text-white/60 text-sm leading-relaxed mb-3">CoWorker comme coéquipier IA, Momentum pour l'intelligence conversationnelle — chaque commercial et manager gagne des heures chaque jour.</p>
-            <div className="flex flex-wrap gap-2">
-              <button onClick={() => onSelectProduct('coworker')} className="text-xs px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-colors font-medium">CoWorker</button>
-              <button onClick={() => onSelectProduct('momentum')} className="text-xs px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-colors font-medium">Momentum</button>
-            </div>
-          </div>
-          <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
-            <div className="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center mb-4">
-              <Phone className="w-5 h-5 text-teal-400" />
-            </div>
-            <h3 className="text-white font-semibold text-lg mb-2">🎧 Service client IA</h3>
-            <p className="text-white/60 text-sm leading-relaxed mb-3">Help Agent résout les problèmes clients par la voix 24/7 — déployé en 30 jours sur notre propre ligne support. Customer Zero à grande échelle.</p>
-            <div className="flex flex-wrap gap-2">
-              <button onClick={() => onSelectProduct('help-agent')} className="text-xs px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium">Help Agent</button>
-            </div>
-          </div>
-          <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
-            <div className="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center mb-4">
-              <AudioLines className="w-5 h-5 text-rose-400" />
-            </div>
-            <h3 className="text-white font-semibold text-lg mb-2">🗣️ Voix & Téléphonie IA</h3>
-            <p className="text-white/60 text-sm leading-relaxed mb-3">Agentforce Voice remplace les IVR rigides par des agents vocaux naturels — téléphone, web, WhatsApp — depuis un seul agent.</p>
-            <div className="flex flex-wrap gap-2">
-              <button onClick={() => onSelectProduct('voice')} className="text-xs px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-medium">Agentforce Voice</button>
-            </div>
-          </div>
-          <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
-            <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
-              <Building2 className="w-5 h-5 text-green-400" />
-            </div>
-            <h3 className="text-white font-semibold text-lg mb-2">🏭 Opérations transformées</h3>
-            <p className="text-white/60 text-sm leading-relaxed mb-3">Agentforce Operations digitalise le back-office en heures au lieu de mois. 50-70% de réduction des temps de cycle.</p>
-            <div className="flex flex-wrap gap-2">
-              <button onClick={() => onSelectProduct('afo')} className="text-xs px-3 py-1.5 rounded-lg bg-green-500/20 text-green-300 hover:bg-green-500/30 transition-colors font-medium">AF Operations</button>
-            </div>
-          </div>
-        </div>
-
         <div className="card-dark rounded-xl p-8 mb-12">
           <h3 className="text-white font-bold text-xl mb-6">🎯 Donner du sens à toutes ces annonces</h3>
           <div className="space-y-6">
@@ -799,20 +755,12 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 
             <div className="rounded-xl border border-teal-500/20 bg-teal-500/[0.06] p-5 space-y-3">
               <p className="text-teal-300 font-semibold text-sm uppercase tracking-wider">Customer Facing</p>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400/50 flex-shrink-0" /><span><strong className="text-white">Help Agent</strong> — le service client devient autonome, sans agents humains pour les cas simples</span></li>
-                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400/50 flex-shrink-0" /><span><strong className="text-white">Qualified</strong> — la qualification B2B devient proactive, pilotée par un avatar IA (Piper) 24/7</span></li>
-                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-teal-400/50 flex-shrink-0" /><span><strong className="text-white">Voice</strong> — la voix devient multicanal : téléphone, web, mobile, WhatsApp — un seul agent, construit une seule fois</span></li>
-              </ul>
+              <p className="text-sm text-white/70 leading-relaxed">Help Agent est l&apos;agent de service autonome qui se déploie rapidement sur votre site pour traiter les requêtes de vos clients tandis que Qualified qualifie l&apos;ensemble des prospects B2B en proposant une expérience originale via son Avatar Poper. Pour des expériences riches, vos clients et prospects peuvent également interagir avec Agentforce Voice sur tous les canaux&nbsp;: téléphone, web, mobile et WhatsApp</p>
             </div>
 
             <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.06] p-5 space-y-3">
               <p className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Employee Facing</p>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-purple-400/50 flex-shrink-0" /><span><strong className="text-white">Momentum</strong> — capture toutes les conversations et réinjecte la donnée structurée dans Salesforce automatiquement</span></li>
-                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-purple-400/50 flex-shrink-0" /><span><strong className="text-white">CoWorker</strong> — le Super Agent Orchestrateur qui délègue aux bons sous-agents spécialisés, inclus dans A4X et A1E</span></li>
-                <li className="flex items-start gap-2"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-purple-400/50 flex-shrink-0" /><span><strong className="text-white">Agentforce Operations</strong> — digitalise le back-office complexe : supply chain, procurement, finance — en heures, pas en mois</span></li>
-              </ul>
+              <p className="text-sm text-white/70 leading-relaxed">Alors que CoWorker agit comme la porte d&apos;entrée de l&apos;IA Agentique dans l&apos;entreprise, véritable Super Agent orchestrateur qui recherche des informations mais exécute également des tâches complexes et appelle des Agents IA spécialisés pour assister vos collaborateurs où ils travaillent, Momentum lui, capture toutes les conversations et données non structurées des calls, visio, emails et SMS pour venir enrichir Salesforce et donner un terrain fertile à vos Agents IA mais aussi coacher vos collaborateurs. Agentforce Operations enfin va au-delà du terrain de jeu habituel de Salesforce en digitalisant des processus back-office complexes de supply chain, procurement, finance pour définir le meilleur process qui sera exécuté par des Agents IA et des humains...</p>
             </div>
 
             <p className="text-white/70 text-sm leading-relaxed">
@@ -863,6 +811,39 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 <p className="text-white/50 text-sm mt-1">Trust Layer, garde-fous, pas d&apos;hallucinations sur vos données. L&apos;IA enterprise responsable, pas l&apos;IA grand public.</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="card-dark rounded-xl p-8 mb-12">
+          <h3 className="text-white font-bold text-xl mb-2">🎯 Prochaines étapes</h3>
+          <p className="text-white/50 text-sm mb-6">Actions prioritaires par produit pour vos comptes</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { id: 'coworker', emoji: '📅', action: 'Webinar — 8 juillet 2026', sub: 'Invitez vos clients A4X et A1E — 30 min, 100% valeur', accent: { border: 'border-purple-500/25', bg: 'bg-purple-500/[0.07]', label: 'text-purple-300' } },
+              { id: 'afo', emoji: '📅', action: 'Visite Courtney Levin', sub: '15 & 16 juillet — Top 12 comptes France', accent: { border: 'border-green-500/25', bg: 'bg-green-500/[0.07]', label: 'text-green-300' } },
+              { id: 'momentum', emoji: '📞', action: 'Rapprochez-vous de votre AE', sub: 'Priorisez vos comptes A4S et A1E éligibles', accent: { border: 'border-blue-500/25', bg: 'bg-blue-500/[0.07]', label: 'text-blue-300' } },
+              { id: 'voice', emoji: '🎙️', action: 'Démo live disponible', sub: '+1 617 313-7968 — Expérience vocale française', accent: { border: 'border-rose-500/25', bg: 'bg-rose-500/[0.07]', label: 'text-rose-300' } },
+              { id: 'qualified', emoji: '🎯', action: 'Ciblez vos comptes BtoB', sub: 'Fort trafic web + motion ABM — Avatar Piper', accent: { border: 'border-orange-500/25', bg: 'bg-orange-500/[0.07]', label: 'text-orange-300' } },
+            ].map(item => {
+              const prod = products.find(p => p.id === item.id)!
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => onSelectProduct(item.id)}
+                  className={`rounded-xl p-5 border ${item.accent.border} ${item.accent.bg} text-left hover:scale-[1.01] hover:brightness-110 transition-all duration-200 group`}
+                >
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${prod.color} flex items-center justify-center flex-shrink-0`}>
+                      {prod.icon}
+                    </div>
+                    <p className={`${item.accent.label} font-semibold text-xs uppercase tracking-wider`}>{prod.name}</p>
+                  </div>
+                  <p className="text-white font-medium text-sm">{item.emoji} {item.action}</p>
+                  <p className="text-white/50 text-xs mt-1 leading-relaxed">{item.sub}</p>
+                  <p className={`mt-3 text-xs font-medium ${item.accent.label} flex items-center gap-1`}>Voir le détail <ArrowRight className="w-3 h-3" /></p>
+                </button>
+              )
+            })}
           </div>
         </div>
 
