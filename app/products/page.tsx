@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { ChevronRight, ChevronDown, Sparkles, Target, Users, DollarSign, HelpCircle, Megaphone, Zap, Building2, Phone, Globe, BarChart3, ExternalLink, LayoutDashboard, ArrowRight, AudioLines, Presentation, Play, Link2, FileText, MessageSquare, Video } from 'lucide-react'
-import { AskAgentforceChat } from '@/app/components/AskAgentforceChat'
 
 type Resource = {
   title: string
@@ -433,7 +432,7 @@ function Section({ title, icon, children, defaultOpen = false }: { title: string
   )
 }
 
-function ExecutiveSummary({ onEnter, onSelectProduct, onAskAgentforce }: { onEnter: () => void; onSelectProduct: (id: string) => void; onAskAgentforce: () => void }) {
+function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; onSelectProduct: (id: string) => void }) {
   return (
     <div className="min-h-screen bg-[#0D1117] flex flex-col">
       <header className="glass px-6 py-6">
@@ -442,15 +441,6 @@ function ExecutiveSummary({ onEnter, onSelectProduct, onAskAgentforce }: { onEnt
             <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
             <p className="text-white/50 text-sm mt-1">Meeting Managers — Juillet 2026</p>
           </div>
-          <button
-            onClick={onAskAgentforce}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#1B96FF] hover:bg-[#1B96FF]/80 text-white text-sm font-medium transition-all shadow-lg shadow-blue-500/20"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
-              <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-            </svg>
-            Ask Agentforce
-          </button>
         </div>
       </header>
 
@@ -567,15 +557,14 @@ function ExecutiveSummary({ onEnter, onSelectProduct, onAskAgentforce }: { onEnt
 export default function ProductsPage() {
   const [view, setView] = useState<'summary' | 'products'>('summary')
   const [activeProduct, setActiveProduct] = useState<string>('coworker')
-  const [chatOpen, setChatOpen] = useState(false)
+
   const product = products.find(p => p.id === activeProduct)!
 
 
   if (view === 'summary') {
     return (
       <>
-        <ExecutiveSummary onEnter={() => setView('products')} onSelectProduct={(id) => { setActiveProduct(id); setView('products') }} onAskAgentforce={() => setChatOpen(true)} />
-        <AskAgentforceChat isOpen={chatOpen} onClose={() => setChatOpen(false)} />
+        <ExecutiveSummary onEnter={() => setView('products')} onSelectProduct={(id) => { setActiveProduct(id); setView('products') }} />
       </>
     )
   }
