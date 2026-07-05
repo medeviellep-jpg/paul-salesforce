@@ -109,11 +109,19 @@ const products: Product[] = [
         </div>
         <div>
           <p className="font-semibold text-white mb-3">✉️ Comment faire ?</p>
-          <p className="text-white/70 text-sm mb-3">Un email d&apos;invitation clé en main est disponible, prêt à être envoyé à vos clients.</p>
-          <div className="flex flex-wrap gap-3">
-            <span className="inline-block px-4 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-white/50 text-sm">👉 Kit d&apos;invitation — à demander à votre AE</span>
-            <span className="inline-block px-4 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-white/50 text-sm">👉 Lien d&apos;inscription — à venir</span>
-            <span className="inline-block px-4 py-2 rounded-lg bg-white/[0.05] border border-white/10 text-white/50 text-sm">📊 Suivi des inscrits — à venir</span>
+          <div className="space-y-2.5">
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-white/70">Un email d&apos;invitation clé en main est disponible, prêt à être envoyé à vos clients :</span>
+              <a href="https://docs.google.com/document/d/1Fsub8wWhKRIU747O4Aawhx_2dHXINcZAhMJHboPEw1I/edit?tab=t.0" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-1.5 rounded-lg bg-[#0176D3]/20 border border-[#1B96FF]/30 text-[#58B0FF] hover:bg-[#0176D3]/30 transition-colors font-medium">👉 Accédez au kit</a>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-white/70">La landing page d&apos;inscription pour vos clients :</span>
+              <a href="https://webinaragentforcecoworkervotre.splashthat.com/" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-1.5 rounded-lg bg-[#0176D3]/20 border border-[#1B96FF]/30 text-[#58B0FF] hover:bg-[#0176D3]/30 transition-colors font-medium">👉 S&apos;inscrire au webinar</a>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <span className="text-white/70">Suivre les inscrits :</span>
+              <a href="https://org62.lightning.force.com/lightning/r/Report/00Oed000009wPVVEA2/view?queryScope=userFolders" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-1.5 rounded-lg bg-[#0176D3]/20 border border-[#1B96FF]/30 text-[#58B0FF] hover:bg-[#0176D3]/30 transition-colors font-medium">📊 Voir le rapport</a>
+            </div>
           </div>
         </div>
       </div>
@@ -580,6 +588,17 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           <p className="text-white/60 text-lg max-w-3xl">L'ère de l'entreprise agentique est là. Agentforce transforme chaque équipe avec des agents IA autonomes qui travaillent aux côtés de vos collaborateurs — 24/7, à grande échelle.</p>
         </div>
 
+        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+          {products.map(p => (
+            <button key={p.id} onClick={() => onSelectProduct(p.id)} className="card-dark rounded-xl p-4 text-center hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-200 cursor-pointer border border-transparent hover:border-white/20">
+              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${p.color} flex items-center justify-center mx-auto mb-3`}>
+                {p.icon}
+              </div>
+              <p className="text-white text-sm font-medium">{p.name}</p>
+            </button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <div className="card-dark rounded-xl p-6 hover:bg-white/[0.06] transition-all">
             <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
@@ -665,16 +684,6 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
-          {products.map(p => (
-            <button key={p.id} onClick={() => onSelectProduct(p.id)} className="card-dark rounded-xl p-4 text-center hover:bg-white/[0.08] hover:-translate-y-1 transition-all duration-200 cursor-pointer border border-transparent hover:border-white/20">
-              <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${p.color} flex items-center justify-center mx-auto mb-3`}>
-                {p.icon}
-              </div>
-              <p className="text-white text-sm font-medium">{p.name}</p>
-            </button>
-          ))}
-        </div>
       </main>
 
       <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-sm">
