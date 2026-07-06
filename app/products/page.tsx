@@ -79,29 +79,29 @@ const products: Product[] = [
       <div className="space-y-5">
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-xl bg-[#0176D3]/20 border border-[#1B96FF]/30 p-5">
-            <p className="text-[#58B0FF] font-bold text-2xl">260</p>
-            <p className="text-white font-semibold text-sm mt-1">inscrits au webinar 🎉</p>
-            <p className="text-white/50 text-xs mt-1">Mercredi 8 juillet — objectif 500</p>
+            <p className="text-[#58B0FF] font-bold text-3xl">260</p>
+            <p className="text-white font-semibold text-base mt-1">inscrits au webinar 🎉</p>
+            <p className="text-white/50 text-sm mt-1">Mercredi 8 juillet — objectif 500</p>
           </div>
           <div className="rounded-xl bg-purple-500/10 border border-purple-500/30 p-5">
             <div className="flex items-end gap-2">
-              <p className="text-purple-300 font-bold text-2xl">38</p>
-              <p className="text-white/40 text-sm mb-1">/ 100</p>
+              <p className="text-purple-300 font-bold text-3xl">38</p>
+              <p className="text-white/40 text-base mb-1">/ 100</p>
             </div>
-            <p className="text-white font-semibold text-sm mt-1">activations CoWorker clients</p>
+            <p className="text-white font-semibold text-base mt-1">activations CoWorker clients</p>
             <div className="mt-2 h-1.5 rounded-full bg-white/10 overflow-hidden">
               <div className="h-full rounded-full bg-purple-400" style={{ width: '38%' }} />
             </div>
           </div>
         </div>
         <div className="rounded-xl bg-[#0176D3]/20 border border-[#1B96FF]/30 p-5">
-          <p className="text-[#58B0FF] font-bold text-lg">📅 Webinar — Mercredi 8 juillet 2026 | 11h00 – 11h30 (CEST)</p>
-          <p className="text-white/60 text-sm mt-1">⏱️ Format ultra-court : 30 minutes chrono, 100% valeur ajoutée</p>
+          <p className="text-[#58B0FF] font-bold text-2xl">📅 Webinar — Mercredi 8 juillet 2026 | 11h00 – 11h30 (CEST)</p>
+          <p className="text-white/60 text-base mt-1">⏱️ Format ultra-court : 30 minutes chrono, 100% valeur ajoutée</p>
         </div>
         <div className="grid md:grid-cols-2 gap-5">
           <div>
             <p className="font-semibold text-white mb-3">➡️ Pourquoi inviter vos clients ?</p>
-            <ul className="space-y-2 text-white/70 text-sm">
+            <ul className="space-y-2 text-white/70 text-base">
               <li>⚡ S&apos;active en 20 minutes seulement</li>
               <li>🔍 S&apos;intègre directement dans la barre de recherche Salesforce</li>
               <li>🧠 Connaît les données CRM, opportunités et historiques clients</li>
@@ -112,7 +112,7 @@ const products: Product[] = [
           <div className="space-y-5">
             <div>
               <p className="font-semibold text-white mb-2">🎤 Speakers</p>
-              <ul className="space-y-1.5 text-white/70 text-sm">
+              <ul className="space-y-1.5 text-white/70 text-base">
                 <li>Paul Medevielle — RVP, Agentforce France</li>
                 <li>Chloé Rance — Cloud Account Executive</li>
                 <li>Pitch Chevalier — VP, Software Engineering (Team Produit CoWorker 🇫🇷)</li>
@@ -120,22 +120,22 @@ const products: Product[] = [
             </div>
             <div>
               <p className="font-semibold text-white mb-2">👥 Qui inviter en priorité ?</p>
-              <p className="text-white/70 text-sm">✅ Clients ayant des licences Agentforce for Sales/Service, A1E ou Flex Credits — Co-Worker est déjà disponible pour eux !</p>
+              <p className="text-white/70 text-base">✅ Clients ayant des licences Agentforce for Sales/Service, A1E ou Flex Credits — Co-Worker est déjà disponible pour eux !</p>
             </div>
           </div>
         </div>
         <div>
           <p className="font-semibold text-white mb-3">✉️ Comment faire ?</p>
           <div className="space-y-2.5">
-            <div className="flex flex-wrap items-center gap-2 text-sm">
+            <div className="flex flex-wrap items-center gap-2 text-base">
               <span className="text-white/70">Un email d&apos;invitation clé en main est disponible, prêt à être envoyé à vos clients :</span>
               <a href="https://docs.google.com/document/d/1Fsub8wWhKRIU747O4Aawhx_2dHXINcZAhMJHboPEw1I/edit?tab=t.0" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-1.5 rounded-lg bg-[#0176D3]/20 border border-[#1B96FF]/30 text-[#58B0FF] hover:bg-[#0176D3]/30 transition-colors font-medium">👉 Accédez au kit</a>
             </div>
-            <div className="flex flex-wrap items-center gap-2 text-sm">
+            <div className="flex flex-wrap items-center gap-2 text-base">
               <span className="text-white/70">La landing page d&apos;inscription pour vos clients :</span>
               <a href="https://webinaragentforcecoworkervotre.splashthat.com/" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-1.5 rounded-lg bg-[#0176D3]/20 border border-[#1B96FF]/30 text-[#58B0FF] hover:bg-[#0176D3]/30 transition-colors font-medium">👉 S&apos;inscrire au webinar</a>
             </div>
-            <div className="flex flex-wrap items-center gap-2 text-sm">
+            <div className="flex flex-wrap items-center gap-2 text-base">
               <span className="text-white/70">Suivre les inscrits :</span>
               <a href="https://org62.lightning.force.com/lightning/r/Report/00Oed000009wPVVEA2/view?queryScope=userFolders" target="_blank" rel="noopener noreferrer" className="inline-block px-4 py-1.5 rounded-lg bg-[#0176D3]/20 border border-[#1B96FF]/30 text-[#58B0FF] hover:bg-[#0176D3]/30 transition-colors font-medium">📊 Voir le rapport</a>
             </div>
@@ -213,7 +213,7 @@ const products: Product[] = [
     convictionsFrance: (<>Momentum c&apos;est un peu le 🎵 TikTok du CRM — on capture les moments importants pour les partager en interne et mettre à jour le CRM en temps réel.<br/><br/>C'est notre nouvel outil de <strong>Conversation Intelligence</strong> qui capture automatiquement les calls, emails et SMS, structure la donnée et la réinjecte dans Salesforce, sans aucune action manuelle du rep. C'est la fondation data qui rend tous les types de Sales Agents vraiment efficaces.<br/><br/><strong>Pourquoi le mettre en avant ?</strong><br/>• Inclus dans Agentforce for Sales et Agentforce One Sales Edition — pas de conversation budget supplémentaire<br/>• Répond directement au blocage #1 : "notre data n'est pas prête pour l'IA" → Momentum règle ça out of the box<br/>• Play de consolidation vs. Gong / Clari / Salesloft — le budget existe déjà, on aide nos clients à mieux l'investir<br/><br/>✅ <strong>Comment le vendre — c'est simple</strong><br/>Quoter Agentforce for Sales et ajouter le QST Momentum → Momentum est inclus gratuitement. C'est tout.<br/><br/>🎤 <strong>Top features à démontrer</strong><br/>• <strong>Autopilot</strong> : écriture automatique des données structurées dans le CRM en temps réel<br/>• <strong>Smart Clips</strong> : extraits vidéo de 20 secondes postés directement dans Slack (hashtag TikTok)<br/>• <strong>Agentforce-ready</strong> : alimente les agents SDR, préparation de réunion, coaching, pipeline management et forecasting<br/><br/>📊 <strong>Preuves terrain</strong><br/>• Zscaler : 3 à 10h d'admin économisées par rep et par semaine<br/>• Ramp : ~30 000 champs CRM mis à jour automatiquement chaque semaine<br/><br/>🗓️ <strong>Roadmap</strong><br/>GA à Dreamforce — Momentum + A4S deviennent un seul produit intégré (call capture, deal inspection, coaching, forecasting, etc). On vend dès maintenant.<br/><br/>💰 <strong>Incentive seller</strong> : SPIFF jusqu'à 15 000$ sur les deals qualifiants</>),
     callToAction: (
       <div className="rounded-xl bg-white/[0.04] border border-white/[0.1] p-6">
-        <p className="text-white font-semibold text-lg">📞 Rapprochez vous de votre AE Agentforce pour prioriser les comptes à cibler !</p>
+        <p className="text-white font-semibold text-2xl">📞 Rapprochez vous de votre AE Agentforce pour prioriser les comptes à cibler !</p>
       </div>
     ),
     ressources: [
@@ -287,12 +287,12 @@ const products: Product[] = [
     convictionsFrance: (
       <div className="space-y-4">
         <div>
-          <p className="font-bold text-white text-lg mb-2">Salesforce lance Agentforce Help Agent — déployable en quelques minutes, facturé uniquement sur les résolutions</p>
+          <p className="font-bold text-white text-2xl mb-2">Salesforce lance Agentforce Help Agent — déployable en quelques minutes, facturé uniquement sur les résolutions</p>
           <p className="leading-relaxed">Nous avons lancé Agentforce il y a près de deux ans. Depuis, des milliers de clients ont construit des agents de service. Et notre propre Help.Salesforce.com a traité plus de 4,3 millions de demandes clients. Nous avons capitalisé sur tous les apprentissages issus de ces interactions pour les intégrer dans Agentforce Help Agent — un agent de service autonome déployable en quelques minutes sur tous les canaux, accompagné d&apos;un nouveau modèle de tarification à la performance où les clients ne paient que lorsque l&apos;agent résout effectivement le problème.</p>
         </div>
         <div>
           <p className="font-semibold text-white mb-2">Les nouveautés (GA juillet) :</p>
-          <ul className="space-y-2 text-sm leading-relaxed">
+          <ul className="space-y-2 text-base leading-relaxed">
             <li><strong className="text-white">Agentforce Help Agent :</strong> Construit sur la plateforme Agentforce, Help Agent a été optimisé pour le self-service client. Une nouvelle expérience de configuration guidée permet aux utilisateurs de connecter leur base de connaissance et de déployer sur tous les canaux (voix, web, portail, messagerie) en quelques minutes.</li>
             <li><strong className="text-white">Nouveau modèle de tarification à la résolution :</strong> Les clients ne sont facturés pour une interaction self-service que lorsque le problème est résolu. C&apos;est une réponse concurrentielle importante face à des acteurs émergents comme Sierra, qui facturent également à la résolution.</li>
             <li><strong className="text-white">Nouveau portail Agentforce Service :</strong> Interface moderne avec une barre de conversation unique. Au fil de la description de leur besoin, les clients voient l&apos;expérience portail s&apos;adapter en temps réel — pour les amener vers une résolution rapide.</li>
@@ -300,7 +300,7 @@ const products: Product[] = [
         </div>
         <div>
           <p className="font-semibold text-white mb-2">Pourquoi c&apos;est important :</p>
-          <ul className="space-y-2 text-sm leading-relaxed">
+          <ul className="space-y-2 text-base leading-relaxed">
             <li><strong className="text-white">Adoption Agentforce :</strong> Vous l&apos;avez entendu au CKO2 — chaque déploiement d&apos;agent doit commencer par le Service. Utilisez Agentforce Help Agent et son nouveau modèle de tarification pour accélérer les déploiements clients. Sous le capot, les Résolutions fonctionnent sur des Flex Credits : c&apos;est une nouvelle voie pour que les clients consomment du Flex.</li>
             <li><strong className="text-white">Des agents self-service pour toutes les tailles d&apos;entreprise :</strong> La semaine dernière, vous avez pris connaissance de notre intention d&apos;acquérir Fin. Fin renforcera notre présence auprès des PME et des clients non-Salesforce. Agentforce Help Agent, lui, est conçu pour les clients Salesforce. Parce qu&apos;il est nativement construit sur la plateforme Agentforce, tout ce que les clients possèdent déjà — données, workflows, garde-fous et configurations — est directement disponible pour Help Agent.</li>
             <li><strong className="text-white">La preuve par Customer Zero :</strong> Agentforce sur Help.Salesforce.com a désormais traité plus de 4,3 millions de conversations et en a résolu 70 %. Nous sommes la preuve qu&apos;Agentforce fonctionne pour le self-service. Tous nos apprentissages issus de millions de conversations clients ont été intégrés dans le nouvel Help Agent.</li>
@@ -308,8 +308,8 @@ const products: Product[] = [
         </div>
         <div>
           <p className="font-semibold text-white mb-2">Prochaines étapes :</p>
-          <p className="text-sm leading-relaxed mb-2">Approfondissez le sujet avec <a href="https://secure.video.ibm.com/channel/24382606/video/134868747" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">Product Decoded</a> | <a href="https://docs.google.com/presentation/d/1uaHWWeXoo3j3kTmPBcgbwETTMXmQihHKjEuowHJfO1c/edit?slide=id.g3e205dbdc03_2032_983#slide=id.g3e205dbdc03_2032_983" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">First Call Deck</a> | <a href="https://www.salesforce.com/service/demos/self-service/" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">Web Demo</a></p>
-          <p className="text-sm leading-relaxed">Pour les commerciaux, vous pouvez quoter dès aujourd&apos;hui — les SKUs sont actifs depuis le 16/06 ! Consultez la FAQ Pricing pour les détails tarifaires et le guide de cotation.</p>
+          <p className="text-base leading-relaxed mb-2">Approfondissez le sujet avec <a href="https://secure.video.ibm.com/channel/24382606/video/134868747" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">Product Decoded</a> | <a href="https://docs.google.com/presentation/d/1uaHWWeXoo3j3kTmPBcgbwETTMXmQihHKjEuowHJfO1c/edit?slide=id.g3e205dbdc03_2032_983#slide=id.g3e205dbdc03_2032_983" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">First Call Deck</a> | <a href="https://www.salesforce.com/service/demos/self-service/" target="_blank" rel="noopener noreferrer" className="text-white font-semibold underline">Web Demo</a></p>
+          <p className="text-base leading-relaxed">Pour les commerciaux, vous pouvez quoter dès aujourd&apos;hui — les SKUs sont actifs depuis le 16/06 ! Consultez la FAQ Pricing pour les détails tarifaires et le guide de cotation.</p>
         </div>
       </div>
     ),
@@ -382,51 +382,51 @@ const products: Product[] = [
     callToAction: (
       <div className="space-y-5">
         <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/30 p-5">
-          <p className="text-emerald-400 font-bold text-lg">📅 Visite Courtney Levin — 15 & 16 juillet 2026 | France</p>
-          <p className="text-white/60 text-sm mt-1">Opportunité unique de prendre des meetings avec vos Top Targeted Accounts sur Agentforce Operations (avec Sophie Gray &amp; Daniele Francis)</p>
+          <p className="text-emerald-400 font-bold text-2xl">📅 Visite Courtney Levin — 15 & 16 juillet 2026 | France</p>
+          <p className="text-white/60 text-base mt-1">Opportunité unique de prendre des meetings avec vos Top Targeted Accounts sur Agentforce Operations (avec Sophie Gray &amp; Daniele Francis)</p>
         </div>
         <div>
           <p className="font-semibold text-white mb-3">🎯 Sweet spots — Personas cibles</p>
           <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm font-medium">COO</span>
-            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm font-medium">VP / SVP Supply Chain ou Operations</span>
-            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-sm font-medium">Head of Digital / CDO</span>
+            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-base font-medium">COO</span>
+            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-base font-medium">VP / SVP Supply Chain ou Operations</span>
+            <span className="px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-base font-medium">Head of Digital / CDO</span>
           </div>
         </div>
         <div>
           <p className="font-semibold text-white mb-3">🏆 Top comptes (x8 P1 &amp; x4 P2)</p>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-blue-400 mb-3">🚄 ACCELERATED</p>
-              <ul className="space-y-1.5 text-sm">
-                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">EDF</span></li>
-                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">CMA CGM</span></li>
-                <li className="flex items-center gap-2"><span className="text-white/30 text-xs">—</span><span className="text-white/70">Capgemini</span></li>
+              <p className="text-sm font-bold uppercase tracking-wider text-blue-400 mb-3">🚄 ACCELERATED</p>
+              <ul className="space-y-1.5 text-base">
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-sm font-bold">P1</span><span className="text-white/80">EDF</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-sm font-bold">P1</span><span className="text-white/80">CMA CGM</span></li>
+                <li className="flex items-center gap-2"><span className="text-white/30 text-sm">—</span><span className="text-white/70">Capgemini</span></li>
               </ul>
             </div>
             <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-orange-400 mb-1">🏦 REGULATED</p>
-              <p className="text-white/30 text-xs mb-3 font-normal normal-case">on hold — Data Residency / RGPD</p>
-              <ul className="space-y-1.5 text-sm">
-                <li className="flex items-center gap-2"><span className="text-white/30 text-xs">—</span><span className="text-white/70">Société Générale</span></li>
-                <li className="flex items-center gap-2"><span className="text-white/30 text-xs">—</span><span className="text-white/70">Sofinco</span></li>
+              <p className="text-sm font-bold uppercase tracking-wider text-orange-400 mb-1">🏦 REGULATED</p>
+              <p className="text-white/30 text-sm mb-3 font-normal normal-case">on hold — Data Residency / RGPD</p>
+              <ul className="space-y-1.5 text-base">
+                <li className="flex items-center gap-2"><span className="text-white/30 text-sm">—</span><span className="text-white/70">Société Générale</span></li>
+                <li className="flex items-center gap-2"><span className="text-white/30 text-sm">—</span><span className="text-white/70">Sofinco</span></li>
               </ul>
             </div>
             <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-pink-400 mb-3">🛍️ RETAIL / CONSUMER GOODS</p>
-              <ul className="space-y-1.5 text-sm">
-                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Carrefour</span></li>
-                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">LVMH</span></li>
-                <li className="flex items-center gap-2"><span className="text-blue-400 text-xs font-bold">P2</span><span className="text-white/70">L&apos;Oréal</span></li>
+              <p className="text-sm font-bold uppercase tracking-wider text-pink-400 mb-3">🛍️ RETAIL / CONSUMER GOODS</p>
+              <ul className="space-y-1.5 text-base">
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-sm font-bold">P1</span><span className="text-white/80">Carrefour</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-sm font-bold">P1</span><span className="text-white/80">LVMH</span></li>
+                <li className="flex items-center gap-2"><span className="text-blue-400 text-sm font-bold">P2</span><span className="text-white/70">L&apos;Oréal</span></li>
               </ul>
             </div>
             <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-purple-400 mb-3">🏭 MANUFACTURING / ELITE</p>
-              <ul className="space-y-1.5 text-sm">
-                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Safran</span></li>
-                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Saint-Gobain</span></li>
-                <li className="flex items-center gap-2"><span className="text-yellow-400 text-xs font-bold">P1</span><span className="text-white/80">Schneider Electric</span></li>
-                <li className="flex items-center gap-2"><span className="text-blue-400 text-xs font-bold">P2</span><span className="text-white/70">Renault</span></li>
+              <p className="text-sm font-bold uppercase tracking-wider text-purple-400 mb-3">🏭 MANUFACTURING / ELITE</p>
+              <ul className="space-y-1.5 text-base">
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-sm font-bold">P1</span><span className="text-white/80">Safran</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-sm font-bold">P1</span><span className="text-white/80">Saint-Gobain</span></li>
+                <li className="flex items-center gap-2"><span className="text-yellow-400 text-sm font-bold">P1</span><span className="text-white/80">Schneider Electric</span></li>
+                <li className="flex items-center gap-2"><span className="text-blue-400 text-sm font-bold">P2</span><span className="text-white/70">Renault</span></li>
               </ul>
             </div>
           </div>
@@ -552,7 +552,7 @@ const products: Product[] = [
         <p className="leading-relaxed">Agentforce Voice est GA globalement depuis le 26 février 2026 via le support SIP, débloquant toutes les régions EMEA. Le produit remplace les IVR rigides par des agents conversationnels qui prennent des actions réelles, avec handoff humain seamless et contexte préservé.</p>
         <div>
           <p className="font-semibold text-white mb-2">Les 3 chemins d&apos;intégration (clé pour EMEA)</p>
-          <ul className="space-y-2 text-sm leading-relaxed">
+          <ul className="space-y-2 text-base leading-relaxed">
             <li><strong className="text-white">1. PSTN :</strong> Non disponible pour EMEA</li>
             <li><strong className="text-white">2. SIP :</strong> Pour clients Genesys &amp; Vonage only</li>
             <li><strong className="text-white">3. Dynamic Voice Routing</strong> — l&apos;unlock majeur (New GA Juin) : supprime la dépendance aux partenaires CCaaS certifiés et utilise une API (Telephony Integration API) avec un pool de numéros alloués dynamiquement par appel. Pour Amazon Connect, Five9, NICE, Odigo, Bucher+Suter…</li>
@@ -560,8 +560,8 @@ const products: Product[] = [
         </div>
         <div>
           <p className="font-semibold text-white mb-2">Nouveau canal : Voice pour Web &amp; Mobile (GA juin 2026)</p>
-          <p className="text-sm leading-relaxed mb-2">Les clients peuvent désormais parler directement à un agent Agentforce depuis un site web ou app mobile (WebRTC, zéro infrastructure supplémentaire) :</p>
-          <ul className="space-y-1.5 text-sm leading-relaxed">
+          <p className="text-base leading-relaxed mb-2">Les clients peuvent désormais parler directement à un agent Agentforce depuis un site web ou app mobile (WebRTC, zéro infrastructure supplémentaire) :</p>
+          <ul className="space-y-1.5 text-base leading-relaxed">
             <li className="flex items-start gap-2"><span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />Passage seamless voix ↔ texte dans la même session</li>
             <li className="flex items-start gap-2"><span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />Transcript en temps réel pour les handoffs</li>
             <li className="flex items-start gap-2"><span className="mt-1 w-1.5 h-1.5 rounded-full bg-white/50 flex-shrink-0" />Pour les clients Agentforce existants : c&apos;est une configuration, pas un projet</li>
@@ -601,7 +601,7 @@ function Section({ title, icon, children, defaultOpen = false }: { title: string
         className="w-full flex items-center gap-3 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
       >
         <span className="text-[#1B96FF]">{icon}</span>
-        <span className="font-semibold text-white text-lg flex-1">{title}</span>
+        <span className="font-semibold text-white text-2xl flex-1">{title}</span>
         {open ? <ChevronDown className="w-5 h-5 text-white/40" /> : <ChevronRight className="w-5 h-5 text-white/40" />}
       </button>
       {open && <div className="px-6 pb-6 pt-2">{children}</div>}
@@ -670,16 +670,16 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
       <header className="glass px-6 py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
-            <p className="text-white/50 text-sm mt-1">Meeting All Managers — 6 Juillet 2026</p>
+            <h1 className="text-4xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
+            <p className="text-white/50 text-base mt-1">Meeting All Managers — 6 Juillet 2026</p>
           </div>
         </div>
       </header>
 
       <main className="flex-1 max-w-7xl mx-auto px-6 py-12 w-full">
         <div className="mb-12">
-          <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">Executive Summary</h2>
-          <p className="text-white/60 text-lg max-w-3xl">L'ère de l'entreprise agentique est là. Agentforce transforme chaque équipe avec des agents IA autonomes qui travaillent aux côtés de vos collaborateurs — 24/7, à grande échelle.</p>
+          <h2 className="text-5xl font-bold text-white mb-4 tracking-tight">Executive Summary</h2>
+          <p className="text-white/60 text-2xl max-w-3xl">L'ère de l'entreprise agentique est là. Agentforce transforme chaque équipe avec des agents IA autonomes qui travaillent aux côtés de vos collaborateurs — 24/7, à grande échelle.</p>
         </div>
 
         <div className="mb-12">
@@ -713,7 +713,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                         <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${prod.color} flex items-center justify-center mx-auto mb-2.5`}>
                           {prod.icon}
                         </div>
-                        <p className={`text-sm font-medium leading-tight transition-colors ${isActive ? 'text-white' : 'text-white/55'}`}>
+                        <p className={`text-base font-medium leading-tight transition-colors ${isActive ? 'text-white' : 'text-white/55'}`}>
                           {prod.name}
                         </p>
                       </button>
@@ -732,11 +732,11 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                         <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${current.color} flex items-center justify-center`}>
                           {current.icon}
                         </div>
-                        <p className="text-white font-bold text-sm text-center group-hover:text-[#1B96FF] transition-colors leading-snug">
+                        <p className="text-white font-bold text-base text-center group-hover:text-[#1B96FF] transition-colors leading-snug">
                           {current.name}
                         </p>
                       </button>
-                      <p className="text-white/25 text-xs">{currentProductIndex + 1} / {total}</p>
+                      <p className="text-white/25 text-sm">{currentProductIndex + 1} / {total}</p>
                     </div>
                   </div>
                 </div>
@@ -745,10 +745,10 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                   const accent = productAccents[current.id] ?? { border: 'border-white/10', bg: 'bg-white/[0.04]', label: 'text-white/50', dot: 'bg-white/30' }
                   return (
                     <div className={`rounded-xl p-6 flex-1 border ${accent.border} ${accent.bg} self-center`}>
-                      <p className={`${accent.label} font-semibold text-xs uppercase tracking-wider mb-4`}>{current.name}</p>
+                      <p className={`${accent.label} font-semibold text-sm uppercase tracking-wider mb-4`}>{current.name}</p>
                       <ul className="space-y-3">
                         {points.map((point, i) => (
-                          <li key={i} className="flex items-start gap-3 text-sm text-white/80">
+                          <li key={i} className="flex items-start gap-3 text-base text-white/80">
                             <span className={`mt-2 w-1.5 h-1.5 rounded-full ${accent.dot} flex-shrink-0`} />
                             <span className="leading-relaxed">{point}</span>
                           </li>
@@ -763,94 +763,94 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
         </div>
 
         <div className="card-dark rounded-xl p-8 mb-12">
-          <h3 className="text-white font-bold text-xl mb-6">🎯 Donner du sens à toutes ces annonces</h3>
+          <h3 className="text-white font-bold text-2xl mb-6">🎯 Donner du sens à toutes ces annonces</h3>
           <div className="space-y-6">
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-base leading-relaxed">
               🎯 Notre stratégie d&apos;acquisition et d&apos;innovation n&apos;a qu&apos;un seul objectif : <strong className="text-white/90">mettre à disposition de nos clients la plateforme agentique la plus complète</strong> pour accélérer les déploiements en restant ancré dans le contexte Salesforce. 🔒 Alignés aux règles de sécurité et de compliance de l&apos;entreprise, en respectant les droits et permissions de chacun nativement. 🧩 Derrière chaque annonce, il y a une pièce du puzzle qui s&apos;assemble — et la bonne nouvelle, c&apos;est que cette fois 💡 <strong className="text-white/90">le puzzle a du sens</strong>.
             </p>
 
             <div className="rounded-xl border border-teal-500/20 bg-teal-500/[0.06] p-5 space-y-3">
-              <p className="text-teal-300 font-semibold text-sm uppercase tracking-wider">Customer Facing</p>
-              <div className="space-y-2.5 text-sm text-white/70 leading-relaxed">
+              <p className="text-teal-300 font-semibold text-base uppercase tracking-wider">Customer Facing</p>
+              <div className="space-y-2.5 text-base text-white/70 leading-relaxed">
                 <p>🤖 <strong className="text-white/90">Help Agent</strong> — agent de service autonome déployé en 30 jours sur votre site pour <strong className="text-white/80">traiter les requêtes clients sans intervention humaine</strong></p>
                 <p>🎯 <strong className="text-white/90">Qualified</strong> — qualifie les <strong className="text-white/80">prospects B2B</strong> via son Avatar Piper et engage les acheteurs en temps réel directement dans le CRM</p>
                 <p>🎙️ <strong className="text-white/90">Agentforce Voice</strong> — interactions vocales sur <strong className="text-white/80">tous les canaux</strong>&nbsp;: téléphone, web, mobile et WhatsApp</p>
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
-                <button onClick={() => onSelectProduct('help-agent')} className="text-xs px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium">Help Agent</button>
-                <button onClick={() => onSelectProduct('qualified')} className="text-xs px-3 py-1.5 rounded-lg bg-orange-500/20 text-orange-300 hover:bg-orange-500/30 transition-colors font-medium">Qualified</button>
-                <button onClick={() => onSelectProduct('voice')} className="text-xs px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-medium">Agentforce Voice</button>
+                <button onClick={() => onSelectProduct('help-agent')} className="text-sm px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium">Help Agent</button>
+                <button onClick={() => onSelectProduct('qualified')} className="text-sm px-3 py-1.5 rounded-lg bg-orange-500/20 text-orange-300 hover:bg-orange-500/30 transition-colors font-medium">Qualified</button>
+                <button onClick={() => onSelectProduct('voice')} className="text-sm px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-medium">Agentforce Voice</button>
               </div>
             </div>
 
             <div className="rounded-xl border border-purple-500/20 bg-purple-500/[0.06] p-5 space-y-3">
-              <p className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Employee Facing</p>
-              <div className="space-y-2.5 text-sm text-white/70 leading-relaxed">
+              <p className="text-purple-300 font-semibold text-base uppercase tracking-wider">Employee Facing</p>
+              <div className="space-y-2.5 text-base text-white/70 leading-relaxed">
                 <p>🤝 <strong className="text-white/90">CoWorker</strong> — <strong className="text-white/80">Super Agent orchestrateur</strong>, porte d&apos;entrée de l&apos;IA dans l&apos;entreprise&nbsp;: recherche, exécute des tâches complexes et pilote des agents spécialisés sur Salesforce, Slack, Teams et Mobile</p>
                 <p>📊 <strong className="text-white/90">Momentum</strong> — capture <strong className="text-white/80">calls, visios, emails et SMS</strong> pour enrichir Salesforce automatiquement et coacher vos équipes en temps réel</p>
                 <p>⚙️ <strong className="text-white/90">Agentforce Operations</strong> — digitalise les <strong className="text-white/80">processus back-office complexes</strong> (supply chain, procurement, finance) exécutés par des Agents IA et des humains</p>
               </div>
               <div className="flex flex-wrap gap-2 pt-1">
-                <button onClick={() => onSelectProduct('coworker')} className="text-xs px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-colors font-medium">CoWorker</button>
-                <button onClick={() => onSelectProduct('momentum')} className="text-xs px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium">Momentum</button>
-                <button onClick={() => onSelectProduct('afo')} className="text-xs px-3 py-1.5 rounded-lg bg-green-500/20 text-green-300 hover:bg-green-500/30 transition-colors font-medium">Agentforce Operations</button>
+                <button onClick={() => onSelectProduct('coworker')} className="text-sm px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-300 hover:bg-purple-500/30 transition-colors font-medium">CoWorker</button>
+                <button onClick={() => onSelectProduct('momentum')} className="text-sm px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium">Momentum</button>
+                <button onClick={() => onSelectProduct('afo')} className="text-sm px-3 py-1.5 rounded-lg bg-green-500/20 text-green-300 hover:bg-green-500/30 transition-colors font-medium">Agentforce Operations</button>
               </div>
             </div>
 
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-base leading-relaxed">
               L&apos;acquisition de FIN de son côté nous permet de proposer une alternative encore plus <strong className="text-white/90">plug &amp; play</strong> pour le service client sur le <strong className="text-white/90">marché SMB</strong>, nous donnant aussi accès à une <strong className="text-white/90">base installée de plus de 30k entreprises</strong> et une technologie de conversation éprouvée qui vient renforcer notre stack agentique sur les cas d&apos;usage de support autonome à fort volume.
             </p>
 
-            <blockquote className="border-l-2 border-[#1B96FF]/50 pl-4 text-white/60 text-sm italic leading-relaxed">
+            <blockquote className="border-l-2 border-[#1B96FF]/50 pl-4 text-white/60 text-base italic leading-relaxed">
               Tout a du sens, il suffit de faire une Pause dans la frénésie du quotidien pour le comprendre, et rassurer nos clients, et le marché !
             </blockquote>
           </div>
         </div>
 
         <div className="card-dark rounded-xl p-8 mb-12">
-          <h3 className="text-white font-bold text-xl mb-6">💬 Différenciateurs clés pour vos conversations</h3>
+          <h3 className="text-white font-bold text-2xl mb-6">💬 Différenciateurs clés pour vos conversations</h3>
           <div className="space-y-4">
             <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">1</span>
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1B96FF]">1</span>
               <div>
                 <p className="text-white font-medium">Pricing à la carte 🎁</p>
-                <p className="text-white/50 text-sm mt-1">Bundles (PUPM), conso (Flex Credits), résolution (outcome-based), blueprints (process) — <strong className="text-white/70">chaque client trouve le modèle adapté</strong> à sa maturité et son usage.</p>
+                <p className="text-white/50 text-base mt-1">Bundles (PUPM), conso (Flex Credits), résolution (outcome-based), blueprints (process) — <strong className="text-white/70">chaque client trouve le modèle adapté</strong> à sa maturité et son usage.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">2</span>
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1B96FF]">2</span>
               <div>
                 <p className="text-white font-medium">Time To Value ⏱️</p>
-                <p className="text-white/50 text-sm mt-1">CoWorker s&apos;active en <strong className="text-white/70">2 clics</strong>. Help Agent déployé en <strong className="text-white/70">30 jours</strong>. AFO opérationnel en <strong className="text-white/70">heures</strong>. Pas de projet à 18 mois.</p>
+                <p className="text-white/50 text-base mt-1">CoWorker s&apos;active en <strong className="text-white/70">2 clics</strong>. Help Agent déployé en <strong className="text-white/70">30 jours</strong>. AFO opérationnel en <strong className="text-white/70">heures</strong>. Pas de projet à 18 mois.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">3</span>
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1B96FF]">3</span>
               <div>
                 <p className="text-white font-medium">Customer Zero 🍽️</p>
-                <p className="text-white/50 text-sm mt-1">Nous utilisons nos produits et nos clients bénéficient de <strong className="text-white/70">nos apprentissages</strong> — ex : Help Agent déployé sur <strong className="text-white/70">notre propre ligne support</strong>.</p>
+                <p className="text-white/50 text-base mt-1">Nous utilisons nos produits et nos clients bénéficient de <strong className="text-white/70">nos apprentissages</strong> — ex : Help Agent déployé sur <strong className="text-white/70">notre propre ligne support</strong>.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">4</span>
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1B96FF]">4</span>
               <div>
                 <p className="text-white font-medium">Consolidation 💰</p>
-                <p className="text-white/50 text-sm mt-1">Nos solutions remplacent des outils tiers coûteux — <strong className="text-white/70">Momentum remplace Gong</strong> ($100-150/user/mois), <strong className="text-white/70">Voice remplace les IVR rigides</strong>, <strong className="text-white/70">AFO remplace les BPM</strong> à 18 mois de setup.</p>
+                <p className="text-white/50 text-base mt-1">Nos solutions remplacent des outils tiers coûteux — <strong className="text-white/70">Momentum remplace Gong</strong> ($100-150/user/mois), <strong className="text-white/70">Voice remplace les IVR rigides</strong>, <strong className="text-white/70">AFO remplace les BPM</strong> à 18 mois de setup.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">5</span>
+              <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-sm font-bold text-[#1B96FF]">5</span>
               <div>
                 <p className="text-white font-medium">Confiance et sécurité natives 🛡️</p>
-                <p className="text-white/50 text-sm mt-1"><strong className="text-white/70">Trust Layer</strong>, garde-fous, pas d&apos;hallucinations sur vos données. L&apos;<strong className="text-white/70">IA enterprise responsable</strong>, pas l&apos;IA grand public.</p>
+                <p className="text-white/50 text-base mt-1"><strong className="text-white/70">Trust Layer</strong>, garde-fous, pas d&apos;hallucinations sur vos données. L&apos;<strong className="text-white/70">IA enterprise responsable</strong>, pas l&apos;IA grand public.</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="card-dark rounded-xl p-8 mb-12">
-          <h3 className="text-white font-bold text-xl mb-2">🎯 Prochaines étapes</h3>
-          <p className="text-white/50 text-sm mb-6">Actions prioritaires par produit pour vos comptes</p>
+          <h3 className="text-white font-bold text-2xl mb-2">🎯 Prochaines étapes</h3>
+          <p className="text-white/50 text-base mb-6">Actions prioritaires par produit pour vos comptes</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             {/* CoWorker — inchangé */}
@@ -862,21 +862,21 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${products.find(p => p.id === 'coworker')!.color} flex items-center justify-center flex-shrink-0`}>
                   {products.find(p => p.id === 'coworker')!.icon}
                 </div>
-                <p className="text-purple-300 font-semibold text-xs uppercase tracking-wider">Agentforce CoWorker</p>
+                <p className="text-purple-300 font-semibold text-sm uppercase tracking-wider">Agentforce CoWorker</p>
               </div>
-              <p className="text-white font-medium text-sm">📅 Webinar — 8 juillet 2026</p>
-              <p className="text-white/50 text-xs mt-1 leading-relaxed">Invitez vos clients A4X et A1E — 30 min, 100% valeur</p>
+              <p className="text-white font-medium text-base">📅 Webinar — 8 juillet 2026</p>
+              <p className="text-white/50 text-sm mt-1 leading-relaxed">Invitez vos clients A4X et A1E — 30 min, 100% valeur</p>
               <div className="flex gap-2 mt-3">
                 <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
-                  <p className="text-white font-bold text-lg leading-none">260</p>
-                  <p className="text-white/50 text-xs mt-1">inscrits webinar</p>
+                  <p className="text-white font-bold text-2xl leading-none">260</p>
+                  <p className="text-white/50 text-sm mt-1">inscrits webinar</p>
                 </div>
                 <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
-                  <p className="text-white font-bold text-lg leading-none">38<span className="text-white/40 text-sm font-normal">/100</span></p>
-                  <p className="text-white/50 text-xs mt-1">activations clients</p>
+                  <p className="text-white font-bold text-2xl leading-none">38<span className="text-white/40 text-base font-normal">/100</span></p>
+                  <p className="text-white/50 text-sm mt-1">activations clients</p>
                 </div>
               </div>
-              <p className="mt-3 text-xs font-medium text-purple-300 flex items-center gap-1">Voir le détail <ArrowRight className="w-3 h-3" /></p>
+              <p className="mt-3 text-sm font-medium text-purple-300 flex items-center gap-1">Voir le détail <ArrowRight className="w-3 h-3" /></p>
             </button>
 
             {/* AFO — visite Courtney + comptes par industrie */}
@@ -891,10 +891,10 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${products.find(p => p.id === 'afo')!.color} flex items-center justify-center flex-shrink-0`}>
                   {products.find(p => p.id === 'afo')!.icon}
                 </div>
-                <p className="text-green-300 font-semibold text-xs uppercase tracking-wider">Agentforce Operations</p>
+                <p className="text-green-300 font-semibold text-sm uppercase tracking-wider">Agentforce Operations</p>
               </div>
-              <p className="text-white font-medium text-sm">📅 Visite Courtney Levin</p>
-              <p className="text-white/50 text-xs mt-1 leading-relaxed">15 &amp; 16 juillet — Top 12 comptes France</p>
+              <p className="text-white font-medium text-base">📅 Visite Courtney Levin</p>
+              <p className="text-white/50 text-sm mt-1 leading-relaxed">15 &amp; 16 juillet — Top 12 comptes France</p>
               <div className="mt-3 space-y-2.5">
                 <a
                   href="https://www.linkedin.com/in/courtneylevin/"
@@ -906,7 +906,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                   <div className="w-6 h-6 rounded bg-[#0A66C2]/20 border border-[#0A66C2]/40 flex items-center justify-center flex-shrink-0">
                     <Link2 className="w-3 h-3 text-[#0A66C2]" />
                   </div>
-                  <span className="text-white/50 text-xs underline group-hover/li:text-[#0A66C2] transition-colors">Courtney Levin, VP AFO — LinkedIn</span>
+                  <span className="text-white/50 text-sm underline group-hover/li:text-[#0A66C2] transition-colors">Courtney Levin, VP AFO — LinkedIn</span>
                 </a>
                 <p className="text-white/40 text-[10px] uppercase tracking-wider">Comptes focus par industrie</p>
                 <div className="space-y-1.5">
@@ -916,7 +916,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                     { icon: '🛍️', label: 'Retail / CG',  accounts: "Carrefour, LVMH, L'Oréal" },
                     { icon: '🏭', label: 'Manufacturing',  accounts: 'Safran, Saint-Gobain, Schneider Electric, Renault' },
                   ].map(ind => (
-                    <div key={ind.label} className="flex items-baseline gap-2 text-xs">
+                    <div key={ind.label} className="flex items-baseline gap-2 text-sm">
                       <span>{ind.icon}</span>
                       <span className="text-green-300 font-medium w-24 shrink-0">{ind.label}</span>
                       <span className="text-white/50">{ind.accounts}</span>
@@ -924,7 +924,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                   ))}
                 </div>
               </div>
-              <p className="mt-3 text-xs font-medium text-green-300 flex items-center gap-1">Voir le détail <ArrowRight className="w-3 h-3" /></p>
+              <p className="mt-3 text-sm font-medium text-green-300 flex items-center gap-1">Voir le détail <ArrowRight className="w-3 h-3" /></p>
             </div>
 
             {/* Momentum + Qualified */}
@@ -933,13 +933,13 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 <div className="flex -space-x-2">
                   {['momentum', 'qualified'].map(pid => { const p = products.find(pr => pr.id === pid)!; return (<div key={pid} className={`w-9 h-9 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center border-2 border-[#0D1117]`}>{p.icon}</div>) })}
                 </div>
-                <p className="text-blue-300 font-semibold text-xs uppercase tracking-wider">Momentum &amp; Qualified</p>
+                <p className="text-blue-300 font-semibold text-sm uppercase tracking-wider">Momentum &amp; Qualified</p>
               </div>
-              <p className="text-white font-medium text-sm">📞 Activez vos comptes prioritaires</p>
-              <p className="text-white/60 text-sm mt-2 leading-relaxed">Rapprochez vous de vos AEs Specialist Agentforce, Service et Digital pour prioriser les comptes</p>
+              <p className="text-white font-medium text-base">📞 Activez vos comptes prioritaires</p>
+              <p className="text-white/60 text-base mt-2 leading-relaxed">Rapprochez vous de vos AEs Specialist Agentforce, Service et Digital pour prioriser les comptes</p>
               <div className="flex gap-2 mt-3">
-                <button onClick={() => onSelectProduct('momentum')} className="text-xs px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium flex items-center gap-1">Momentum <ArrowRight className="w-3 h-3" /></button>
-                <button onClick={() => onSelectProduct('qualified')} className="text-xs px-3 py-1.5 rounded-lg bg-orange-500/20 text-orange-300 hover:bg-orange-500/30 transition-colors font-medium flex items-center gap-1">Qualified <ArrowRight className="w-3 h-3" /></button>
+                <button onClick={() => onSelectProduct('momentum')} className="text-sm px-3 py-1.5 rounded-lg bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors font-medium flex items-center gap-1">Momentum <ArrowRight className="w-3 h-3" /></button>
+                <button onClick={() => onSelectProduct('qualified')} className="text-sm px-3 py-1.5 rounded-lg bg-orange-500/20 text-orange-300 hover:bg-orange-500/30 transition-colors font-medium flex items-center gap-1">Qualified <ArrowRight className="w-3 h-3" /></button>
               </div>
             </div>
 
@@ -949,13 +949,13 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 <div className="flex -space-x-2">
                   {['help-agent', 'voice'].map(pid => { const p = products.find(pr => pr.id === pid)!; return (<div key={pid} className={`w-9 h-9 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center border-2 border-[#0D1117]`}>{p.icon}</div>) })}
                 </div>
-                <p className="text-teal-300 font-semibold text-xs uppercase tracking-wider">Help Agent &amp; Agentforce Voice</p>
+                <p className="text-teal-300 font-semibold text-sm uppercase tracking-wider">Help Agent &amp; Agentforce Voice</p>
               </div>
-              <p className="text-white font-medium text-sm">🔜 Programmes à venir en Q3</p>
-              <p className="text-white/60 text-sm mt-2 leading-relaxed">Restez à l&apos;écoute des annonces — programmes en cours de finalisation</p>
+              <p className="text-white font-medium text-base">🔜 Programmes à venir en Q3</p>
+              <p className="text-white/60 text-base mt-2 leading-relaxed">Restez à l&apos;écoute des annonces — programmes en cours de finalisation</p>
               <div className="flex gap-2 mt-3">
-                <button onClick={() => onSelectProduct('help-agent')} className="text-xs px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium flex items-center gap-1">Help Agent <ArrowRight className="w-3 h-3" /></button>
-                <button onClick={() => onSelectProduct('voice')} className="text-xs px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-medium flex items-center gap-1">Agentforce Voice <ArrowRight className="w-3 h-3" /></button>
+                <button onClick={() => onSelectProduct('help-agent')} className="text-sm px-3 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 transition-colors font-medium flex items-center gap-1">Help Agent <ArrowRight className="w-3 h-3" /></button>
+                <button onClick={() => onSelectProduct('voice')} className="text-sm px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition-colors font-medium flex items-center gap-1">Agentforce Voice <ArrowRight className="w-3 h-3" /></button>
               </div>
             </div>
 
@@ -963,7 +963,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
         </div>
 
         <div className="pt-4 pb-8">
-          <p className="text-white/30 text-xs font-medium uppercase tracking-wider text-center mb-5">Explorer les produits</p>
+          <p className="text-white/30 text-sm font-medium uppercase tracking-wider text-center mb-5">Explorer les produits</p>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
             {products.map(p => (
               <button
@@ -974,7 +974,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${p.color} flex items-center justify-center`}>
                   {p.icon}
                 </div>
-                <p className="text-white/60 text-xs font-medium text-center leading-tight">{p.name}</p>
+                <p className="text-white/60 text-sm font-medium text-center leading-tight">{p.name}</p>
               </button>
             ))}
           </div>
@@ -982,7 +982,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 
       </main>
 
-      <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-sm">
+      <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-base">
         Agentforce Portfolio — Meeting All Managers — 6 Juillet 2026
       </footer>
     </div>
@@ -1015,7 +1015,7 @@ function CountdownTimer() {
         title={running ? 'Pause' : timeLeft === 0 ? 'Relancer (8 min)' : 'Démarrer (8 min)'}
         className="cursor-pointer"
       >
-        <div className={`rounded-2xl px-5 py-3 font-mono font-bold text-3xl border-2 shadow-xl transition-all duration-300 tracking-widest ${
+        <div className={`rounded-2xl px-5 py-3 font-mono font-bold text-4xl border-2 shadow-xl transition-all duration-300 tracking-widest ${
           timeLeft === 0
             ? 'border-red-900/50 bg-black/90 text-red-800/60'
             : running
@@ -1028,7 +1028,7 @@ function CountdownTimer() {
       <button
         onClick={() => { setTimeLeft(8 * 60); setRunning(false) }}
         title="Remettre à 8 min"
-        className="rounded-xl px-2 py-2 border border-red-900/50 bg-black/80 text-red-700/60 hover:text-red-400 hover:border-red-600/60 transition-all duration-200 text-xs font-mono"
+        className="rounded-xl px-2 py-2 border border-red-900/50 bg-black/80 text-red-700/60 hover:text-red-400 hover:border-red-600/60 transition-all duration-200 text-sm font-mono"
       >
         ↺
       </button>
@@ -1062,8 +1062,8 @@ export default function ProductsPage() {
               <LayoutDashboard className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
-              <p className="text-white/50 text-sm mt-1">Présentation Interactive Managers</p>
+              <h1 className="text-4xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
+              <p className="text-white/50 text-base mt-1">Présentation Interactive Managers</p>
             </div>
           </div>
         </div>
@@ -1076,7 +1076,7 @@ export default function ProductsPage() {
               <button
                 key={p.id}
                 onClick={() => setActiveProduct(p.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-base font-medium whitespace-nowrap transition-all duration-200 ${
                   activeProduct === p.id
                     ? `bg-gradient-to-r ${p.color} text-white shadow-lg glow-blue`
                     : 'text-white/60 hover:text-white hover:bg-white/[0.06]'
@@ -1096,9 +1096,9 @@ export default function ProductsPage() {
           <div className="relative">
             <div className="flex items-center gap-3 mb-5">
               {product.icon}
-              <h2 className="text-3xl font-bold tracking-tight">{product.name}</h2>
+              <h2 className="text-4xl font-bold tracking-tight">{product.name}</h2>
             </div>
-            <p className="text-lg leading-relaxed text-white/90 max-w-4xl">{product.elevatorPitch}</p>
+            <p className="text-2xl leading-relaxed text-white/90 max-w-4xl">{product.elevatorPitch}</p>
           </div>
         </div>
 
@@ -1136,18 +1136,18 @@ export default function ProductsPage() {
                   <div key={category}>
                     <div className="flex items-center gap-2 mb-2">
                       {getCategoryIcon(category)}
-                      <span className="text-xs font-semibold text-white/50 uppercase tracking-wider">{category}</span>
+                      <span className="text-sm font-semibold text-white/50 uppercase tracking-wider">{category}</span>
                     </div>
                     <div className="space-y-1.5 pl-6">
                       {items.map((r, i) => (
                         <div key={i} className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] transition-colors">
                           <div className="flex-1 min-w-0">
                             {r.url ? (
-                              <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-white font-medium text-sm hover:text-[#1B96FF] transition-colors">
+                              <a href={r.url} target="_blank" rel="noopener noreferrer" className="text-white font-medium text-base hover:text-[#1B96FF] transition-colors">
                                 {r.title} <ExternalLink className="w-3 h-3 inline ml-1 opacity-50" />
                               </a>
                             ) : (
-                              <span className="text-white/70 text-sm">{r.title}</span>
+                              <span className="text-white/70 text-base">{r.title}</span>
                             )}
                           </div>
                         </div>
@@ -1176,7 +1176,7 @@ export default function ProductsPage() {
             {product.casUsages.map((c, i) => (
               <div key={i} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5 hover:bg-white/[0.05] transition-colors">
                 <h4 className="font-semibold text-white mb-2">{c.title}</h4>
-                <p className="text-sm text-white/60 leading-relaxed">{c.description}</p>
+                <p className="text-base text-white/60 leading-relaxed">{c.description}</p>
               </div>
             ))}
           </div>
@@ -1184,7 +1184,7 @@ export default function ProductsPage() {
 
         <Section title="Story client" icon={<Megaphone className="w-5 h-5" />}>
           <div className="bg-gradient-to-br from-white/[0.04] to-[#0176D3]/10 rounded-xl p-6 border border-white/[0.06]">
-            <h4 className="font-bold text-white text-lg mb-4">{product.storyClient.client}</h4>
+            <h4 className="font-bold text-white text-2xl mb-4">{product.storyClient.client}</h4>
             <ul className="space-y-2.5 mb-5">
               {product.storyClient.resultats.map((r, i) => (
                 <li key={i} className="flex items-start gap-2.5 text-white/80">
@@ -1217,7 +1217,7 @@ export default function ProductsPage() {
             {product.faq.map((f, i) => (
               <div key={i} className="border-b border-white/[0.06] pb-5 last:border-0 last:pb-0">
                 <h4 className="font-semibold text-white mb-2">{f.question}</h4>
-                <p className="text-sm text-white/60 leading-relaxed">{f.reponse}</p>
+                <p className="text-base text-white/60 leading-relaxed">{f.reponse}</p>
               </div>
             ))}
           </div>
@@ -1225,7 +1225,7 @@ export default function ProductsPage() {
 
       </main>
 
-      <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-sm">
+      <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-base">
         Agentforce Portfolio — Meeting All Managers — 6 Juillet 2026
       </footer>
     </div>
