@@ -798,7 +798,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
             </div>
 
             <p className="text-white/70 text-sm leading-relaxed">
-              L&apos;acquisition de FIN de son côté nous permet de proposer une alternative encore plus plug &amp; play pour le service client sur le marché SMB, nous donnant aussi accès à une base installée de plus de 30k entreprises et une technologie de conversation éprouvée qui vient renforcer notre stack agentique sur les cas d&apos;usage de support autonome à fort volume.
+              L&apos;acquisition de FIN de son côté nous permet de proposer une alternative encore plus <strong className="text-white/90">plug &amp; play</strong> pour le service client sur le <strong className="text-white/90">marché SMB</strong>, nous donnant aussi accès à une <strong className="text-white/90">base installée de plus de 30k entreprises</strong> et une technologie de conversation éprouvée qui vient renforcer notre stack agentique sur les cas d&apos;usage de support autonome à fort volume.
             </p>
 
             <blockquote className="border-l-2 border-[#1B96FF]/50 pl-4 text-white/60 text-sm italic leading-relaxed">
@@ -1009,20 +1009,29 @@ function CountdownTimer() {
   }
 
   return (
-    <div
-      onClick={handleClick}
-      title={running ? 'Pause' : timeLeft === 0 ? 'Relancer (8 min)' : 'Démarrer (8 min)'}
-      className="fixed top-4 right-6 z-50 cursor-pointer select-none"
-    >
-      <div className={`rounded-2xl px-5 py-3 font-mono font-bold text-3xl border-2 shadow-xl transition-all duration-300 tracking-widest ${
-        timeLeft === 0
-          ? 'border-red-900/50 bg-black/90 text-red-800/60'
-          : running
-            ? 'border-red-500 bg-black/95 text-red-400 shadow-red-500/20'
-            : 'border-red-600/60 bg-black/90 text-red-400/80 hover:border-red-500 hover:text-red-400'
-      }`}>
-        {fmt(timeLeft)}
+    <div className="fixed top-4 right-6 z-50 flex items-center gap-2 select-none">
+      <div
+        onClick={handleClick}
+        title={running ? 'Pause' : timeLeft === 0 ? 'Relancer (8 min)' : 'Démarrer (8 min)'}
+        className="cursor-pointer"
+      >
+        <div className={`rounded-2xl px-5 py-3 font-mono font-bold text-3xl border-2 shadow-xl transition-all duration-300 tracking-widest ${
+          timeLeft === 0
+            ? 'border-red-900/50 bg-black/90 text-red-800/60'
+            : running
+              ? 'border-red-500 bg-black/95 text-red-400 shadow-red-500/20'
+              : 'border-red-600/60 bg-black/90 text-red-400/80 hover:border-red-500 hover:text-red-400'
+        }`}>
+          {fmt(timeLeft)}
+        </div>
       </div>
+      <button
+        onClick={() => { setTimeLeft(8 * 60); setRunning(false) }}
+        title="Remettre à 8 min"
+        className="rounded-xl px-2 py-2 border border-red-900/50 bg-black/80 text-red-700/60 hover:text-red-400 hover:border-red-600/60 transition-all duration-200 text-xs font-mono"
+      >
+        ↺
+      </button>
     </div>
   )
 }
