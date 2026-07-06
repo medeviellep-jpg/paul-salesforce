@@ -1009,7 +1009,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
 }
 
 function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState(8 * 60)
+  const [timeLeft, setTimeLeft] = useState(7 * 60)
   const [running, setRunning] = useState(false)
 
   useEffect(() => {
@@ -1023,7 +1023,7 @@ function CountdownTimer() {
 
   const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
   const handleClick = () => {
-    if (timeLeft === 0) { setTimeLeft(8 * 60); setRunning(true) }
+    if (timeLeft === 0) { setTimeLeft(7 * 60); setRunning(true) }
     else setRunning(r => !r)
   }
 
@@ -1031,7 +1031,7 @@ function CountdownTimer() {
     <div className="fixed top-4 right-6 z-50 flex items-center gap-2 select-none">
       <div
         onClick={handleClick}
-        title={running ? 'Pause' : timeLeft === 0 ? 'Relancer (8 min)' : 'Démarrer (8 min)'}
+        title={running ? 'Pause' : timeLeft === 0 ? 'Relancer (7 min)' : 'Démarrer (7 min)'}
         className="cursor-pointer"
       >
         <div className={`rounded-2xl px-5 py-3 font-mono font-bold text-4xl border-2 shadow-xl transition-all duration-300 tracking-widest ${
@@ -1045,8 +1045,8 @@ function CountdownTimer() {
         </div>
       </div>
       <button
-        onClick={() => { setTimeLeft(8 * 60); setRunning(false) }}
-        title="Remettre à 8 min"
+        onClick={() => { setTimeLeft(7 * 60); setRunning(false) }}
+        title="Remettre à 7 min"
         className="rounded-xl px-2 py-2 border border-red-900/50 bg-black/80 text-red-700/60 hover:text-red-400 hover:border-red-600/60 transition-all duration-200 text-sm font-mono"
       >
         ↺
