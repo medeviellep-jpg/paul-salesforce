@@ -664,6 +664,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
     ],
   }
   const customerZeroLines: Record<string, React.ReactNode> = {
+    coworker: <>Déployé à <strong>100% des équipes Salesforce</strong> en 1 semaine</>,
     'help-agent': <>4,3M de conversations gérées · <strong>70% de résolution</strong> sans intervention humaine · 60M de visites annuelles sur help.salesforce.com</>,
     voice: <><strong>Live sur 1-800-NO-SOFTWARE</strong> depuis mai 2026 · numéro dédié : +1 855-302-7007</>,
     qualified: <><strong>53 000+ leads</strong> · $2M de nouveau pipeline depuis des leads dormants</>,
