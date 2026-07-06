@@ -579,6 +579,7 @@ const products: Product[] = [
       { title: "Canvas FR — Agentforce Voice/ContactCenter TeamFR (Manuel Rouzé)", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0A2FUATB4N", category: "FAQ & Knowledge" },
       { title: "CCaaS Partners supportés (Canvas Slack)", url: "https://salesforce.enterprise.slack.com/docs/T01G0063H29/F0AP2GM1R8W", category: "Pricing" },
       { title: "CCaaS providers list — Dynamic Routing (GSheets)", url: "https://docs.google.com/spreadsheets/d/1ywGE4_64NIMtUxFckmOMqHufeK3EOX4Fv6dUrGOH8Vs/edit?gid=0#gid=0", category: "Pricing" },
+      { title: "Démo AF Voice en français — Summit / WorldTour / VivaTech (Vidyard)", url: "https://salesforce.vidyard.com/watch/DNAdco5um5afYuLwWbBY48", category: "Démonstrations & Vidéos" },
       { title: "Demo GA Web/Mobile (Vidyard)", url: "https://salesforce.vidyard.com/watch/bT64KgHd6ngmKr6A8V2Bwn", category: "Démonstrations & Vidéos" },
       { title: "Pitch Audio — Josh Rosenstrauch walkthrough (Google Drive)", url: "https://drive.google.com/file/d/1n6sUGiZTeCO9hO4dueznlmoJFlaWatiB/view?usp=sharing", category: "Démonstrations & Vidéos" },
       { title: "Demo Guide — Web/Mobile NTO scenario (Google Doc)", url: "https://docs.google.com/document/d/1rh2r8bg8nuZ9scTCQdfvPTbj0G2i8s_Kv4u9h72ZZlQ/edit?tab=t.0#heading=h.61xywn1f1xwt", category: "Démonstrations & Vidéos" },
