@@ -676,8 +676,8 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
         </div>
       </header>
 
-      <nav className="glass border-t border-white/5 px-6 py-0">
-        <div className="max-w-7xl mx-auto flex items-center gap-1">
+      <nav className="border-t border-white/10 bg-white/5 px-6 py-2">
+        <div className="max-w-7xl mx-auto flex items-center gap-2">
           {[
             { label: 'Rappel des solutions', id: 'rappel' },
             { label: 'Donner du sens à ces annonces', id: 'sens' },
@@ -687,7 +687,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
             <button
               key={id}
               onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-              className="px-4 py-3 text-sm text-white/50 hover:text-white/90 hover:bg-white/5 rounded-lg transition-all duration-200 whitespace-nowrap"
+              className="px-5 py-2 text-sm font-medium text-white/80 bg-white/8 border border-white/15 rounded-lg hover:text-white hover:bg-white/15 hover:border-white/30 transition-all duration-200 whitespace-nowrap"
             >
               {label}
             </button>
@@ -886,14 +886,14 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
               <p className="text-white font-medium text-base">📅 Webinar — 8 juillet 2026</p>
               <p className="text-white/50 text-sm mt-1 leading-relaxed">Invitez vos clients A4X et A1E — 30 min, 100% valeur</p>
               <div className="flex gap-2 mt-3">
-                <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
-                  <p className="text-white font-bold text-2xl leading-none">260</p>
-                  <p className="text-white/50 text-sm mt-1">inscrits webinar</p>
-                </div>
-                <div className="flex-1 rounded-lg bg-white/[0.08] px-3 py-2 text-center">
-                  <p className="text-white font-bold text-2xl leading-none">38<span className="text-white/40 text-base font-normal">/100</span></p>
-                  <p className="text-white/50 text-sm mt-1">activations clients</p>
-                </div>
+                <a href="https://org62.lightning.force.com/lightning/page/analytics?wave__assetType=dashboard&wave__assetId=0FK0M000000TPcMWAW&wave__pageId=9a9a6ecd-2e84-4065-9234-79d953526668&wave__savedViewId=8wked000000uBlZAAU" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-white/[0.08] hover:bg-white/[0.14] border border-transparent hover:border-white/20 px-3 py-2 text-center transition-all duration-200 cursor-pointer">
+                  <p className="text-white font-bold text-2xl leading-none">264</p>
+                  <p className="text-white/50 text-sm mt-1">inscrits webinar ↗</p>
+                </a>
+                <a href="https://org62.lightning.force.com/lightning/page/analytics?wave__assetType=dashboard&wave__assetId=0FK0M000000TPcMWAW&wave__pageId=9a9a6ecd-2e84-4065-9234-79d953526668&wave__savedViewId=8wked000000uBlZAAU" target="_blank" rel="noopener noreferrer" className="flex-1 rounded-lg bg-white/[0.08] hover:bg-white/[0.14] border border-transparent hover:border-white/20 px-3 py-2 text-center transition-all duration-200 cursor-pointer">
+                  <p className="text-white font-bold text-2xl leading-none">40<span className="text-white/40 text-base font-normal">/100</span></p>
+                  <p className="text-white/50 text-sm mt-1">activations clients ↗</p>
+                </a>
               </div>
               <p className="mt-3 text-sm font-medium text-purple-300 flex items-center gap-1">Voir le détail <ArrowRight className="w-3 h-3" /></p>
             </button>
