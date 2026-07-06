@@ -663,6 +663,13 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
       <><strong>Voice pour Web &amp; Mobile</strong> — GA juin 2026</>,
     ],
   }
+  const customerZeroLines: Record<string, React.ReactNode> = {
+    'help-agent': <>4,3M de conversations gérées · <strong>70% de résolution</strong> sans intervention humaine · 60M de visites annuelles sur help.salesforce.com</>,
+    voice: <><strong>Live sur 1-800-NO-SOFTWARE</strong> depuis mai 2026 · numéro dédié : +1 855-302-7007</>,
+    qualified: <><strong>53 000+ leads</strong> · $2M de nouveau pipeline depuis des leads dormants</>,
+    momentum: <><strong>12,5M d&apos;utilisateurs actifs</strong> mensuels · 203 000 heures économisées/an (équivalent +100 sellers)</>,
+  }
+
   const [currentProductIndex, setCurrentProductIndex] = useState(0)
   const productsWithPoints = products.filter(p => execSummaryPoints[p.id])
   return (
@@ -773,6 +780,15 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
                           </li>
                         ))}
                       </ul>
+                      {customerZeroLines[current.id] && (
+                        <div className="mt-4 pt-4 border-t border-white/10 flex items-start gap-2">
+                          <span className="text-yellow-400 text-sm flex-shrink-0">⭐</span>
+                          <p className="text-sm text-white/60 leading-relaxed">
+                            <span className="text-yellow-400/80 font-semibold uppercase tracking-wider text-xs">Customer Zero </span>
+                            {customerZeroLines[current.id]}
+                          </p>
+                        </div>
+                      )}
                     </div>
                   )
                 })()}
