@@ -609,51 +609,6 @@ function Section({ title, icon, children, defaultOpen = false }: { title: string
   )
 }
 
-const execSummaryPoints: Record<string, string[]> = {
-  coworker: [
-    "Inclus dans A4X et A1E et disponible aussi avec les Flex Credits",
-    "Accélérateur de cycle de vente (vs Pilot/POC classique)",
-    "Accélérateur d'Adoption et de Change",
-    "Accélérateur de consommation (Flex) et de valeur (A4X)",
-    "Recherche et prend des actions",
-    "Super Agent orchestrateur de sous agents spécialisés",
-  ],
-  momentum: [
-    "Inclus dans A4Sales et A1E",
-    "Conversation Intelligence",
-    "Capture automatiquement les calls, visios, emails et SMS",
-    "Structure la donnée et la réinjecte dans Salesforce",
-    "Répond directement au blocage #1 : notre data n'est pas prête pour l'IA",
-    "Stack 3 couches unique : Ingestion → Structure & Contexte → Exécution & Orchestration",
-  ],
-  'help-agent': [
-    "Nouveau modèle de tarification à la résolution : 2€ par résolution (ou 400 Flex Credits)",
-    "Agent de service autonome déployable en quelques minutes sur tous les canaux",
-    "Optimisé pour le self-service client fort de notre expérience Customer Zero",
-    "Nouveau portail Agentforce Service : barre de conversation unique, expérience adaptative en temps réel",
-  ],
-  afo: [
-    "Digitalise les processus back-office en tâches exécutables par des agents IA",
-    "Conçu pour le back-office complexe (supply chain, finance, assurance)",
-    "Small : 10 Blueprints — $1.5M/an · Medium : 50 Blueprints — $3M/an · Large : 50+ Blueprints, Custom",
-    "Un blueprint est un modèle de processus digitalisé — par ex. 'Audit de facture' ou 'Onboarding fournisseur'",
-  ],
-  qualified: [
-    "Agent de qualification B2B avec un Avatar IA (Piper)",
-    "Moteur de pipeline generation qui alimente les agents Agentforce",
-    "Particulièrement pertinent pour les clients avec un site web à fort trafic BtoB et une motion ABM",
-    "Vendu comme une platform fee avec des leviers basés sur le trafic web mensuel et les contacts email actifs",
-  ],
-  voice: [
-    "Consomme du Flex Credits (1 action = 30 Flex)",
-    "Remplacez les IVR rigides par des agents IA vocaux qui parlent naturellement",
-    "Ces Agents IA agissent sur vos données Salesforce et transfèrent aux humains avec le contexte complet",
-    "Déployez sur téléphone, web, mobile et WhatsApp depuis un seul agent, construit une seule fois",
-    "SIP & Dynamic Voice Routing pour EMEA",
-    "Voice pour Web & Mobile (GA juin 2026)",
-  ],
-}
-
 const productAccents: Record<string, { border: string; bg: string; label: string; dot: string }> = {
   coworker:     { border: 'border-purple-500/25', bg: 'bg-purple-500/[0.07]', label: 'text-purple-300', dot: 'bg-purple-400/50' },
   momentum:     { border: 'border-blue-500/25',   bg: 'bg-blue-500/[0.07]',   label: 'text-blue-300',   dot: 'bg-blue-400/50'   },
@@ -664,6 +619,50 @@ const productAccents: Record<string, { border: string; bg: string; label: string
 }
 
 function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; onSelectProduct: (id: string) => void }) {
+  const execSummaryPoints: Record<string, React.ReactNode[]> = {
+    coworker: [
+      <>Inclus dans <strong>A4X</strong> et <strong>A1E</strong> et disponible aussi avec les <strong>Flex Credits</strong></>,
+      <>Accélérateur de <strong>cycle de vente</strong> — évite un pilote/POC à rallonge avant de signer</>,
+      <>Accélérateur d&apos;<strong>Adoption et de Change</strong> — activable en 2 clics, zéro service pro</>,
+      <>Accélérateur de <strong>consommation Flex</strong> et de valeur pour les clients A4X</>,
+      <>Recherche fédérée et <strong>prend des actions autonomes</strong> dans le CRM</>,
+      <><strong>Super Agent orchestrateur</strong> de sous-agents spécialisés</>,
+    ],
+    momentum: [
+      <>Inclus dans <strong>A4Sales</strong> et <strong>A1E</strong></>,
+      <><strong>Conversation Intelligence</strong> — capture calls, visios, emails et SMS</>,
+      <>Structure la donnée et la <strong>réinjecte automatiquement dans Salesforce</strong></>,
+      <>Répond directement au <strong>blocage #1</strong> : notre data n&apos;est pas prête pour l&apos;IA</>,
+      <>Stack <strong>3 couches unique</strong> : Ingestion → Structure &amp; Contexte → Exécution</>,
+      <>Coaching commercial <strong>en temps réel</strong> pendant et après les calls</>,
+    ],
+    'help-agent': [
+      <>Modèle à la <strong>résolution</strong> : <strong>2€ par résolution</strong> (ou 400 Flex Credits)</>,
+      <>Agent de service autonome déployable en <strong>30 jours</strong> sur tous les canaux</>,
+      <>Optimisé pour le <strong>self-service client</strong> — Customer Zero sur notre propre support</>,
+      <>Nouveau portail : <strong>barre de conversation unique</strong>, expérience adaptative en temps réel</>,
+    ],
+    afo: [
+      <>Digitalise les <strong>processus back-office complexes</strong> en tâches exécutables par des agents IA</>,
+      <>Conçu pour <strong>supply chain, finance, assurance</strong> — back-office à forte volumétrie</>,
+      <>Small : 10 Blueprints — <strong>$1.5M/an</strong> · Medium : 50 Blueprints — <strong>$3M/an</strong></>,
+      <>Un <strong>blueprint</strong> = un modèle de processus digitalisé — ex. &apos;Audit de facture&apos;</>,
+    ],
+    qualified: [
+      <>Agent de qualification B2B avec un <strong>Avatar IA (Piper)</strong></>,
+      <>Moteur de <strong>pipeline generation</strong> qui alimente les agents Agentforce</>,
+      <>Pertinent pour les clients avec un <strong>site web à fort trafic BtoB</strong> et une motion ABM</>,
+      <>Vendu comme une <strong>platform fee</strong> basée sur le trafic web et les contacts actifs</>,
+    ],
+    voice: [
+      <>Consomme des <strong>Flex Credits</strong> (1 action = 30 Flex)</>,
+      <>Remplacez les <strong>IVR rigides</strong> par des agents IA vocaux qui parlent naturellement</>,
+      <>Agissent sur vos <strong>données Salesforce</strong> et transfèrent avec le contexte complet</>,
+      <>Déployez sur <strong>téléphone, web, mobile et WhatsApp</strong> — un seul agent, construit une fois</>,
+      <><strong>SIP &amp; Dynamic Voice Routing</strong> pour EMEA</>,
+      <><strong>Voice pour Web &amp; Mobile</strong> — GA juin 2026</>,
+    ],
+  }
   const [currentProductIndex, setCurrentProductIndex] = useState(0)
   const productsWithPoints = products.filter(p => execSummaryPoints[p.id])
   return (
@@ -672,7 +671,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-white tracking-tight">Gagner ensemble avec Agentforce 🇫🇷</h1>
-            <p className="text-white/50 text-sm mt-1">Meeting Managers — Juillet 2026</p>
+            <p className="text-white/50 text-sm mt-1">Meeting All Managers — 6 Juillet 2026</p>
           </div>
         </div>
       </header>
@@ -767,7 +766,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           <h3 className="text-white font-bold text-xl mb-6">🎯 Donner du sens à toutes ces annonces</h3>
           <div className="space-y-6">
             <p className="text-white/70 text-sm leading-relaxed">
-              Notre stratégie d&apos;acquisition et d&apos;innovation n&apos;a qu&apos;un seul objectif : mettre à disposition de nos clients la plateforme agentique la plus complète pour accélérer les déploiements en restant ancré dans le contexte salesforce, alignés aux règles de sécurité et de compliance de l&apos;entreprise, en respectant les droits et permissions de chacun nativement. Derrière chaque annonce, il y a une pièce du puzzle qui s&apos;assemble — et la bonne nouvelle, c&apos;est que cette fois le puzzle a du sens.
+              🎯 Notre stratégie d&apos;acquisition et d&apos;innovation n&apos;a qu&apos;un seul objectif : <strong className="text-white/90">mettre à disposition de nos clients la plateforme agentique la plus complète</strong> pour accélérer les déploiements en restant ancré dans le contexte Salesforce. 🔒 Alignés aux règles de sécurité et de compliance de l&apos;entreprise, en respectant les droits et permissions de chacun nativement. 🧩 Derrière chaque annonce, il y a une pièce du puzzle qui s&apos;assemble — et la bonne nouvelle, c&apos;est que cette fois 💡 <strong className="text-white/90">le puzzle a du sens</strong>.
             </p>
 
             <div className="rounded-xl border border-teal-500/20 bg-teal-500/[0.06] p-5 space-y-3">
@@ -815,35 +814,35 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
               <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">1</span>
               <div>
                 <p className="text-white font-medium">Pricing à la carte 🎁</p>
-                <p className="text-white/50 text-sm mt-1">Bundles (PUPM), conso (Flex Credits), résolution (outcome-based), blueprints (process) — chaque client trouve le modèle adapté à sa maturité et son usage.</p>
+                <p className="text-white/50 text-sm mt-1">Bundles (PUPM), conso (Flex Credits), résolution (outcome-based), blueprints (process) — <strong className="text-white/70">chaque client trouve le modèle adapté</strong> à sa maturité et son usage.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">2</span>
               <div>
                 <p className="text-white font-medium">Time To Value ⏱️</p>
-                <p className="text-white/50 text-sm mt-1">CoWorker s&apos;active en 2 clics. Help Agent déployé en 30 jours. AFO opérationnel en heures. Pas de projet à 18 mois.</p>
+                <p className="text-white/50 text-sm mt-1">CoWorker s&apos;active en <strong className="text-white/70">2 clics</strong>. Help Agent déployé en <strong className="text-white/70">30 jours</strong>. AFO opérationnel en <strong className="text-white/70">heures</strong>. Pas de projet à 18 mois.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">3</span>
               <div>
                 <p className="text-white font-medium">Customer Zero 🍽️</p>
-                <p className="text-white/50 text-sm mt-1">Nous utilisons nos produits et nos clients bénéficient de nos apprentissages — ex : Help Agent déployé sur notre propre ligne support.</p>
+                <p className="text-white/50 text-sm mt-1">Nous utilisons nos produits et nos clients bénéficient de <strong className="text-white/70">nos apprentissages</strong> — ex : Help Agent déployé sur <strong className="text-white/70">notre propre ligne support</strong>.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">4</span>
               <div>
                 <p className="text-white font-medium">Consolidation 💰</p>
-                <p className="text-white/50 text-sm mt-1">Nos solutions remplacent des outils tiers coûteux — Momentum remplace Gong ($100-150/user/mois), Voice remplace les IVR rigides, AFO remplace les BPM à 18 mois de setup.</p>
+                <p className="text-white/50 text-sm mt-1">Nos solutions remplacent des outils tiers coûteux — <strong className="text-white/70">Momentum remplace Gong</strong> ($100-150/user/mois), <strong className="text-white/70">Voice remplace les IVR rigides</strong>, <strong className="text-white/70">AFO remplace les BPM</strong> à 18 mois de setup.</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
               <span className="mt-1 w-6 h-6 rounded-full bg-[#1B96FF]/20 flex items-center justify-center flex-shrink-0 text-xs font-bold text-[#1B96FF]">5</span>
               <div>
                 <p className="text-white font-medium">Confiance et sécurité natives 🛡️</p>
-                <p className="text-white/50 text-sm mt-1">Trust Layer, garde-fous, pas d&apos;hallucinations sur vos données. L&apos;IA enterprise responsable, pas l&apos;IA grand public.</p>
+                <p className="text-white/50 text-sm mt-1"><strong className="text-white/70">Trust Layer</strong>, garde-fous, pas d&apos;hallucinations sur vos données. L&apos;<strong className="text-white/70">IA enterprise responsable</strong>, pas l&apos;IA grand public.</p>
               </div>
             </div>
           </div>
@@ -984,8 +983,46 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
       </main>
 
       <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-sm">
-        Agentforce Portfolio — Meeting Managers — Juillet 2026
+        Agentforce Portfolio — Meeting All Managers — 6 Juillet 2026
       </footer>
+    </div>
+  )
+}
+
+function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState(8 * 60)
+  const [running, setRunning] = useState(false)
+
+  useEffect(() => {
+    if (!running || timeLeft <= 0) {
+      if (timeLeft <= 0) setRunning(false)
+      return
+    }
+    const id = setInterval(() => setTimeLeft(t => t - 1), 1000)
+    return () => clearInterval(id)
+  }, [running, timeLeft])
+
+  const fmt = (s: number) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`
+  const handleClick = () => {
+    if (timeLeft === 0) { setTimeLeft(8 * 60); setRunning(true) }
+    else setRunning(r => !r)
+  }
+
+  return (
+    <div
+      onClick={handleClick}
+      title={running ? 'Pause' : timeLeft === 0 ? 'Relancer (8 min)' : 'Démarrer (8 min)'}
+      className="fixed top-4 right-6 z-50 cursor-pointer select-none"
+    >
+      <div className={`rounded-2xl px-5 py-3 font-mono font-bold text-3xl border-2 shadow-xl transition-all duration-300 tracking-widest ${
+        timeLeft === 0
+          ? 'border-red-900/50 bg-black/90 text-red-800/60'
+          : running
+            ? 'border-red-500 bg-black/95 text-red-400 shadow-red-500/20'
+            : 'border-red-600/60 bg-black/90 text-red-400/80 hover:border-red-500 hover:text-red-400'
+      }`}>
+        {fmt(timeLeft)}
+      </div>
     </div>
   )
 }
@@ -996,16 +1033,18 @@ export default function ProductsPage() {
 
   const product = products.find(p => p.id === activeProduct)!
 
-
   if (view === 'summary') {
     return (
       <>
+        <CountdownTimer />
         <ExecutiveSummary onEnter={() => setView('products')} onSelectProduct={(id) => { setActiveProduct(id); setView('products') }} />
       </>
     )
   }
 
   return (
+    <>
+    <CountdownTimer />
     <div className="min-h-screen bg-[#0D1117]">
       <header className="glass px-6 py-6">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -1178,8 +1217,9 @@ export default function ProductsPage() {
       </main>
 
       <footer className="border-t border-white/[0.06] text-white/40 text-center py-6 text-sm">
-        Agentforce Portfolio — Meeting Managers — Juillet 2026
+        Agentforce Portfolio — Meeting All Managers — 6 Juillet 2026
       </footer>
     </div>
+    </>
   )
 }
