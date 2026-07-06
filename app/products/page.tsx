@@ -659,7 +659,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
       <>Remplacez les <strong>IVR rigides</strong> par des agents IA vocaux qui parlent naturellement</>,
       <>Agissent sur vos <strong>données Salesforce</strong> et transfèrent avec le contexte complet</>,
       <>Déployez sur <strong>téléphone, web, mobile et WhatsApp</strong> — un seul agent, construit une fois</>,
-      <><strong>SIP &amp; Dynamic Voice Routing</strong> pour EMEA</>,
+      <><strong>SIP &amp; Dynamic Voice Routing</strong> pour EMEA — supprime la dépendance aux partenaires CCaaS certifiés et utilise une API (Amazon Connect, Five9, NICE, Odigo, Bucher+Suter…)</>,
       <><strong>Voice pour Web &amp; Mobile</strong> — GA juin 2026</>,
     ],
   }
@@ -676,8 +676,27 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
         </div>
       </header>
 
+      <nav className="glass border-t border-white/5 px-6 py-0">
+        <div className="max-w-7xl mx-auto flex items-center gap-1">
+          {[
+            { label: 'Rappel des solutions', id: 'rappel' },
+            { label: 'Donner du sens à ces annonces', id: 'sens' },
+            { label: 'Différenciateurs clés', id: 'differenciateurs' },
+            { label: 'Call to Action', id: 'cta' },
+          ].map(({ label, id }) => (
+            <button
+              key={id}
+              onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className="px-4 py-3 text-sm text-white/50 hover:text-white/90 hover:bg-white/5 rounded-lg transition-all duration-200 whitespace-nowrap"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </nav>
+
       <main className="flex-1 max-w-7xl mx-auto px-6 py-12 w-full">
-        <div className="mb-12">
+        <div id="rappel" className="mb-12">
           <h2 className="text-5xl font-bold text-white mb-4 tracking-tight">Executive Summary</h2>
           <p className="text-white/60 text-2xl max-w-3xl">L'ère de l'entreprise agentique est là. Agentforce transforme chaque équipe avec des agents IA autonomes qui travaillent aux côtés de vos collaborateurs — 24/7, à grande échelle.</p>
         </div>
@@ -762,7 +781,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           })()}
         </div>
 
-        <div className="card-dark rounded-xl p-8 mb-12">
+        <div id="sens" className="card-dark rounded-xl p-8 mb-12">
           <h3 className="text-white font-bold text-2xl mb-6">🎯 Donner du sens à toutes ces annonces</h3>
           <div className="space-y-6">
             <p className="text-white/70 text-base leading-relaxed">
@@ -807,7 +826,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           </div>
         </div>
 
-        <div className="card-dark rounded-xl p-8 mb-12">
+        <div id="differenciateurs" className="card-dark rounded-xl p-8 mb-12">
           <h3 className="text-white font-bold text-2xl mb-6">💬 Différenciateurs clés pour vos conversations</h3>
           <div className="space-y-4">
             <div className="flex items-start gap-4">
@@ -848,7 +867,7 @@ function ExecutiveSummary({ onEnter, onSelectProduct }: { onEnter: () => void; o
           </div>
         </div>
 
-        <div className="card-dark rounded-xl p-8 mb-12">
+        <div id="cta" className="card-dark rounded-xl p-8 mb-12">
           <h3 className="text-white font-bold text-2xl mb-2">🎯 Prochaines étapes</h3>
           <p className="text-white/50 text-base mb-6">Actions prioritaires par produit pour vos comptes</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
