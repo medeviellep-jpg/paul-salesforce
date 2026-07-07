@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import AccessGate from './components/AccessGate'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
   title: 'Agentforce Portfolio',
@@ -17,6 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="antialiased h-screen">
         <AccessGate>{children}</AccessGate>
+        <Analytics />
       </body>
     </html>
   )
