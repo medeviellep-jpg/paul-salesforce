@@ -10,6 +10,13 @@ type Resource = {
   category: string
 }
 
+type CommentCaSeVend = {
+  aQui: string
+  signal: string
+  ticket: React.ReactNode
+  urgences?: React.ReactNode[]
+}
+
 type Product = {
   id: string
   name: string
@@ -25,6 +32,7 @@ type Product = {
   convictionsFrance?: React.ReactNode
   callToAction?: React.ReactNode
   ressources?: Resource[]
+  commentCaSeVend?: CommentCaSeVend
 }
 
 const products: Product[] = [
@@ -236,7 +244,15 @@ const products: Product[] = [
       { title: "Customer Stories — 1Password, détail (GSlides)", url: "https://docs.google.com/presentation/d/1Z6xBAhMQXsEBhmXjfaDM1cU-6-eJzYssRxf5Au3a6iw/edit?slide=id.g3e2aef576cb_1_548#slide=id.g3e2aef576cb_1_548", category: "Customer Stories" },
       { title: "#momentum-gtm-faq", category: "Canal Slack" },
       { title: "Channel support Momentum SE", category: "Canal Slack" }
-    ]
+    ],
+    commentCaSeVend: {
+      aQui: "CRO, VP Sales, Sales Ops",
+      signal: "Le client a (ou va avoir) Agentforce for Sales, et souffre de la mauvaise qualité de sa donnée CRM ou de la fiabilité de son forecast",
+      ticket: <>Inclus gratuitement dans <strong>A4S et A1E</strong> dès que le QST est renseigné sur la quote</>,
+      urgences: [
+        <><span className="text-yellow-400">⚠️ Sans le QST, pas de Momentum.</span> Ajouter manuellement le QST <strong>QSTM-0676</strong> à la quote (dans Apttus : Special Terms → catégorie &ldquo;One Time Discount&rdquo; → chercher &ldquo;Momentum Promo&rdquo;). Le client signe ensuite un Order Form Momentum à 0€ dans les 72h après le contrat A4S.</>,
+      ]
+    }
   },
   {
     id: 'help-agent',
@@ -325,7 +341,15 @@ const products: Product[] = [
       { title: "Product Decoded — 4-min Highlights Video", category: "Product Decoded" },
       { title: "Newsroom Announcement", category: "Ressources Externes" },
       { title: "#help-sell-ai", url: "https://slack.com/archives/C01PVR4M88G", category: "Canal Slack" }
-    ]
+    ],
+    commentCaSeVend: {
+      aQui: "VP Service, Head of Support, responsable de portail client",
+      signal: "Le client a déjà un site web riche en contenu ou une FAQ en ligne, avec un fort volume de questions répétitives qui reviennent aux équipes de support",
+      ticket: <><strong>2$ par résolution réussie</strong> (400 Flex Credits) — on ne facture que si l&apos;agent résout sans escalade humaine. Options portail : <strong>4$/login</strong> (session 24h) ou <strong>10$/membre/mois</strong> pour l&apos;interface portail agentique</>,
+      urgences: [
+        <><span className="text-blue-400">🌐 Game-changer OOTB :</span> Coller l&apos;URL du site client (FAQ, doc, Help Center) → Help Agent crawle et indexe. <strong>Zéro KB à monter.</strong> Démo live sur les données du prospect en 5 min.</>,
+      ]
+    }
   },
   {
     id: 'afo',
@@ -495,7 +519,15 @@ const products: Product[] = [
       { title: "Qualified Resources Canvas — all enablement materials", url: "https://salesforce.enterprise.slack.com/docs/T024BE7LD/F0AQNTURPFW", category: "FAQ & Knowledge" },
       { title: "5-Min Overview Video (Vidyard)", url: "https://salesforce.vidyard.com/watch/Shuy2q6pceoTFyjxtc9Xs7", category: "Démonstrations & Vidéos" },
       { title: "#qualified-gtm-faq", category: "Canal Slack" }
-    ]
+    ],
+    commentCaSeVend: {
+      aQui: "CMO, VP Demand Gen, responsable Marketing Ops",
+      signal: "Société B2B avec plus de 50 000 visites/mois sur son site, qui a Sales Cloud et une plateforme de Marketing Automation (Marketo, HubSpot, Pardot ou Eloqua)",
+      ticket: <><strong>$119K → $669K/an</strong> selon le volume · comp full (1x bucket 1) · lead à passer aux AEs Qualified</>,
+      urgences: [
+        <><span className="text-yellow-400">⚠️ Données hébergées aux US uniquement.</span> À qualifier tôt sur les comptes avec forte contrainte de souveraineté. <strong>Exclu</strong> pour HIPAA, FINRA, FedRAMP et marché japonais.</>,
+      ]
+    }
   },
   {
     id: 'voice',
@@ -588,7 +620,16 @@ const products: Product[] = [
       { title: "Product Decoded AF Voice — Episode Deck (GSlides)", url: "https://docs.google.com/presentation/d/1yKaLogg4u4o-x6xuusNm9BKlg2k-OPc7MZ218gEpIM4/edit?usp=sharing", category: "Product Decoded" },
       { title: "Road to TDX — AF Voice Deck + Recording (GSlides)", url: "https://docs.google.com/presentation/d/1fk-yaMIhb-4Wzg6Tk5dkJ72EeqbOL1Of4-3N9zF8Tww/edit?slide=id.g3d7df79e832_0_1191#slide=id.g3d7df79e832_0_1191", category: "Product Decoded" },
       { title: "#help-sell-ai", category: "Canal Slack" }
-    ]
+    ],
+    commentCaSeVend: {
+      aQui: "VP Service, Directeur de Centre de Contacts",
+      signal: "Le client a déjà Service Cloud, plus de 25 conseillers humains, et un fort volume d'appels entrants qu'il aimerait automatiser",
+      ticket: <>2 modèles au choix via Flex Credits : <strong>30 crédits/action</strong> ($0.15 — défaut) ou <strong>60 crédits/minute d&apos;appel</strong> ($0.30/min) sur activation du SKU &ldquo;Agentforce Voice Minutes&rdquo;</>,
+      urgences: [
+        <><span className="text-blue-400">🇫🇷 France :</span> Agentforce Contact Center Voice natif dispo en <strong>octobre 2026</strong>. Data Hyperforce in-country.</>,
+        <><span className="text-red-400">🔴 Urgence :</span> OpenCTI EOL = <strong>28 fév 2028</strong> → migration forcée. Argument d&apos;accélération à utiliser dès maintenant.</>,
+      ]
+    }
   }
 ]
 
@@ -1138,6 +1179,36 @@ export default function ProductsPage() {
             <p className="text-2xl leading-relaxed text-white/90 max-w-4xl">{product.elevatorPitch}</p>
           </div>
         </div>
+
+        {product.commentCaSeVend && (
+          <Section title="🎯 Comment ça se vend" icon={<Target className="w-5 h-5" />} defaultOpen={true}>
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 gap-3">
+                <div className="rounded-xl bg-white/[0.04] border border-white/10 px-5 py-4 flex gap-4">
+                  <span className="text-white/40 font-semibold text-sm uppercase tracking-wider w-16 flex-shrink-0 pt-0.5">À qui</span>
+                  <p className="text-white/85 text-base">{product.commentCaSeVend.aQui}</p>
+                </div>
+                <div className="rounded-xl bg-white/[0.04] border border-white/10 px-5 py-4 flex gap-4">
+                  <span className="text-white/40 font-semibold text-sm uppercase tracking-wider w-16 flex-shrink-0 pt-0.5">Signal</span>
+                  <p className="text-white/85 text-base">{product.commentCaSeVend.signal}</p>
+                </div>
+                <div className="rounded-xl bg-white/[0.04] border border-white/10 px-5 py-4 flex gap-4">
+                  <span className="text-white/40 font-semibold text-sm uppercase tracking-wider w-16 flex-shrink-0 pt-0.5">Ticket</span>
+                  <p className="text-white/85 text-base">{product.commentCaSeVend.ticket}</p>
+                </div>
+              </div>
+              {product.commentCaSeVend.urgences && product.commentCaSeVend.urgences.length > 0 && (
+                <div className="space-y-2">
+                  {product.commentCaSeVend.urgences.map((u, i) => (
+                    <div key={i} className="rounded-xl border border-yellow-500/20 bg-yellow-500/[0.05] px-5 py-3 text-sm text-white/75 leading-relaxed">
+                      {u}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </Section>
+        )}
 
         <Section title="🇫🇷 Nos convictions pour la France" icon={<Target className="w-5 h-5" />} defaultOpen={true}>
           <div className="text-white/80 leading-relaxed">{product.convictionsFrance || "Contenu à venir..."}</div>
